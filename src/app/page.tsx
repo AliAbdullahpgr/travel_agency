@@ -14,7 +14,6 @@ import {
   IconInstagram,
   IconSearch,
   IconLocation,
-  IconCalendar,
   IconUser,
   IconTrophy,
   IconPlane,
@@ -421,7 +420,7 @@ export default function Home() {
                 className="flex w-full items-center gap-3"
                 onClick={() => setOpenDropdown(openDropdown === "tarih" ? null : "tarih")}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0 cursor-pointer" style={{ color: "var(--brand)" }}>
                   <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z" />
                 </svg>
                 <div className="flex flex-1 flex-col text-left">
@@ -910,7 +909,7 @@ export default function Home() {
               {testimonials[currentTestimonial]?.author}
             </h4>
             <div className="flex gap-1" style={{ color: "var(--gold)" }}>
-              {[...Array(5)].map((_, i) => (
+              {[...Array<unknown>(5)].map((_, i) => (
                 <span key={i} className="text-lg">
                   {"\u2605"}
                 </span>
