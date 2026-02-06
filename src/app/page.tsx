@@ -355,7 +355,7 @@ export default function Home() {
             Manevi Yolculuk
           </p>
           <h1 className="font-display mb-6 text-5xl font-bold tracking-tight text-white drop-shadow-lg md:text-7xl lg:text-8xl">
-            Şükür Turism
+            Şükür Turizm
           </h1>
           <p className="max-w-xl text-lg text-white/80">
             Hac, Umre ve K{"\u00FC"}lt{"\u00FC"}r Turlar{"\u0131"} i{"\u00E7"}in
@@ -376,7 +376,7 @@ export default function Home() {
             {/* Konum Dropdown */}
             <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <button
-                className="flex w-full items-center gap-3"
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-1.5 -mx-2 -my-1.5 transition-colors hover:bg-gray-50"
                 onClick={() => setOpenDropdown(openDropdown === "konum" ? null : "konum")}
               >
                 <IconLocation className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }} />
@@ -387,7 +387,7 @@ export default function Home() {
                   </span>
                 </div>
                 <IconChevronDown
-                  className="h-4 w-4 shrink-0 text-gray-400 cursor-pointer transition-transform duration-200"
+                  className="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200"
                   style={{ transform: openDropdown === "konum" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </button>
@@ -413,7 +413,7 @@ export default function Home() {
             {/* Turlar Dropdown */}
             <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <button
-                className="flex w-full items-center gap-3"
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-1.5 -mx-2 -my-1.5 transition-colors hover:bg-gray-50"
                 onClick={() => setOpenDropdown(openDropdown === "turlar" ? null : "turlar")}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }}>
@@ -426,7 +426,7 @@ export default function Home() {
                   </span>
                 </div>
                 <IconChevronDown
-                  className="h-4 w-4 shrink-0 cursor-pointer text-gray-400 transition-transform duration-200"
+                  className="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200"
                   style={{ transform: openDropdown === "turlar" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </button>
@@ -452,10 +452,10 @@ export default function Home() {
             {/* Gidiş Tarihi - Calendar */}
             <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <button
-                className="flex w-full items-center gap-3"
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-1.5 -mx-2 -my-1.5 transition-colors hover:bg-gray-50"
                 onClick={() => setOpenDropdown(openDropdown === "tarih" ? null : "tarih")}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0 cursor-pointer" style={{ color: "var(--brand)" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }}>
                   <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z" />
                 </svg>
                 <div className="flex flex-1 flex-col text-left">
@@ -465,7 +465,7 @@ export default function Home() {
                   </span>
                 </div>
                 <IconChevronDown
-                  className="h-4 w-4 shrink-0 text-gray-400 cursor-pointer transition-transform duration-200"
+                  className="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200"
                   style={{ transform: openDropdown === "tarih" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </button>
@@ -486,7 +486,7 @@ export default function Home() {
             {/* Kişi Sayısı - Passenger Counter */}
             <div className="relative flex w-full items-center gap-3 px-4 md:w-1/4">
               <button
-                className="flex w-full items-center gap-3"
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-1.5 -mx-2 -my-1.5 transition-colors hover:bg-gray-50"
                 onClick={() => setOpenDropdown(openDropdown === "yolcu" ? null : "yolcu")}
               >
                 <IconUser className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }} />
@@ -804,166 +804,389 @@ export default function Home() {
       <div className="gold-divider mx-auto max-w-xs" />
 
       {/* Info Tabs Section */}
-      <section className="mx-auto max-w-5xl px-4 py-24">
-        <div className="mb-12 text-center">
-          <p
-            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
-            style={{ color: "var(--gold)" }}
-          >
-            Hizmetlerimiz
-          </p>
-          <h2
-            className="font-display text-4xl font-bold"
-            style={{ color: "var(--emerald)" }}
-          >
-            Hac & Umre Rehberiniz
-          </h2>
-        </div>
+      <section className="relative overflow-hidden py-14 md:py-24">
+        {/* Decorative background geometry */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%230A3D2E' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "80px 80px",
+        }} />
 
-        <div
-          className="mb-10 flex justify-center gap-2 border-b"
-          style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
-        >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`relative px-10 py-4 text-xl font-bold tracking-wider transition-all ${
-                activeTab === tab.id ? "" : "text-gray-400 hover:text-gray-600"
-              }`}
-              style={
-                activeTab === tab.id ? { color: "var(--emerald)" } : undefined
-              }
+        <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="mb-10 text-center md:mb-16">
+            <div className="mb-4 inline-flex items-center gap-3">
+              <span className="h-px w-8" style={{ backgroundColor: "var(--gold)" }} />
+              <p
+                className="text-sm font-semibold tracking-[0.3em] uppercase"
+                style={{ color: "var(--gold)" }}
+              >
+                Hizmetlerimiz
+              </p>
+              <span className="h-px w-8" style={{ backgroundColor: "var(--gold)" }} />
+            </div>
+            <h2
+              className="font-display text-3xl font-bold md:text-5xl"
+              style={{ color: "var(--emerald)" }}
             >
-              {tab.label}
-              {activeTab === tab.id && (
-                <div
-                  className="absolute bottom-0 left-0 h-[3px] w-full rounded-full"
-                  style={{ backgroundColor: "var(--gold)" }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+              Hac & Umre Rehberiniz
+            </h2>
+          </div>
 
-        <div className="space-y-6 text-center text-lg leading-relaxed text-gray-600 md:text-xl md:leading-9">
-          {activeTab === "HAC" && (
-            <div className="animate-fade-in space-y-6">
-              <p>
-                Hac programımız ile farzların, vaciplerin, sünnetlerin, hatta müstehapların bile
-                yerine getirilmesi için ehil ve tecrübeli hocalarımızın rehberliğinde
-                hac ve umre için lütfen{" "}
-                <strong style={{ color: "var(--emerald)" }}>
-                  0312 309 00 26
-                </strong>{" "}
-                nolu telefondan bizi arayınız.
-              </p>
-              <p>
-                <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> web sitemizde{" "}
-                <strong style={{ color: "var(--emerald)" }}>
-                  umre turları
-                </strong>{" "}
-                ve{" "}
-                <strong style={{ color: "var(--emerald)" }}>
-                  2025 yılı umre fiyatları ve hac fiyatları
-                </strong>{" "}
-                hakkında detaylı bilgiye sahip olabilirsiniz.
-              </p>
-              <p>
-                Hac ve umre nedir, nasıl yapılır, tavaf, say gibi merak ettiğiniz tüm sorulara
-                web sitemizde cevap bulabilirsiniz. Gerek öncesinde,
-                gerekse bizzat{" "}
-                <strong style={{ color: "var(--emerald)" }}>
-                  hac ve umre esnasında
-                </strong>{" "}
-                bilginize bilgi katacağınızdan emin olabilirsiniz.
-              </p>
-              <p>
-                Hac oda tercihli konaklama ve hac otel tercihli konaklama turları ile bütçenize en uygun hac ve{" "}
-                <strong style={{ color: "var(--emerald)" }}>
-                  2025 yılı umre turu
-                </strong>{" "}
-                seçeneği tercih ederek, Hazreti Allah&apos;ın (Celle Celâlühü), Sevgili
-                Resullah Efendimiz&apos;in (Sallallahu Aleyhi Vesellem)
-                misafirleri olarak tam anlamıyla hac yapmanız
-                için düşündüğünüzün de ötesinde muazzam bir hizmet sizleri bekliyor.
-              </p>
+          {/* Tab Switcher */}
+          <div className="mx-auto mb-8 flex max-w-xs justify-center md:mb-14">
+            <div
+              className="relative flex w-full overflow-hidden rounded-full p-1.5"
+              style={{ backgroundColor: "var(--sand)" }}
+            >
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className="relative z-10 flex-1 py-3 text-base font-bold tracking-widest transition-all duration-300"
+                  style={{
+                    color: activeTab === tab.id ? "white" : "var(--emerald)",
+                    borderRadius: "9999px",
+                    backgroundColor: activeTab === tab.id ? "var(--emerald)" : "transparent",
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
-          )}
-          {activeTab === "UMRE" && (
-            <div className="animate-fade-in space-y-6">
-              <p>
-                Umre ibadeti, Müslümanların Kabe-i Muazzama&apos;yı ziyaret ederek manevi duygularını
-                pekiştirdiği özel bir yolculuktur.{" "}
-                <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> olarak bu kutsal yolculukta
-                sizlere en iyi hizmeti sunmak için buradayız.
-              </p>
-              <p>
-                Farklı konaklama seçenekleri ve tecrübeli rehberlerimiz eşliğinde, gönül rahatlığıyla
-                ibadetinizi yerine getirebilirsiniz. Detaylı bilgi için bizimle iletişime geçin.
-              </p>
+          </div>
+
+          {/* Content Card */}
+          <div
+            className="relative overflow-hidden rounded-2xl border shadow-lg md:rounded-4xl"
+            style={{ borderColor: "rgba(200, 168, 78, 0.15)", backgroundColor: "white" }}
+          >
+            {/* Decorative top accent */}
+            <div className="h-1 md:h-1.5" style={{
+              background: "linear-gradient(90deg, var(--emerald), var(--brand), var(--gold))",
+            }} />
+
+            <div className="flex flex-col md:flex-row">
+              {/* Left visual panel — hidden on mobile */}
+              <div
+                className="relative hidden flex-col items-center justify-center px-8 py-16 md:flex md:w-[320px] md:shrink-0"
+                style={{ backgroundColor: "var(--emerald)" }}
+              >
+                {/* Geometric pattern overlay */}
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='%23C8A84E' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='18' fill='none' stroke='%23C8A84E' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='8' fill='none' stroke='%23C8A84E' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundSize: "60px 60px",
+                }} />
+                <div className="relative z-10 text-center">
+                  {/* Crescent moon decorative element */}
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full" style={{ backgroundColor: "rgba(200, 168, 78, 0.15)" }}>
+                    <svg viewBox="0 0 64 64" className="h-10 w-10" fill="none">
+                      <path d="M42 8C30.954 8 22 16.954 22 28s8.954 20 20 20c3.87 0 7.49-1.098 10.56-3A23.94 23.94 0 0140 52C26.745 52 16 41.255 16 28S26.745 4 40 4c4.21 0 8.17 1.088 11.61 3A19.87 19.87 0 0042 8z" fill="var(--gold)" />
+                      <circle cx="46" cy="12" r="3" fill="var(--gold-light)" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display mb-3 text-2xl font-bold text-white">
+                    {activeTab === "HAC" ? "Hac" : "Umre"}
+                  </h3>
+                  <p className="mb-8 text-sm leading-relaxed text-white/60">
+                    {activeTab === "HAC"
+                      ? "Farzları, vacipleri ve sünnetleri ehil rehberler eşliğinde yerine getirin."
+                      : "Kabe-i Muazzama'yı ziyaret ederek manevi yolculuğunuza çıkın."}
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                      <IconPhoneAlt className="h-4 w-4" style={{ color: "var(--gold-light)" }} />
+                      <span className="text-sm font-semibold text-white">0312 309 00 26</span>
+                    </div>
+                    <div className="flex items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                      <IconPhoneAlt className="h-4 w-4" style={{ color: "var(--gold-light)" }} />
+                      <span className="text-sm font-semibold text-white">0554 113 40 02</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right content panel */}
+              <div className="flex-1 px-5 py-6 md:px-12 md:py-14">
+                {activeTab === "HAC" && (
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        Hac programımız ile farzların, vaciplerin, sünnetlerin, hatta müstehapların bile
+                        yerine getirilmesi için ehil ve tecrübeli hocalarımızın rehberliğinde
+                        hac ve umre ibadetinizi huzur içinde eda edin.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> web sitemizde{" "}
+                        <strong style={{ color: "var(--emerald)" }}>umre turları</strong> ve{" "}
+                        <strong style={{ color: "var(--emerald)" }}>2025 yılı umre fiyatları ve hac fiyatları</strong> hakkında
+                        detaylı bilgiye sahip olabilirsiniz.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        Hac ve umre nedir, nasıl yapılır, tavaf, say gibi merak ettiğiniz tüm sorulara
+                        web sitemizde cevap bulabilirsiniz.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        Hac oda tercihli konaklama ve hac otel tercihli konaklama turları ile bütçenize en uygun hac ve{" "}
+                        <strong style={{ color: "var(--emerald)" }}>2025 yılı umre turu</strong> seçeneği tercih ederek,
+                        Hazreti Allah&apos;ın (Celle Celâlühü), Sevgili Resullah Efendimiz&apos;in (Sallallahu Aleyhi Vesellem)
+                        misafirleri olarak tam anlamıyla hac yapmanız için muazzam bir hizmet sizleri bekliyor.
+                      </p>
+                    </div>
+
+                    {/* CTA + Phone (phone visible only on mobile) */}
+                    <div className="mt-6 space-y-4 pt-5 md:mt-8 md:pt-6" style={{ borderTop: "1px solid rgba(200, 168, 78, 0.15)" }}>
+                      <div className="flex flex-wrap items-center gap-3 md:hidden">
+                        <a href="tel:03123090026" className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white" style={{ backgroundColor: "var(--emerald)" }}>
+                          <IconPhoneAlt className="h-3.5 w-3.5" />
+                          0312 309 00 26
+                        </a>
+                        <a href="tel:05541134002" className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white" style={{ backgroundColor: "var(--emerald)" }}>
+                          <IconPhoneAlt className="h-3.5 w-3.5" />
+                          0554 113 40 02
+                        </a>
+                      </div>
+                      <button
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:brightness-110 md:w-auto"
+                        style={{ backgroundColor: "var(--brand)" }}
+                      >
+                        Detaylı Bilgi Alın
+                        <IconArrowRight className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {activeTab === "UMRE" && (
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        Umre ibadeti, Müslümanların Kabe-i Muazzama&apos;yı ziyaret ederek manevi duygularını
+                        pekiştirdiği özel bir yolculuktur.{" "}
+                        <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> olarak bu kutsal yolculukta
+                        sizlere en iyi hizmeti sunmak için buradayız.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <div className="mt-1.5 h-2 w-2 shrink-0 rotate-45 md:h-2.5 md:w-2.5" style={{ backgroundColor: "var(--gold)" }} />
+                      <p className="text-sm leading-relaxed text-gray-600 md:text-lg md:leading-8">
+                        Farklı konaklama seçenekleri ve tecrübeli rehberlerimiz eşliğinde, gönül rahatlığıyla
+                        ibadetinizi yerine getirebilirsiniz. Detaylı bilgi için bizimle iletişime geçin.
+                      </p>
+                    </div>
+
+                    {/* CTA + Phone (phone visible only on mobile) */}
+                    <div className="mt-6 space-y-4 pt-5 md:mt-8 md:pt-6" style={{ borderTop: "1px solid rgba(200, 168, 78, 0.15)" }}>
+                      <div className="flex flex-wrap items-center gap-3 md:hidden">
+                        <a href="tel:03123090026" className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white" style={{ backgroundColor: "var(--emerald)" }}>
+                          <IconPhoneAlt className="h-3.5 w-3.5" />
+                          0312 309 00 26
+                        </a>
+                        <a href="tel:05541134002" className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white" style={{ backgroundColor: "var(--emerald)" }}>
+                          <IconPhoneAlt className="h-3.5 w-3.5" />
+                          0554 113 40 02
+                        </a>
+                      </div>
+                      <button
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:brightness-110 md:w-auto"
+                        style={{ backgroundColor: "var(--brand)" }}
+                      >
+                        Detaylı Bilgi Alın
+                        <IconArrowRight className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section
-        className="py-24 text-center"
-        style={{ backgroundColor: "var(--sand)" }}
+        className="relative overflow-hidden py-14 md:py-24"
+        style={{ backgroundColor: "var(--emerald)" }}
       >
-        <div className="mx-auto max-w-5xl px-4">
-          <p
-            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
-            style={{ color: "var(--gold)" }}
-          >
-            Referanslar
-          </p>
-          <h2
-            className="font-display mb-4 text-4xl font-bold"
-            style={{ color: "var(--emerald)" }}
-          >
-            Misafirlerimiz Ne Diyor?
-          </h2>
-          <p className="mx-auto mb-14 max-w-xl text-base text-gray-400">
-            Tüm yorumlar Google&apos;dan alınmıştır. Diğer yorumları görmek için Google profilimizi ziyaret edebilirsiniz.
-          </p>
+        {/* Layered decorative backgrounds */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 0L120 60L60 120L0 60Z' fill='none' stroke='%23C8A84E' stroke-width='1'/%3E%3Cpath d='M60 20L100 60L60 100L20 60Z' fill='none' stroke='%23C8A84E' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "120px 120px",
+        }} />
+        {/* Radial glow behind content */}
+        <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{
+          background: "radial-gradient(circle, rgba(200, 168, 78, 0.08) 0%, transparent 70%)",
+        }} />
 
-          <div
-            className="mx-auto mb-4 flex min-h-[140px] max-w-3xl items-center justify-center px-4 text-2xl leading-relaxed font-light italic transition-all duration-500 ease-in-out md:text-3xl md:leading-snug"
-            style={{ color: "var(--emerald-light)" }}
-          >
-            &ldquo;{testimonials[currentTestimonial]?.text}&rdquo;
+        <div className="relative z-10 mx-auto max-w-6xl px-4">
+          {/* Header */}
+          <div className="mb-10 text-center md:mb-16">
+            <div className="mb-4 inline-flex items-center gap-3">
+              <span className="h-px w-8" style={{ backgroundColor: "var(--gold)" }} />
+              <p
+                className="text-sm font-semibold tracking-[0.3em] uppercase"
+                style={{ color: "var(--gold)" }}
+              >
+                Referanslar
+              </p>
+              <span className="h-px w-8" style={{ backgroundColor: "var(--gold)" }} />
+            </div>
+            <h2
+              className="font-display mb-3 text-3xl font-bold text-white md:text-5xl"
+            >
+              Misafirlerimiz Ne Diyor?
+            </h2>
+            <p className="mx-auto max-w-lg text-sm text-white/40 md:text-base">
+              Tüm yorumlar Google&apos;dan alınmıştır. Diğer yorumları görmek için Google profilimizi ziyaret edebilirsiniz.
+            </p>
           </div>
 
-          <div className="mt-10 flex flex-col items-center">
-            <h4
-              className="mb-2 text-lg font-bold"
-              style={{ color: "var(--emerald)" }}
-            >
-              {testimonials[currentTestimonial]?.author}
-            </h4>
-            <div className="flex gap-1" style={{ color: "var(--gold)" }}>
-              {[...Array<unknown>(5)].map((_, i) => (
-                <span key={i} className="text-lg">
-                  {"\u2605"}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex gap-2.5">
-              {testimonials.map((_, idx) => (
-                <button
+          {/* Mobile: single active card */}
+          <div className="md:hidden">
+            {testimonials.map((testimonial, idx) => (
+              currentTestimonial === idx && (
+                <div
                   key={idx}
-                  onClick={() => setCurrentTestimonial(idx)}
-                  className="h-2.5 w-2.5 rounded-full transition-all"
+                  className="relative overflow-hidden rounded-2xl border p-6"
                   style={{
-                    backgroundColor:
-                      currentTestimonial === idx
-                        ? "var(--emerald)"
-                        : "rgba(200, 168, 78, 0.27)",
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    borderColor: "var(--gold)",
+                  }}
+                >
+                  <div className="absolute inset-0 rounded-2xl" style={{
+                    background: "linear-gradient(135deg, rgba(200, 168, 78, 0.08) 0%, rgba(2, 202, 173, 0.05) 100%)",
+                  }} />
+                  <div className="relative z-10">
+                    <svg width="28" height="22" viewBox="0 0 36 28" fill="none" className="mb-4" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 28V17.5C0 12.833 1.167 9.083 3.5 6.25C5.833 3.417 9.333 1.333 14 0L15.5 3.5C12.833 4.5 10.75 5.917 9.25 7.75C7.75 9.583 7 11.667 7 14H14V28H0ZM20 28V17.5C20 12.833 21.167 9.083 23.5 6.25C25.833 3.417 29.333 1.333 34 0L35.5 3.5C32.833 4.5 30.75 5.917 29.25 7.75C27.75 9.583 27 11.667 27 14H34V28H20Z"
+                        fill="var(--gold)"
+                      />
+                    </svg>
+                    <p className="mb-6 text-base leading-relaxed font-light text-white/85">
+                      {testimonial.text}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="text-sm font-bold text-white">{testimonial.author}</h4>
+                        <p className="mt-0.5 text-xs text-white/30">Google Yorum</p>
+                      </div>
+                      <div className="flex gap-0.5">
+                        {[...Array<unknown>(testimonial.rating)].map((_, i) => (
+                          <span key={i} className="text-xs" style={{ color: "var(--gold)" }}>
+                            {"\u2605"}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 h-[3px] w-full" style={{
+                    background: "linear-gradient(90deg, var(--gold), var(--brand))",
+                  }} />
+                </div>
+              )
+            ))}
+          </div>
+
+          {/* Desktop: all 3 cards grid */}
+          <div className="hidden gap-6 md:grid md:grid-cols-3">
+            {testimonials.map((testimonial, idx) => (
+              <div
+                key={idx}
+                className="group relative overflow-hidden rounded-[28px] border p-10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.04)",
+                  borderColor: currentTestimonial === idx ? "var(--gold)" : "rgba(255,255,255,0.08)",
+                  cursor: "pointer",
+                }}
+                onClick={() => setCurrentTestimonial(idx)}
+              >
+                {/* Active glow effect */}
+                {currentTestimonial === idx && (
+                  <div className="absolute inset-0 rounded-[28px] opacity-100 transition-opacity duration-500" style={{
+                    background: "linear-gradient(135deg, rgba(200, 168, 78, 0.08) 0%, rgba(2, 202, 173, 0.05) 100%)",
+                  }} />
+                )}
+
+                <div className="relative z-10">
+                  {/* Quote icon */}
+                  <div className="mb-6">
+                    <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 28V17.5C0 12.833 1.167 9.083 3.5 6.25C5.833 3.417 9.333 1.333 14 0L15.5 3.5C12.833 4.5 10.75 5.917 9.25 7.75C7.75 9.583 7 11.667 7 14H14V28H0ZM20 28V17.5C20 12.833 21.167 9.083 23.5 6.25C25.833 3.417 29.333 1.333 34 0L35.5 3.5C32.833 4.5 30.75 5.917 29.25 7.75C27.75 9.583 27 11.667 27 14H34V28H20Z"
+                        fill={currentTestimonial === idx ? "var(--gold)" : "rgba(200, 168, 78, 0.25)"}
+                        className="transition-all duration-500"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Text */}
+                  <p className="mb-8 text-lg leading-8 font-light text-white/75 transition-colors duration-300 group-hover:text-white/90">
+                    {testimonial.text}
+                  </p>
+
+                  {/* Author & Rating */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-base font-bold text-white">{testimonial.author}</h4>
+                      <p className="mt-0.5 text-xs text-white/30">Google Yorum</p>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[...Array<unknown>(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-sm" style={{ color: "var(--gold)" }}>
+                          {"\u2605"}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div
+                  className="absolute bottom-0 left-0 h-[3px] w-full transition-all duration-500"
+                  style={{
+                    background: currentTestimonial === idx
+                      ? "linear-gradient(90deg, var(--gold), var(--brand))"
+                      : "transparent",
                   }}
                 />
-              ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation dots */}
+          <div className="mt-8 flex justify-center gap-3 md:mt-12">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentTestimonial(idx)}
+                className="transition-all duration-300"
+                style={{
+                  width: currentTestimonial === idx ? "32px" : "10px",
+                  height: "10px",
+                  borderRadius: "9999px",
+                  backgroundColor: currentTestimonial === idx ? "var(--gold)" : "rgba(255,255,255,0.15)",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Google badge */}
+          <div className="mt-8 flex justify-center md:mt-10">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 md:px-5 md:py-2.5" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 md:h-4 md:w-4" fill="white">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+              <span className="text-[11px] font-medium text-white/50 md:text-xs">Google ile doğrulanmış yorumlar</span>
             </div>
           </div>
         </div>
