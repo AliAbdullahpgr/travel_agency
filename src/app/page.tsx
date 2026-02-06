@@ -25,6 +25,7 @@ import {
   IconArrowUpRight,
   IconMenu,
   IconChevronDown,
+  IconX,
 } from "~/app/_components/icons";
 
 // Data
@@ -175,6 +176,7 @@ const testimonials = [
 export default function Home() {
   const [activeTab, setActiveTab] = useState("HAC");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Search bar state
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -282,10 +284,43 @@ export default function Home() {
             ))}
           </nav>
 
-          <button className="text-white md:hidden">
-            <IconMenu className="h-7 w-7" />
+          <button
+            className="text-white md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <IconX className="h-7 w-7" />
+            ) : (
+              <IconMenu className="h-7 w-7" />
+            )}
           </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden" style={{ backgroundColor: "var(--emerald)" }}>
+            <div className="flex flex-col space-y-1 px-8 pb-4">
+              {[
+                "Hac",
+                "Umre",
+                "Kültür Turları",
+                "Ödeme",
+                "İletişim",
+              ].map((item) => (
+                <Link
+                  key={item}
+                  href="#"
+                  className="rounded-lg px-3 py-2.5 text-lg font-semibold text-white/90 transition-colors hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        )}
+
         {/* Gold accent line */}
         <div
           className="h-[2px]"
