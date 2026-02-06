@@ -1,7 +1,7 @@
 ﻿import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Cinzel, Source_Sans_3 } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -12,16 +12,16 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const bodyFont = Source_Sans_3({
+const bodyFont = Poppins({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const displayFont = Cinzel({
+const displayFont = Poppins({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export default function RootLayout({

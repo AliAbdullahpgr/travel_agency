@@ -7,18 +7,32 @@
 
 :root {
   color-scheme: light;
+  --brand: #02CAAD;
+  --brand-dark: #01A890;
+  --emerald: #0A3D2E;
+  --emerald-light: #0F5040;
+  --gold: #C8A84E;
+  --gold-light: #E8CC6E;
+  --cream: #FDFBF7;
+  --sand: #F5F0E8;
 }
 
 @layer base {
   body {
     font-family: var(--font-body), "Segoe UI", sans-serif;
-    background-color: #f6fbfb;
-    color: #0f172a;
+    background-color: var(--cream);
+    color: #1a2e28;
+    font-size: 1.1rem;
+    line-height: 1.7;
   }
 
   .font-display {
     font-family: var(--font-display), "Times New Roman", serif;
     letter-spacing: -0.01em;
+  }
+
+  :where(button, input, select, textarea, img):not(.no-radius) {
+    border-radius: 24px;
   }
 }
 
@@ -44,15 +58,42 @@
   }
 
   .text-glow {
-    text-shadow: 0 18px 40px rgba(7, 183, 173, 0.35);
+    text-shadow: 0 18px 40px rgba(2, 202, 173, 0.3);
   }
 
   .dot-grid {
     background-image: radial-gradient(
-      rgba(15, 23, 42, 0.08) 1px,
+      rgba(10, 61, 46, 0.06) 1px,
       transparent 1px
     );
     background-size: 10px 10px;
+  }
+
+  .striped-bar {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 6px,
+      rgba(255, 255, 255, 0.1) 6px,
+      rgba(255, 255, 255, 0.1) 7px,
+      transparent 7px,
+      transparent 12px,
+      rgba(255, 255, 255, 0.06) 12px,
+      rgba(255, 255, 255, 0.06) 13px
+    );
+    background-size: 18px 18px;
+  }
+
+  .islamic-pattern {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(200, 168, 78, 0.04) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba(200, 168, 78, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .gold-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 }
 
