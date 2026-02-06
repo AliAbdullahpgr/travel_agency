@@ -22,6 +22,7 @@ import {
   IconScale,
   IconShield,
   IconCutlery,
+  IconArrowRight,
   IconArrowUpRight,
   IconMenu,
   IconChevronDown,
@@ -33,37 +34,91 @@ const featuredTours = [
     id: 1,
     title: "20 G\u00FCnl\u00FCk Umre Turlar\u0131",
     price: "1.450",
-    image:
-      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
     subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "Medine ve Mekke'de konforlu konaklama ile 20 g\u00FCnl\u00FCk manevi yolculuk.",
   },
   {
     id: 2,
     title: "Muhafazakar Yurti\u00E7i Turlar\u0131",
     price: "1.200",
-    image:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
     currency: "\u20BA",
     subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "Anadolu'nun tarihi ve k\u00FClt\u00FCrel g\u00FCzelliklerini ke\u015Ffedin.",
   },
   {
     id: 3,
     title: "10 G\u00FCnl\u00FCk Umre Turlar\u0131",
     price: "1.250",
-    image:
-      "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
     subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "K\u0131sa ama dolu dolu bir umre deneyimi. Rehberli ziyaretler dahil.",
   },
   {
     id: 4,
-    title: "15 G\u00FCnl\u00FCk Umre Turlar\u0131",
-    price: "1.350",
-    image:
-      "https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=1600&auto=format&fit=crop",
+    title: "Hac Turlar\u0131 2025",
+    price: "3.950",
+    image: "https://images.unsplash.com/photo-1542652735-bff0b49e498e?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
     subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "Ehil rehberler e\u015Fli\u011Finde hac ibadetinizi huzurla yerine getirin.",
+  },
+  {
+    id: 5,
+    title: "Kud\u00FCs & Mescid-i Aksa",
+    price: "1.800",
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1600&auto=format&fit=crop",
+    currency: "$",
+    subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "\u0130slam'\u0131n \u00FC\u00E7 kutsal mescidinden birini ziyaret edin.",
+  },
+  {
+    id: 6,
+    title: "Bosna Hersek Turu",
+    price: "950",
+    image: "https://images.unsplash.com/photo-1585036156171-384164a8c696?q=80&w=1600&auto=format&fit=crop",
+    currency: "\u20AC",
+    subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "Bosna Hersek'in tarihi camilerini ve \u0130slami miras\u0131n\u0131 ke\u015Ffedin.",
+  },
+  {
+    id: 7,
+    title: "VIP Umre Paketi",
+    price: "2.450",
+    image: "https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?q=80&w=1600&auto=format&fit=crop",
+    currency: "$",
+    subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "5 y\u0131ld\u0131zl\u0131 otel ve VIP transfer ile \u00F6zel umre deneyimi.",
+  },
+  {
+    id: 8,
+    title: "Aile Umre Turlar\u0131",
+    price: "1.150",
+    image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1600&auto=format&fit=crop",
+    currency: "$",
+    subtitle: "Ki\u015Fi ba\u015F\u0131",
+    description: "Ailece kat\u0131labilece\u011Finiz uygun fiyatl\u0131 umre turlar\u0131.",
+  },
+  {
+    id: 9,
+    title: "Ramazan Umresi",
+    price: "1.650",
+    image: "https://images.unsplash.com/photo-1597212618440-806a846b4bb5?q=80&w=1600&auto=format&fit=crop",
+    currency: "$",
+    subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "Ramazan ay\u0131n\u0131n bereketini kutsal topraklarda ya\u015Fay\u0131n.",
+  },
+  {
+    id: 10,
+    title: "15 G\u00FCnl\u00FCk Umre Turlar\u0131",
+    price: "1.350",
+    image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1600&auto=format&fit=crop",
+    currency: "$",
+    subtitle: "Ba\u015Flayan Fiyatlar",
+    description: "15 g\u00FCnl\u00FCk program ile Mekke ve Medine'yi detayl\u0131 ke\u015Ffedin.",
   },
 ];
 
@@ -112,7 +167,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    text: "Manevi atmosferi hissetmemize vesile olan Vuslat Turizm\u2019e te\u015Fekk\u00FCrler.",
+    text: "Manevi atmosferi hissetmemize vesile olan \u015e\u00fck\u00fcr Turizm\u2019e te\u015Fekk\u00fcrler.",
     author: "Ay\u015Fe Kaya",
     rating: 5,
   },
@@ -129,6 +184,16 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [passengers, setPassengers] = useState({ cocuk: 0, yasli: 0, genc: 0 });
   const searchBarRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollSlider = (direction: "left" | "right") => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({
+        left: direction === "left" ? -374 : 374,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -156,29 +221,29 @@ export default function Home() {
     >
       {/* Top Bar */}
       <div
-        className="striped-bar relative z-50 flex items-center justify-between border-b border-white/10 px-6 py-3 text-white sm:px-18"
+        className="striped-bar relative z-50 flex items-center justify-between border-b border-white/10 px-4 py-2.5 text-white sm:px-8 md:px-18 md:py-3"
         style={{ backgroundColor: "var(--brand)" }}
       >
-        <div className="flex items-center space-x-6 pl-12">
-          <span className="flex cursor-pointer items-center gap-2 text-base font-medium transition-colors hover:text-white/80">
-            <IconPhoneAlt className="h-4 w-4" /> 0554 113 40 02
+        <div className="flex items-center space-x-4 pl-0 sm:space-x-6 md:pl-12">
+          <span className="flex cursor-pointer items-center gap-1.5 text-sm font-medium transition-colors hover:text-white/80 sm:gap-2 sm:text-base">
+            <IconPhoneAlt className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> 0554 113 40 02
           </span>
           <span className="hidden cursor-pointer items-center gap-2 text-base font-medium transition-colors hover:text-white/80 sm:flex">
-            <IconMailAlt className="h-4 w-4" /> info@vuslatturizm.com
+            <IconMailAlt className="h-4 w-4" /> info@sukurturizm.com
           </span>
         </div>
-        <div className="flex items-center space-x-3 px-12">
+        <div className="flex items-center space-x-2 px-0 sm:space-x-3 md:px-12">
           <Link
             href="#"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 sm:h-8 sm:w-8"
           >
-            <IconFacebookAlt className="h-4 w-4 text-white" />
+            <IconFacebookAlt className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
           </Link>
           <Link
             href="#"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 sm:h-8 sm:w-8"
           >
-            <IconInstagramAlt className="h-4 w-4 text-white" />
+            <IconInstagramAlt className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
           </Link>
         </div>
       </div>
@@ -192,7 +257,7 @@ export default function Home() {
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
-              alt="Vuslat Turizm"
+              alt="Şükür Turizm"
               width={160}
               height={160}
               className="h-20 w-auto"
@@ -458,7 +523,7 @@ export default function Home() {
       </section>
 
       {/* Featured Tours */}
-      <section className="mx-auto max-w-7xl px-4 pt-32 pb-20">
+      <section className="mx-auto max-w-7xl px-4 pt-72 pb-20 sm:pt-52 md:pt-32">
         <div className="mb-12 text-center">
           <p
             className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
@@ -474,59 +539,85 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {featuredTours.map((tour) => (
-            <div
-              key={tour.id}
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
-              style={{ borderColor: "rgba(200, 168, 78, 0.13)" }}
-            >
-              <div className="relative h-64 w-full overflow-hidden">
-                <Image
-                  src={tour.image}
-                  alt={tour.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(10,61,46,0.4), transparent)",
-                  }}
-                />
-              </div>
-              <div className="flex flex-grow flex-col p-6">
-                <h3
-                  className="mb-8 min-h-[3rem] text-xl leading-tight font-semibold"
-                  style={{ color: "var(--emerald)" }}
-                >
-                  {tour.title}
-                </h3>
-                <div className="mt-auto">
-                  <p className="text-base text-gray-500">{tour.subtitle}</p>
-                  <div className="mt-1 flex items-end justify-between">
-                    <div className="flex items-baseline gap-1">
-                      <span
-                        className="text-3xl font-bold"
-                        style={{ color: "var(--emerald)" }}
+        <div className="relative">
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => scrollSlider("left")}
+            className="absolute -left-5 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border-2 bg-white shadow-md transition-all hover:bg-gray-50 lg:flex"
+            style={{ borderColor: "var(--emerald)", color: "var(--emerald)" }}
+          >
+            <IconArrowRight className="h-5 w-5 rotate-180" />
+          </button>
+          <button
+            onClick={() => scrollSlider("right")}
+            className="absolute -right-5 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-white shadow-md transition-all hover:opacity-90 lg:flex"
+            style={{ backgroundColor: "var(--emerald)" }}
+          >
+            <IconArrowRight className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={sliderRef}
+            className="hide-scrollbar flex gap-5 overflow-x-auto pb-4 sm:gap-6"
+            style={{ scrollSnapType: "x mandatory" }}
+          >
+            {featuredTours.map((tour) => (
+              <div
+                key={tour.id}
+                className="group relative flex w-[280px] shrink-0 flex-col overflow-hidden rounded-3xl border bg-white shadow-lg transition-all duration-300 hover:shadow-xl sm:w-[320px] md:w-[350px]"
+                style={{ borderColor: "rgba(200, 168, 78, 0.13)", scrollSnapAlign: "start" }}
+              >
+                <div className="relative h-64 w-full overflow-hidden sm:h-72 md:h-80">
+                  <Image
+                    src={tour.image}
+                    alt={tour.title}
+                    fill
+                    className="no-radius object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0 flex items-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(10,61,46,0.85), rgba(10,61,46,0.3) 60%, transparent)",
+                    }}
+                  >
+                    <p className="text-sm leading-relaxed text-white/90">
+                      {tour.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-grow flex-col p-5 sm:p-6">
+                  <h3
+                    className="mb-4 text-base leading-tight font-semibold sm:mb-6 sm:text-lg"
+                    style={{ color: "var(--emerald)" }}
+                  >
+                    {tour.title}
+                  </h3>
+                  <div className="mt-auto">
+                    <p className="text-sm text-gray-500">{tour.subtitle}</p>
+                    <div className="mt-1 flex items-end justify-between">
+                      <div className="flex items-baseline gap-1">
+                        <span
+                          className="text-xl font-bold sm:text-2xl"
+                          style={{ color: "var(--emerald)" }}
+                        >
+                          {tour.currency}
+                          {tour.price}
+                        </span>
+                        <span className="text-sm text-gray-500">&apos;dan</span>
+                      </div>
+                      <button
+                        className="rounded-full p-2 text-white transition-all hover:shadow-lg"
+                        style={{ backgroundColor: "var(--brand)" }}
                       >
-                        {tour.currency}
-                        {tour.price}
-                      </span>
-                      <span className="text-base text-gray-500">&apos;dan</span>
+                        <IconArrowUpRight className="h-5 w-5" />
+                      </button>
                     </div>
-                    <button
-                      className="rounded-full p-2 text-white transition-all hover:shadow-lg"
-                      style={{ backgroundColor: "var(--brand)" }}
-                    >
-                      <IconArrowUpRight className="h-5 w-5" />
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -608,7 +699,7 @@ export default function Home() {
                 style={{ accentColor: "#02CAAD" }}
               />
               <label htmlFor="kvkk" className="text-base text-gray-500">
-                Vuslat Turizm KVKK Politikas{"\u0131"}&apos;n{"\u0131"} okudum
+                Şükür Turizm KVKK Politikas{"\u0131"}&apos;n{"\u0131"} okudum
                 ve kabul ediyorum.
               </label>
             </div>
@@ -622,22 +713,18 @@ export default function Home() {
             </button>
           </form>
 
-          {/* Floating CTA buttons */}
-          <div className="fixed right-4 bottom-10 z-50 flex flex-col gap-2">
-            <button
-              className="flex h-[100px] w-10 flex-col items-center justify-center gap-8 rounded-2xl p-3 text-white shadow-lg"
-              style={{ backgroundColor: "var(--emerald)" }}
-            >
-              <span className="mt-4 rotate-[-90deg] text-sm font-bold tracking-widest whitespace-nowrap">
-                {"\u0130"}leti{"\u015F"}im
-              </span>
-            </button>
-            <button className="rounded-full bg-[#25D366] p-3 text-white shadow-lg">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-              </svg>
-            </button>
-          </div>
+          {/* Sticky WhatsApp button */}
+          <a
+            href="https://wa.me/905541134002"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp ile ileti\u015Fime ge\u00E7"
+            className="fixed right-4 bottom-10 z-50 rounded-full bg-[#25D366] p-3 text-white shadow-lg transition-opacity hover:opacity-90"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+          </a>
         </div>
       </section>
 
@@ -662,14 +749,14 @@ export default function Home() {
           {reasons.map((reason, idx) => (
             <div
               key={idx}
-              className="flex cursor-default flex-row items-center gap-4 rounded-3xl p-6 text-white transition-all hover:shadow-lg"
+              className="flex cursor-default flex-row items-center gap-4 rounded-3xl p-6 text-white transition-all duration-300 hover:-translate-y-3 hover:shadow-xl"
               style={{ backgroundColor: "var(--emerald)" }}
             >
               <div
                 className="rounded-2xl p-3"
-                style={{ backgroundColor: "var(--brand)" }}
+                style={{ backgroundColor: "" }}
               >
-                <reason.icon className="h-8 w-8 text-white md:h-10 md:w-10" />
+                <reason.icon className="h-10 w-10 text-white md:h-12 md:w-12" />
               </div>
               <p className="text-base leading-snug font-semibold md:text-lg">
                 {reason.title}
@@ -683,16 +770,31 @@ export default function Home() {
       <div className="gold-divider mx-auto max-w-xs" />
 
       {/* Info Tabs Section */}
-      <section className="mx-auto max-w-4xl px-4 py-20">
+      <section className="mx-auto max-w-5xl px-4 py-24">
+        <div className="mb-12 text-center">
+          <p
+            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+            style={{ color: "var(--gold)" }}
+          >
+            Hizmetlerimiz
+          </p>
+          <h2
+            className="font-display text-4xl font-bold"
+            style={{ color: "var(--emerald)" }}
+          >
+            Hac & Umre Rehberiniz
+          </h2>
+        </div>
+
         <div
-          className="mb-8 flex justify-center border-b"
+          className="mb-10 flex justify-center gap-2 border-b"
           style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
         >
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative px-8 py-3 text-lg font-semibold tracking-wider transition-all ${
+              className={`relative px-10 py-4 text-xl font-bold tracking-wider transition-all ${
                 activeTab === tab.id ? "" : "text-gray-400 hover:text-gray-600"
               }`}
               style={
@@ -710,74 +812,61 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="space-y-4 text-center text-base leading-relaxed text-gray-600">
+        <div className="space-y-6 text-center text-lg leading-relaxed text-gray-600 md:text-xl md:leading-9">
           {activeTab === "HAC" && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in space-y-6">
               <p>
-                Hac program{"\u0131"} ile farzlar{"\u0131"}n, vaciplerin, s
-                {"\u00FC"}nnetlerin, hatta m{"\u00FC"}stehaplar{"\u0131"}n bile
-                yerine getirilmesi i{"\u00E7"}in ehil ve tecr{"\u00FC"}beli
-                hocalar{"\u0131"}m{"\u0131"}z{"\u0131"}n rehberli{"\u011F"}inde
-                hac ve umre i{"\u00E7"}in l{"\u00FC"}tfen{" "}
+                Hac programımız ile farzların, vaciplerin, sünnetlerin, hatta müstehapların bile
+                yerine getirilmesi için ehil ve tecrübeli hocalarımızın rehberliğinde
+                hac ve umre için lütfen{" "}
                 <strong style={{ color: "var(--emerald)" }}>
                   0312 309 00 26
                 </strong>{" "}
-                nolu telefondan bizi aray{"\u0131"}n{"\u0131"}z
+                nolu telefondan bizi arayınız.
               </p>
               <p>
-                Vuslat Turizm web sitemizde{" "}
+                <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> web sitemizde{" "}
                 <strong style={{ color: "var(--emerald)" }}>
-                  umre turlar{"\u0131"}
+                  umre turları
                 </strong>{" "}
                 ve{" "}
                 <strong style={{ color: "var(--emerald)" }}>
-                  2025 y{"\u0131"}l{"\u0131"} umre fiyatlar{"\u0131"} ve hac
-                  fiyatlar{"\u0131"}
+                  2025 yılı umre fiyatları ve hac fiyatları
                 </strong>{" "}
-                hakk{"\u0131"}nda detayl{"\u0131"} bilgiye sahip olabilirsiniz.
+                hakkında detaylı bilgiye sahip olabilirsiniz.
               </p>
               <p>
-                Hac ve umre nedir, nas{"\u0131"}l yap{"\u0131"}l{"\u0131"}r,
-                tavaf, say gibi merak etti{"\u011F"}iniz t{"\u00FC"}m sorulara
-                web sitemizde cevap bulabilirsiniz. Gerek {"\u00F6"}ncesinde,
+                Hac ve umre nedir, nasıl yapılır, tavaf, say gibi merak ettiğiniz tüm sorulara
+                web sitemizde cevap bulabilirsiniz. Gerek öncesinde,
                 gerekse bizzat{" "}
                 <strong style={{ color: "var(--emerald)" }}>
-                  hac ve umre esnas{"\u0131"}nda
+                  hac ve umre esnasında
                 </strong>{" "}
-                bilginize bilgi kataca{"\u011F\u0131"}n{"\u0131"}zdan emin
-                olabilirsiniz.
+                bilginize bilgi katacağınızdan emin olabilirsiniz.
               </p>
               <p>
-                Hac oda tercihli konaklama ve hac otel tercihli konaklama turlar
-                {"\u0131"} ile b{"\u00FC"}t{"\u00E7"}enize en uygun hac ve{" "}
+                Hac oda tercihli konaklama ve hac otel tercihli konaklama turları ile bütçenize en uygun hac ve{" "}
                 <strong style={{ color: "var(--emerald)" }}>
-                  2025 y{"\u0131"}l{"\u0131"} umre turu
+                  2025 yılı umre turu
                 </strong>{" "}
-                se{"\u00E7"}ene{"\u011F"}i tercih ederek, Hazreti Allah&apos;
-                {"\u0131"}n (Celle Cel{"\u00E2"}l{"\u00FC"}h{"\u00FC"}), Sevgili
+                seçeneği tercih ederek, Hazreti Allah&apos;ın (Celle Celâlühü), Sevgili
                 Resullah Efendimiz&apos;in (Sallallahu Aleyhi Vesellem)
-                misafirleri olarak tam anlam{"\u0131"}yla hac yapman{"\u0131"}z
-                i{"\u00E7"}in d{"\u00FC\u015F\u00FC"}nd{"\u00FC\u011F\u00FC"}n
-                {"\u00FC"}z{"\u00FC"}n de {"\u00F6"}tesinde muazzam bir hizmet
-                sizleri bekliyor.
+                misafirleri olarak tam anlamıyla hac yapmanız
+                için düşündüğünüzün de ötesinde muazzam bir hizmet sizleri bekliyor.
               </p>
             </div>
           )}
           {activeTab === "UMRE" && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in space-y-6">
               <p>
-                Umre ibadeti, M{"\u00FC"}sl{"\u00FC"}manlar{"\u0131"}n Kabe-i
-                Muazzama&apos;y{"\u0131"} ziyaret ederek manevi duygular
-                {"\u0131"}n{"\u0131"} peki{"\u015F"}tirdi{"\u011F"}i {"\u00F6"}
-                zel bir yolculuktur. Vuslat Turizm olarak bu kutsal yolculukta
-                sizlere en iyi hizmeti sunmak i{"\u00E7"}in burada{"\u0131"}z.
+                Umre ibadeti, Müslümanların Kabe-i Muazzama&apos;yı ziyaret ederek manevi duygularını
+                pekiştirdiği özel bir yolculuktur.{" "}
+                <strong className="font-bold" style={{ color: "var(--emerald)" }}>Şükür Turizm</strong> olarak bu kutsal yolculukta
+                sizlere en iyi hizmeti sunmak için buradayız.
               </p>
               <p>
-                Farkl{"\u0131"} konaklama se{"\u00E7"}enekleri ve tecr{"\u00FC"}
-                beli rehberlerimiz e{"\u015F"}li{"\u011F"}inde, g{"\u00F6"}n
-                {"\u00FC"}l rahatl{"\u0131\u011F\u0131"}yla ibadetinizi yerine
-                getirebilirsiniz. Detayl{"\u0131"} bilgi i{"\u00E7"}in bizimle
-                ileti{"\u015F"}ime ge{"\u00E7"}in.
+                Farklı konaklama seçenekleri ve tecrübeli rehberlerimiz eşliğinde, gönül rahatlığıyla
+                ibadetinizi yerine getirebilirsiniz. Detaylı bilgi için bizimle iletişime geçin.
               </p>
             </div>
           )}
@@ -786,10 +875,10 @@ export default function Home() {
 
       {/* Testimonials */}
       <section
-        className="py-20 text-center"
+        className="py-24 text-center"
         style={{ backgroundColor: "var(--sand)" }}
       >
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-5xl px-4">
           <p
             className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
             style={{ color: "var(--gold)" }}
@@ -797,44 +886,42 @@ export default function Home() {
             Referanslar
           </p>
           <h2
-            className="mb-12 text-3xl font-bold"
+            className="font-display mb-4 text-4xl font-bold"
             style={{ color: "var(--emerald)" }}
           >
             Misafirlerimiz Ne Diyor?
           </h2>
-          <p className="mb-8 text-sm text-gray-400">
-            T{"\u00FC"}m yorumlar Google&apos;dan al{"\u0131"}nm{"\u0131\u015F"}
-            t{"\u0131"}r. Di{"\u011F"}er yorumlar{"\u0131"} g{"\u00F6"}rmek i
-            {"\u00E7"}in Google profilimizi ziyaret edebilirsiniz.
+          <p className="mx-auto mb-14 max-w-xl text-base text-gray-400">
+            Tüm yorumlar Google&apos;dan alınmıştır. Diğer yorumları görmek için Google profilimizi ziyaret edebilirsiniz.
           </p>
 
           <div
-            className="mx-auto flex h-32 max-w-2xl items-center justify-center text-xl leading-relaxed font-light italic transition-all duration-500 ease-in-out md:text-2xl"
+            className="mx-auto mb-4 flex min-h-[140px] max-w-3xl items-center justify-center px-4 text-2xl leading-relaxed font-light italic transition-all duration-500 ease-in-out md:text-3xl md:leading-snug"
             style={{ color: "var(--emerald-light)" }}
           >
             &ldquo;{testimonials[currentTestimonial]?.text}&rdquo;
           </div>
 
-          <div className="mt-8 flex flex-col items-center">
+          <div className="mt-10 flex flex-col items-center">
             <h4
-              className="mb-2 text-base font-bold"
+              className="mb-2 text-lg font-bold"
               style={{ color: "var(--emerald)" }}
             >
               {testimonials[currentTestimonial]?.author}
             </h4>
-            <div className="flex gap-0.5" style={{ color: "var(--gold)" }}>
+            <div className="flex gap-1" style={{ color: "var(--gold)" }}>
               {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-sm">
+                <span key={i} className="text-lg">
                   {"\u2605"}
                 </span>
               ))}
             </div>
-            <div className="mt-6 flex gap-2">
+            <div className="mt-8 flex gap-2.5">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentTestimonial(idx)}
-                  className="h-2 w-2 rounded-full transition-all"
+                  className="h-2.5 w-2.5 rounded-full transition-all"
                   style={{
                     backgroundColor:
                       currentTestimonial === idx
@@ -859,15 +946,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-4">
           <div className="space-y-6">
             <div className="mb-4 flex items-center gap-3">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                width={48}
-                height={48}
-                className="h-12 w-12"
-              />
+              
               <span className="font-display text-2xl font-bold tracking-wide text-white">
-                Vuslat
+                Şükür
                 <span
                   className="-mt-1 block font-sans text-xs font-normal tracking-normal"
                   style={{ color: "var(--gold-light)" }}
@@ -956,7 +1037,7 @@ export default function Home() {
         >
           <p>
             &copy; 2025 T{"\u00FC"}m Haklar{"\u0131"} Sakl{"\u0131"}d{"\u0131"}
-            r. - www.vuslatturizm.com
+            r. - www.sukurturizm.com
           </p>
         </div>
       </footer>

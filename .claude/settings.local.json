@@ -6,7 +6,8 @@
       "Bash(npx next build:*)",
       "Bash(npx next lint:*)",
       "Bash(npm run dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(powershell:*)"
     ]
   }
 }

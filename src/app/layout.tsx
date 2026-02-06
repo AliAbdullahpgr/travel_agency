@@ -6,7 +6,7 @@ import { Poppins } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Vuslat Turizm | Travel Agency",
+  title: "Şükür Turizm | Travel Agency",
   description:
     "Umre, hac ve kültür turları için planlı, güvenilir ve konforlu yolculuklar.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
