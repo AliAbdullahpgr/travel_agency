@@ -16,6 +16,7 @@ export {
   LuArrowRight as IconArrowRight,
   LuArrowUpRight as IconArrowUpRight,
   LuMenu as IconMenu,
+  LuChevronDown as IconChevronDown,
 } from "react-icons/lu";
 
 export {

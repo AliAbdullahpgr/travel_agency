@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import {
   IconPhoneAlt,
   IconMailAlt,
@@ -22,6 +24,7 @@ import {
   IconCutlery,
   IconArrowUpRight,
   IconMenu,
+  IconChevronDown,
 } from "~/app/_components/icons";
 
 // Data
@@ -119,6 +122,26 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("HAC");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
+  // Search bar state
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [selectedKonum, setSelectedKonum] = useState("");
+  const [selectedTur, setSelectedTur] = useState("");
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [passengers, setPassengers] = useState({ cocuk: 0, yasli: 0, genc: 0 });
+  const searchBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchBarRef.current && !searchBarRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const totalPassengers = passengers.cocuk + passengers.yasli + passengers.genc;
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -133,7 +156,7 @@ export default function Home() {
     >
       {/* Top Bar */}
       <div
-        className="striped-bar relative z-50 flex items-center justify-between border-b border-white/10 px-6 py-3 text-white sm:px-8"
+        className="striped-bar relative z-50 flex items-center justify-between border-b border-white/10 px-6 py-3 text-white sm:px-18"
         style={{ backgroundColor: "var(--brand)" }}
       >
         <div className="flex items-center space-x-6 pl-12">
@@ -210,7 +233,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[600px] w-full md:h-[700px]">
+      <section className="relative h-[820px] w-full md:h-[1000px]">
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -242,54 +265,184 @@ export default function Home() {
         </div>
 
         {/* Search Bar Floating */}
-        <div className="absolute bottom-0 left-1/2 z-30 w-full max-w-5xl -translate-x-1/2 translate-y-1/2 transform px-4">
+        <div className="absolute bottom-0 left-1/2 z-30 w-full max-w-6xl -translate-x-1/2 translate-y-1/2 transform px-4">
           <div
+            ref={searchBarRef}
             className="flex flex-col items-center justify-between gap-4 rounded-3xl border px-8 py-6 shadow-xl backdrop-blur-sm md:flex-row md:gap-0"
             style={{
               backgroundColor: "white",
               borderColor: "rgba(200, 168, 78, 0.2)",
             }}
           >
-            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
-              <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconLocation
-                  className="h-5 w-5"
-                  style={{ color: "var(--brand)" }}
+            {/* Konum Dropdown */}
+            <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
+              <button
+                className="flex w-full items-center gap-3"
+                onClick={() => setOpenDropdown(openDropdown === "konum" ? null : "konum")}
+              >
+                <IconLocation className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }} />
+                <div className="flex flex-1 flex-col text-left">
+                  <span className="text-xs font-semibold tracking-wide text-gray-400 uppercase">Konum</span>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {selectedKonum || "Nereye?"}
+                  </span>
+                </div>
+                <IconChevronDown
+                  className="h-4 w-4 shrink-0 text-gray-400 cursor-pointer transition-transform duration-200"
+                  style={{ transform: openDropdown === "konum" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
-                <span>Konum</span>
-              </div>
+              </button>
+              {openDropdown === "konum" && (
+                <div className="absolute top-full left-0 z-50 mt-2 w-60 rounded-xl border bg-white py-1 shadow-lg" style={{ borderColor: "rgba(200, 168, 78, 0.15)" }}>
+                  <p className="px-4 pt-3 pb-2 text-[11px] font-bold tracking-widest text-gray-400 uppercase">Tur Kategorileri</p>
+                  {["K\u00FClt\u00FCr Turlar\u0131", "Umre Turlar\u0131"].map((item) => (
+                    <button
+                      key={item}
+                      className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      style={selectedKonum === item ? { color: "var(--brand)", fontWeight: 600 } : undefined}
+                      onClick={() => { setSelectedKonum(item); setOpenDropdown(null); }}
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: selectedKonum === item ? "var(--brand)" : "transparent" }} />
+                      {item}
+                    </button>
+                  ))}
+                  <div className="mx-3 my-1 border-t border-gray-100" />
+                </div>
+              )}
             </div>
-            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
-              <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconPlane
-                  className="h-5 w-5"
-                  style={{ color: "var(--brand)" }}
+
+            {/* Turlar Dropdown */}
+            <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
+              <button
+                className="flex w-full items-center gap-3"
+                onClick={() => setOpenDropdown(openDropdown === "turlar" ? null : "turlar")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }}>
+                  <path d="M176,216a8,8,0,0,1-8,8H24a8,8,0,0,1,0-16H168A8,8,0,0,1,176,216ZM247.86,93.15a8,8,0,0,1-3.76,5.39l-147.41,88a40.18,40.18,0,0,1-20.26,5.52,39.78,39.78,0,0,1-27.28-10.87l-.12-.12L13,145.8a16,16,0,0,1,4.49-26.21l3-1.47a8,8,0,0,1,6.08-.4l28.26,9.54L75,115.06,53.17,93.87A16,16,0,0,1,57.7,67.4l.32-.13,7.15-2.71a8,8,0,0,1,5.59,0L124.7,84.38,176.27,53.6a39.82,39.82,0,0,1,51.28,9.12l.12.15,18.64,23.89A8,8,0,0,1,247.86,93.15Zm-19.74-3.7-13-16.67a23.88,23.88,0,0,0-30.68-5.42l-54.8,32.72a8.06,8.06,0,0,1-6.87.64L68,80.58l-4,1.53.21.2L93.57,110.8a8,8,0,0,1-1.43,12.58L59.93,142.87a8,8,0,0,1-6.7.73l-28.67-9.67-.19.1-.37.17a.71.71,0,0,1,.13.12l36,35.26a23.85,23.85,0,0,0,28.42,3.18Z" />
+                </svg>
+                <div className="flex flex-1 flex-col text-left">
+                  <span className="text-xs font-semibold tracking-wide text-gray-400 uppercase">Turlar</span>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {selectedTur || "Tur Se\u00E7in"}
+                  </span>
+                </div>
+                <IconChevronDown
+                  className="h-4 w-4 shrink-0 cursor-pointer text-gray-400 transition-transform duration-200"
+                  style={{ transform: openDropdown === "turlar" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
-                <span>Turlar</span>
-              </div>
+              </button>
+              {openDropdown === "turlar" && (
+                <div className="absolute top-full left-0 z-50 mt-2 w-60 rounded-xl border bg-white py-1 shadow-lg" style={{ borderColor: "rgba(200, 168, 78, 0.15)" }}>
+                  <p className="px-4 pt-3 pb-2 text-[11px] font-bold tracking-widest text-gray-400 uppercase">Tur Se{"\u00E7"}imi</p>
+                  {["Hac", "Umre"].map((item) => (
+                    <button
+                      key={item}
+                      className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      style={selectedTur === item ? { color: "var(--brand)", fontWeight: 600 } : undefined}
+                      onClick={() => { setSelectedTur(item); setOpenDropdown(null); }}
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: selectedTur === item ? "var(--brand)" : "transparent" }} />
+                      {item}
+                    </button>
+                  ))}
+                  <div className="mx-3 my-1 border-t border-gray-100" />
+                </div>
+              )}
             </div>
-            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
-              <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconCalendar
-                  className="h-5 w-5"
-                  style={{ color: "var(--brand)" }}
+
+            {/* Gidiş Tarihi - Calendar */}
+            <div className="relative flex w-full items-center gap-3 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
+              <button
+                className="flex w-full items-center gap-3"
+                onClick={() => setOpenDropdown(openDropdown === "tarih" ? null : "tarih")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }}>
+                  <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z" />
+                </svg>
+                <div className="flex flex-1 flex-col text-left">
+                  <span className="text-xs font-semibold tracking-wide text-gray-400 uppercase">Gidi{"\u015F"} Tarihi</span>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {selectedDate ? selectedDate.toLocaleDateString("tr-TR", { day: "numeric", month: "short", year: "numeric" }) : "Tarih Se\u00E7in"}
+                  </span>
+                </div>
+                <IconChevronDown
+                  className="h-4 w-4 shrink-0 text-gray-400 cursor-pointer transition-transform duration-200"
+                  style={{ transform: openDropdown === "tarih" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
-                <span>Gidi{"\u015F"} Tarihi</span>
-              </div>
-              <span className="pl-7 font-semibold text-gray-900">
-                Gidi{"\u015F"} Yeri
-              </span>
+              </button>
+              {openDropdown === "tarih" && (
+                <div className="absolute top-full left-0 z-50 mt-2">
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={(date: Date | null) => { setSelectedDate(date); setOpenDropdown(null); }}
+                    inline
+                    minDate={new Date()}
+                    locale="tr"
+                    calendarClassName="search-calendar"
+                  />
+                </div>
+              )}
             </div>
-            <div className="flex w-full flex-col gap-1 px-4 md:w-1/4">
-              <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconUser
-                  className="h-5 w-5"
-                  style={{ color: "var(--brand)" }}
+
+            {/* Kişi Sayısı - Passenger Counter */}
+            <div className="relative flex w-full items-center gap-3 px-4 md:w-1/4">
+              <button
+                className="flex w-full items-center gap-3"
+                onClick={() => setOpenDropdown(openDropdown === "yolcu" ? null : "yolcu")}
+              >
+                <IconUser className="h-8 w-8 shrink-0" style={{ color: "var(--brand)" }} />
+                <div className="flex flex-1 flex-col text-left">
+                  <span className="text-xs font-semibold tracking-wide text-gray-400 uppercase">Ki{"\u015Fi"} Say{"\u0131"}s{"\u0131"}</span>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {totalPassengers > 0 ? `${totalPassengers} Yolcu` : "Yolcu Ekle"}
+                  </span>
+                </div>
+                <IconChevronDown
+                  className="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200"
+                  style={{ transform: openDropdown === "yolcu" ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
-                <span>
-                  Ki{"\u015Fi"} Say{"\u0131"}s{"\u0131"}
-                </span>
-              </div>
+              </button>
+              {openDropdown === "yolcu" && (
+                <div className="absolute top-full right-0 z-50 mt-2 w-72 rounded-xl border bg-white p-5 shadow-lg" style={{ borderColor: "rgba(200, 168, 78, 0.15)" }}>
+                  <p className="mb-3 text-[11px] font-bold tracking-widest text-gray-400 uppercase">Yolcu Se{"\u00E7"}imi</p>
+                  {[
+                    { key: "cocuk" as const, label: "\u00C7ocuk", sub: "0-12 ya\u015F" },
+                    { key: "yasli" as const, label: "Ya\u015Fl\u0131", sub: "65+ ya\u015F" },
+                    { key: "genc" as const, label: "Yeti\u015Fkin", sub: "18+ ya\u015F" },
+                  ].map(({ key, label, sub }) => (
+                    <div key={key} className="flex items-center justify-between border-b border-gray-50 py-3 last:border-b-0">
+                      <div>
+                        <span className="text-sm font-semibold text-gray-800">{label}</span>
+                        <span className="ml-1.5 text-xs text-gray-400">{sub}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <button
+                          className="flex h-7 w-7 items-center justify-center rounded-full border-2 text-sm font-bold transition-all hover:opacity-80"
+                          style={{ borderColor: "var(--brand)", color: "var(--brand)" }}
+                          onClick={() => setPassengers((p) => ({ ...p, [key]: Math.max(0, p[key] - 1) }))}
+                        >
+                          &minus;
+                        </button>
+                        <span className="w-5 text-center text-sm font-bold" style={{ color: "var(--emerald)" }}>{passengers[key]}</span>
+                        <button
+                          className="flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold text-white transition-all hover:opacity-80"
+                          style={{ backgroundColor: "var(--brand)" }}
+                          onClick={() => setPassengers((p) => ({ ...p, [key]: p[key] + 1 }))}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  <button
+                    className="mt-4 w-full rounded-lg py-2.5 text-sm font-semibold text-white transition-all hover:opacity-90"
+                    style={{ backgroundColor: "var(--brand)" }}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    Uygula
+                  </button>
+                </div>
+              )}
             </div>
             <div className="w-full pl-4 md:w-auto">
               <button
