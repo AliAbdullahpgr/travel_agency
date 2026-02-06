@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -28,50 +28,54 @@ import {
 const featuredTours = [
   {
     id: 1,
-    title: "20 GÃ¼nlÃ¼k Umre TurlarÄ±",
+    title: "20 G\u00FCnl\u00FCk Umre Turlar\u0131",
     price: "1.450",
-    image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
-    subtitle: "BaÅŸlayan Fiyatlar"
+    subtitle: "Ba\u015Flayan Fiyatlar",
   },
   {
     id: 2,
-    title: "Muhafazakar YurtiÃ§i TurlarÄ±",
+    title: "Muhafazakar Yurti\u00E7i Turlar\u0131",
     price: "1.200",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
-    currency: "â‚º",
-    subtitle: "BaÅŸlayan Fiyatlar"
+    image:
+      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
+    currency: "\u20BA",
+    subtitle: "Ba\u015Flayan Fiyatlar",
   },
   {
     id: 3,
-    title: "10 GÃ¼nlÃ¼k Umre TurlarÄ±",
+    title: "10 G\u00FCnl\u00FCk Umre Turlar\u0131",
     price: "1.250",
-    image: "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1600&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
-    subtitle: "BaÅŸlayan Fiyatlar"
+    subtitle: "Ba\u015Flayan Fiyatlar",
   },
   {
     id: 4,
-    title: "15 GÃ¼nlÃ¼k Umre TurlarÄ±",
+    title: "15 G\u00FCnl\u00FCk Umre Turlar\u0131",
     price: "1.350",
-    image: "https://images.unsplash.com/photo-1565552629477-cdcb16e2329b?q=80&w=1600&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=1600&auto=format&fit=crop",
     currency: "$",
-    subtitle: "BaÅŸlayan Fiyatlar"
-  }
+    subtitle: "Ba\u015Flayan Fiyatlar",
+  },
 ];
 
 const reasons = [
   {
     icon: IconTrophy,
-    title: "1996 YÄ±lÄ±ndan Beri TecrÃ¼beli Acente",
+    title: "1996 Y\u0131l\u0131ndan Beri Tecr\u00FCbeli Acente",
   },
   {
     icon: IconPlane,
-    title: "Direkt Ankara UÃ§uÅŸ",
+    title: "Direkt Ankara U\u00E7u\u015F",
   },
   {
     icon: IconGroup,
-    title: "Her 45 KiÅŸiye TecrÃ¼beli Ehil Rehber",
+    title: "Her 45 Ki\u015Fiye Tecr\u00FCbeli Ehil Rehber",
   },
   {
     icon: IconScale,
@@ -79,35 +83,36 @@ const reasons = [
   },
   {
     icon: IconShield,
-    title: "KapsamlÄ± Ã¶zel seyahat saÄŸlÄ±k sigortasÄ±",
+    title: "Kapsaml\u0131 \u00F6zel seyahat sa\u011Fl\u0131k sigortas\u0131",
   },
   {
     icon: IconCutlery,
-    title: "Evinizde Hissettirecek TÃ¼rk MutfaÄŸÄ± Ekibimiz",
-  }
+    title:
+      "Evinizde Hissettirecek T\u00FCrk Mutfa\u011F\u0131 Ekibimiz",
+  },
 ];
 
 const tabs = [
   { id: "HAC", label: "HAC" },
-  { id: "UMRE", label: "UMRE" }
+  { id: "UMRE", label: "UMRE" },
 ];
 
 const testimonials = [
   {
-    text: "Her ÅŸey gerÃ§ekten gÃ¼zeldi ilgi alaka her ÅŸey vardÄ± baÅŸta ÅŸirketinin sahiblerinden bizlerle Ã§ok ilgilenen dost olduÄŸumuz HakkÄ± bey'e ve bizlerle ilgilenen Salih hocamÄ±za Ã§ok teÅŸekkÃ¼r ederim. BaÅŸka bir Vuslatta yine vuslat turizmle gÃ¶rÃ¼ÅŸmek Ã¼zere inÅŸallah",
-    author: "Yasin AltunbaÅŸ",
-    rating: 5
+    text: "Her \u015Fey ger\u00E7ekten g\u00FCzeldi ilgi alaka her \u015Fey vard\u0131 ba\u015Fta \u015Firketinin sahiblerinden bizlerle \u00E7ok ilgilenen dost oldu\u011Fumuz Hakk\u0131 bey\u2019e ve bizlerle ilgilenen Salih hocam\u0131za \u00E7ok te\u015Fekk\u00FCr ederim.",
+    author: "Yasin Altunba\u015F",
+    rating: 5,
   },
   {
-    text: "Allah razÄ± olsun, Ã§ok memnun kaldÄ±k. Ã–zellikle rehberlerimizin ilgisi ÅŸahaneydi.",
-    author: "Mehmet YÄ±lmaz",
-    rating: 5
+    text: "Allah raz\u0131 olsun, \u00E7ok memnun kald\u0131k. \u00D6zellikle rehberlerimizin ilgisi \u015Fahaneydi.",
+    author: "Mehmet Y\u0131lmaz",
+    rating: 5,
   },
   {
-    text: "Manevi atmosferi hissetmemize vesile olan Vuslat Turizm'e teÅŸekkÃ¼rler.",
-    author: "AyÅŸe Kaya",
-    rating: 5
-  }
+    text: "Manevi atmosferi hissetmemize vesile olan Vuslat Turizm\u2019e te\u015Fekk\u00FCrler.",
+    author: "Ay\u015Fe Kaya",
+    rating: 5,
+  },
 ];
 
 export default function Home() {
@@ -122,73 +127,97 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#1f2937]">
+    <div
+      className="min-h-screen font-sans"
+      style={{ backgroundColor: "var(--cream)", color: "#1a2e28" }}
+    >
       {/* Top Bar */}
-      <div className="striped-bar text-md relative z-50 flex items-center justify-between border-b border-white/10 bg-[#00c4b4] py-2.5 text-white sm:px-8">
-        <div className="flex items-center space-x-6 pl-18">
-          <span className="flex cursor-pointer items-center gap-2 transition-colors hover:text-white/80">
-            <IconPhoneAlt className="h-[15px] w-[15px]" /> 0554 113 40 02
+      <div
+        className="striped-bar relative z-50 flex items-center justify-between border-b border-white/10 px-6 py-3 text-white sm:px-8"
+        style={{ backgroundColor: "var(--brand)" }}
+      >
+        <div className="flex items-center space-x-6 pl-12">
+          <span className="flex cursor-pointer items-center gap-2 text-base font-medium transition-colors hover:text-white/80">
+            <IconPhoneAlt className="h-4 w-4" /> 0554 113 40 02
           </span>
-          <span className="hidden cursor-pointer items-center gap-2 transition-colors hover:text-white/80 sm:flex">
-            <IconMailAlt className="h-[15px] w-[15px]" /> info@vuslatturizm.com
+          <span className="hidden cursor-pointer items-center gap-2 text-base font-medium transition-colors hover:text-white/80 sm:flex">
+            <IconMailAlt className="h-4 w-4" /> info@vuslatturizm.com
           </span>
         </div>
-        <div className="flex items-center space-x-3 px-15">
+        <div className="flex items-center space-x-3 px-12">
           <Link
             href="#"
-            className="flex h-6 w-6 items-center justify-center rounded-full bg-white transition-all hover:bg-white/30"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25"
           >
-            <IconFacebookAlt className="h-4 w-4 text-[#00c4b4]" />
+            <IconFacebookAlt className="h-4 w-4 text-white" />
           </Link>
           <Link
             href="#"
-            className="flex items-center justify-center rounded-full transition-all"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25"
           >
-            <IconInstagramAlt className="h-6 w-6 text-white hover:text-white/50" />
+            <IconInstagramAlt className="h-4 w-4 text-white" />
           </Link>
         </div>
       </div>
 
       {/* Header & Navigation */}
-      <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-sm">
-        <div className="container mx-auto flex items-center justify-between px-8 py-12">
+      <header
+        className="sticky top-0 z-40 shadow-lg"
+        style={{ backgroundColor: "var(--emerald)" }}
+      >
+        <div className="container mx-auto flex items-center justify-between px-8 py-2">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
-              alt="Logo"
-              width={120}
-              height={120}
-              className="h-16 w-16 md:h-20 md:w-20"
+              alt="Vuslat Turizm"
+              width={160}
+              height={160}
+              className="h-20 w-auto"
+              priority
             />
           </Link>
 
-          <nav className="hidden items-center space-x-8 text-base font-semibold text-gray-700 md:flex">
-            <Link href="#" className="transition-colors hover:text-[#00c4b4]">
-              Hac
-            </Link>
-            <Link href="#" className="transition-colors hover:text-[#00c4b4]">
-              Umre
-            </Link>
-            <Link href="#" className="transition-colors hover:text-[#00c4b4]">
-              KÃ¼ltÃ¼r TurlarÄ±
-            </Link>
-            <Link href="#" className="transition-colors hover:text-[#00c4b4]">
-              Ã–deme
-            </Link>
-            <Link href="#" className="transition-colors hover:text-[#00c4b4]">
-              Ä°letiÅŸim
-            </Link>
+          <nav className="hidden items-center space-x-8 md:flex">
+            {[
+              "Hac",
+              "Umre",
+              "K\u00FClt\u00FCr Turlar\u0131",
+              "\u00D6deme",
+              "\u0130leti\u015Fim",
+            ].map((item) => (
+              <Link
+                key={item}
+                href="#"
+                className="nav-link text-lg font-semibold text-white/90 transition-colors"
+              >
+                {item}
+              </Link>
+            ))}
           </nav>
-          {/* Mobile Menu Icon */}
-          <button className="text-gray-700 md:hidden">
-            <IconMenu className="h-6 w-6" />
+
+          <button className="text-white md:hidden">
+            <IconMenu className="h-7 w-7" />
           </button>
         </div>
+        {/* Gold accent line */}
+        <div
+          className="h-[2px]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, var(--gold), transparent)",
+          }}
+        />
       </header>
 
       {/* Hero Section */}
       <section className="relative h-[600px] w-full md:h-[700px]">
-        <div className="absolute inset-0 z-10 bg-black/30"></div>
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(10,61,46,0.45) 0%, rgba(10,61,46,0.25) 50%, rgba(10,61,46,0.6) 100%)",
+          }}
+        />
         <Image
           src="/hero_image.jpg"
           alt="Hero background"
@@ -197,70 +226,76 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
-          <h1 className="font-display mb-8 text-6xl font-bold tracking-tight text-white drop-shadow-lg md:text-8xl">
+          <p
+            className="mb-4 text-lg font-medium tracking-[0.3em] uppercase"
+            style={{ color: "#E8CC6E" }}
+          >
+            Manevi Yolculuk
+          </p>
+          <h1 className="font-display mb-6 text-5xl font-bold tracking-tight text-white drop-shadow-lg md:text-7xl lg:text-8xl">
             Şükür Turism
           </h1>
+          <p className="max-w-xl text-lg text-white/80">
+            Hac, Umre ve K{"\u00FC"}lt{"\u00FC"}r Turlar{"\u0131"} i{"\u00E7"}in
+            g{"\u00FC"}venilir yol arkada{"\u015F\u0131"}n{"\u0131"}z
+          </p>
         </div>
 
         {/* Search Bar Floating */}
         <div className="absolute bottom-0 left-1/2 z-30 w-full max-w-5xl -translate-x-1/2 translate-y-1/2 transform px-4">
-          <div className="flex flex-col items-center justify-between gap-4 divide-y divide-gray-100 rounded-3xl bg-white px-8 py-6 shadow-xl md:flex-row md:gap-0 md:divide-x md:divide-y-0">
-            <div className="flex w-full flex-col gap-1 px-4 md:w-1/4">
+          <div
+            className="flex flex-col items-center justify-between gap-4 rounded-3xl border px-8 py-6 shadow-xl backdrop-blur-sm md:flex-row md:gap-0"
+            style={{
+              backgroundColor: "white",
+              borderColor: "rgba(200, 168, 78, 0.2)",
+            }}
+          >
+            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconLocation className="h-5 w-5 text-[#00c4b4]" />
+                <IconLocation
+                  className="h-5 w-5"
+                  style={{ color: "var(--brand)" }}
+                />
                 <span>Konum</span>
-                {/* <span className="ml-auto">â–¼</span> */}
               </div>
             </div>
-            <div className="flex w-full flex-col gap-1 px-4 md:w-1/4">
+            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <svg
-                  className="h-5 w-5 text-[#00c4b4]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"
-                  />
-                </svg>
+                <IconPlane
+                  className="h-5 w-5"
+                  style={{ color: "var(--brand)" }}
+                />
                 <span>Turlar</span>
-                {/* <span className="ml-auto">â–¼</span> */}
               </div>
             </div>
-            <div className="flex w-full flex-col gap-1 px-4 md:w-1/4">
+            <div className="flex w-full flex-col gap-1 border-b border-gray-100 px-4 pb-3 md:w-1/4 md:border-r md:border-b-0 md:pb-0">
               <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconCalendar className="h-5 w-5 text-[#00c4b4]" />
-                <span>GidiÅŸ Tarihi</span>
+                <IconCalendar
+                  className="h-5 w-5"
+                  style={{ color: "var(--brand)" }}
+                />
+                <span>Gidi{"\u015F"} Tarihi</span>
               </div>
               <span className="pl-7 font-semibold text-gray-900">
-                GidiÅŸ Yeri
+                Gidi{"\u015F"} Yeri
               </span>
             </div>
             <div className="flex w-full flex-col gap-1 px-4 md:w-1/4">
               <div className="flex items-center gap-2 text-base font-medium text-gray-500">
-                <IconUser className="h-5 w-5 text-[#00c4b4]" />
-                <span>KiÅŸi SayÄ±sÄ±</span>
-                <svg
-                  className="ml-auto h-5 w-5 rotate-90 text-[#00c4b4]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
+                <IconUser
+                  className="h-5 w-5"
+                  style={{ color: "var(--brand)" }}
+                />
+                <span>
+                  Ki{"\u015Fi"} Say{"\u0131"}s{"\u0131"}
+                </span>
               </div>
             </div>
             <div className="w-full pl-4 md:w-auto">
-              <button className="flex w-full justify-center rounded-2xl bg-[#00c4b4] p-4 text-white transition-colors hover:bg-[#00a89a] md:w-auto">
+              <button
+                className="flex w-full justify-center rounded-2xl p-4 text-white transition-all hover:shadow-lg md:w-auto"
+                style={{ backgroundColor: "var(--brand)" }}
+              >
                 <IconSearch className="h-6 w-6" />
                 <span className="ml-2 md:hidden">Ara</span>
               </button>
@@ -272,8 +307,17 @@ export default function Home() {
       {/* Featured Tours */}
       <section className="mx-auto max-w-7xl px-4 pt-32 pb-20">
         <div className="mb-12 text-center">
-          <h2 className="font-display text-4xl font-bold text-[#1f2937] md:text-5xl">
-            Ã–ne Ã‡Ä±kan Turlar
+          <p
+            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+            style={{ color: "var(--gold)" }}
+          >
+            Ke{"\u015F"}fedin
+          </p>
+          <h2
+            className="font-display text-4xl font-bold md:text-5xl"
+            style={{ color: "var(--emerald)" }}
+          >
+            {"\u00D6"}ne {"\u00C7\u0131"}kan Turlar
           </h2>
         </div>
 
@@ -281,7 +325,8 @@ export default function Home() {
           {featuredTours.map((tour) => (
             <div
               key={tour.id}
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
+              style={{ borderColor: "rgba(200, 168, 78, 0.13)" }}
             >
               <div className="relative h-64 w-full overflow-hidden">
                 <Image
@@ -290,23 +335,38 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(10,61,46,0.4), transparent)",
+                  }}
+                />
               </div>
               <div className="flex flex-grow flex-col p-6">
-                <h3 className="mb-8 min-h-[3rem] text-2xl leading-tight font-semibold text-[#1f2937]">
+                <h3
+                  className="mb-8 min-h-[3rem] text-xl leading-tight font-semibold"
+                  style={{ color: "var(--emerald)" }}
+                >
                   {tour.title}
                 </h3>
-
                 <div className="mt-auto">
                   <p className="text-base text-gray-500">{tour.subtitle}</p>
                   <div className="mt-1 flex items-end justify-between">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-[#1f2937]">
+                      <span
+                        className="text-3xl font-bold"
+                        style={{ color: "var(--emerald)" }}
+                      >
                         {tour.currency}
                         {tour.price}
                       </span>
-                      <span className="text-base text-gray-500">'dan</span>
+                      <span className="text-base text-gray-500">&apos;dan</span>
                     </div>
-                    <button className="rounded-full bg-[#00c4b4] p-2 text-white transition-colors hover:bg-[#00a89a]">
+                    <button
+                      className="rounded-full p-2 text-white transition-all hover:shadow-lg"
+                      style={{ backgroundColor: "var(--brand)" }}
+                    >
                       <IconArrowUpRight className="h-5 w-5" />
                     </button>
                   </div>
@@ -317,54 +377,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Search Form Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 py-20">
-        {/* Background Pattern dots */}
-        <div
-          className="pointer-events-none absolute top-0 right-0 h-full w-1/3 opacity-5"
-          style={{
-            backgroundImage: "radial-gradient(#00C4B4 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-          }}
-        ></div>
+      {/* Gold Divider */}
+      <div className="gold-divider mx-auto max-w-xs" />
 
+      {/* Search Form Section */}
+      <section
+        className="islamic-pattern relative overflow-hidden py-20"
+        style={{ backgroundColor: "var(--sand)" }}
+      >
         <div className="relative z-10 mx-auto max-w-4xl px-4">
-          <h2 className="font-display mb-12 text-center text-4xl font-bold text-[#00c4b4]">
-            Size uygun Umre Turunu Beraber BulalÄ±m
+          <p
+            className="mb-2 text-center text-sm font-semibold tracking-[0.2em] uppercase"
+            style={{ color: "var(--gold)" }}
+          >
+            Formu Doldurun
+          </p>
+          <h2
+            className="font-display mb-12 text-center text-4xl font-bold"
+            style={{ color: "var(--emerald)" }}
+          >
+            Size Uygun Umre Turunu Beraber Bulal{"\u0131"}m
           </h2>
 
-          <form className="space-y-6 bg-transparent">
+          <form className="space-y-6">
             <div className="space-y-2">
-              <label className="ml-1 text-base font-semibold text-gray-800">
+              <label
+                className="ml-1 text-base font-semibold"
+                style={{ color: "var(--emerald)" }}
+              >
                 Ad Soyad
               </label>
               <input
                 type="text"
                 placeholder="Ad Soyad"
-                className="w-full rounded-2xl border-none bg-gray-100/50 px-4 py-3 transition-all outline-none focus:bg-white focus:ring-2 focus:ring-[#00c4b4]"
+                className="w-full rounded-2xl border bg-white px-5 py-4 text-base transition-all outline-none focus:ring-2"
+                style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
               />
             </div>
             <div className="space-y-2">
-              <label className="ml-1 text-base font-semibold text-gray-800">
+              <label
+                className="ml-1 text-base font-semibold"
+                style={{ color: "var(--emerald)" }}
+              >
                 Telefon
               </label>
               <input
                 type="text"
                 placeholder="0501 000 00 00"
-                className="w-full rounded-2xl border-none bg-gray-100/50 px-4 py-3 transition-all outline-none focus:bg-white focus:ring-2 focus:ring-[#00c4b4]"
+                className="w-full rounded-2xl border bg-white px-5 py-4 text-base transition-all outline-none focus:ring-2"
+                style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
               />
             </div>
             <div className="space-y-2">
-              <label className="ml-1 text-base font-semibold text-gray-800">
-                PlanladÄ±ÄŸÄ±nÄ±z Zaman
+              <label
+                className="ml-1 text-base font-semibold"
+                style={{ color: "var(--emerald)" }}
+              >
+                Planlad{"\u0131\u011F\u0131"}n{"\u0131"}z Zaman
               </label>
               <div className="relative">
-                <select className="w-full appearance-none rounded-2xl border-none bg-gray-100/50 px-4 py-3 text-gray-500 transition-all outline-none focus:bg-white focus:ring-2 focus:ring-[#00c4b4]">
+                <select
+                  className="w-full appearance-none rounded-2xl border bg-white px-5 py-4 text-base text-gray-500 transition-all outline-none focus:ring-2"
+                  style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
+                >
                   <option>Planlanan Ay</option>
                   <option>Ocak</option>
-                  <option>Åžubat</option>
+                  <option>{"\u015E"}ubat</option>
                 </select>
-                {/* <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"><span className="text-gray-400">â–¼</span></div> */}
               </div>
             </div>
 
@@ -372,17 +451,32 @@ export default function Home() {
               <input
                 type="checkbox"
                 id="kvkk"
-                className="mt-1 h-4 w-4 rounded-2xl border-gray-300 text-[#00c4b4] focus:ring-[#00c4b4]"
+                className="mt-1 h-4 w-4 rounded border-gray-300"
+                style={{ accentColor: "#02CAAD" }}
               />
               <label htmlFor="kvkk" className="text-base text-gray-500">
-                Hisar Turizm KVKK PolitikasÄ±'nÄ± okudum ve kabul ediyorum.
+                Vuslat Turizm KVKK Politikas{"\u0131"}&apos;n{"\u0131"} okudum
+                ve kabul ediyorum.
               </label>
             </div>
+
+            <button
+              className="w-full rounded-2xl px-8 py-4 text-lg font-semibold text-white transition-all hover:shadow-lg"
+              style={{ backgroundColor: "var(--brand)" }}
+              type="submit"
+            >
+              G{"\u00F6"}nder
+            </button>
           </form>
+
+          {/* Floating CTA buttons */}
           <div className="fixed right-4 bottom-10 z-50 flex flex-col gap-2">
-            <button className="flex h-[100px] w-10 flex-col items-center justify-center gap-8 rounded-2xl bg-[#60359E] p-3 text-white shadow-lg">
+            <button
+              className="flex h-[100px] w-10 flex-col items-center justify-center gap-8 rounded-2xl p-3 text-white shadow-lg"
+              style={{ backgroundColor: "var(--emerald)" }}
+            >
               <span className="mt-4 rotate-[-90deg] text-sm font-bold tracking-widest whitespace-nowrap">
-                Ä°letiÅŸim
+                {"\u0130"}leti{"\u015F"}im
               </span>
             </button>
             <button className="rounded-full bg-[#25D366] p-3 text-white shadow-lg">
@@ -396,17 +490,32 @@ export default function Home() {
 
       {/* Why Us Section */}
       <section className="mx-auto max-w-7xl px-4 py-20">
-        <h2 className="font-display mb-12 text-center text-4xl font-bold text-[#1f2937]">
-          Neden Biz ?
-        </h2>
+        <div className="mb-12 text-center">
+          <p
+            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+            style={{ color: "var(--gold)" }}
+          >
+            Fark{"\u0131"}m{"\u0131"}z
+          </p>
+          <h2
+            className="font-display text-4xl font-bold"
+            style={{ color: "var(--emerald)" }}
+          >
+            Neden Biz?
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, idx) => (
             <div
               key={idx}
-              className="flex cursor-default flex-row items-center gap-4 rounded-3xl bg-[#00c4b4] p-6 text-white transition-colors hover:bg-[#00a89a]"
+              className="flex cursor-default flex-row items-center gap-4 rounded-3xl p-6 text-white transition-all hover:shadow-lg"
+              style={{ backgroundColor: "var(--emerald)" }}
             >
-              <div className="rounded-3xl bg-white/20 p-3 backdrop-blur-sm">
+              <div
+                className="rounded-2xl p-3"
+                style={{ backgroundColor: "var(--brand)" }}
+              >
                 <reason.icon className="h-8 w-8 text-white md:h-10 md:w-10" />
               </div>
               <p className="text-base leading-snug font-semibold md:text-lg">
@@ -417,75 +526,105 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gold Divider */}
+      <div className="gold-divider mx-auto max-w-xs" />
+
       {/* Info Tabs Section */}
       <section className="mx-auto max-w-4xl px-4 py-20">
-        <div className="mb-8 flex justify-center border-b">
+        <div
+          className="mb-8 flex justify-center border-b"
+          style={{ borderColor: "rgba(200, 168, 78, 0.2)" }}
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative px-8 py-3 text-base font-semibold tracking-wider transition-all ${activeTab === tab.id ? "text-[#00c4b4]" : "text-gray-400 hover:text-gray-600"}`}
+              className={`relative px-8 py-3 text-lg font-semibold tracking-wider transition-all ${
+                activeTab === tab.id ? "" : "text-gray-400 hover:text-gray-600"
+              }`}
+              style={
+                activeTab === tab.id ? { color: "var(--emerald)" } : undefined
+              }
             >
               {tab.label}
               {activeTab === tab.id && (
-                <div className="absolute bottom-0 left-0 h-0.5 w-full bg-[#00c4b4]"></div>
+                <div
+                  className="absolute bottom-0 left-0 h-[3px] w-full rounded-full"
+                  style={{ backgroundColor: "var(--gold)" }}
+                />
               )}
             </button>
           ))}
         </div>
 
-        <div className="space-y-4 text-center text-base leading-relaxed text-gray-500">
+        <div className="space-y-4 text-center text-base leading-relaxed text-gray-600">
           {activeTab === "HAC" && (
             <div className="animate-fade-in">
               <p>
-                Hac programÄ± ile farzlarÄ±n, vaciplerin, sÃ¼nnetlerin, hatta
-                mÃ¼stehaplarÄ±n bile yerine getirilmesi iÃ§in ehil ve tecrÃ¼beli
-                hocalarÄ±mÄ±zÄ±n rehberliÄŸinde hac ve umre iÃ§in lÃ¼tfen{" "}
-                <strong className="text-gray-800">0312 309 00 26</strong> nolu
-                telefondan bizi arayÄ±nÄ±z.
+                Hac program{"\u0131"} ile farzlar{"\u0131"}n, vaciplerin, s
+                {"\u00FC"}nnetlerin, hatta m{"\u00FC"}stehaplar{"\u0131"}n bile
+                yerine getirilmesi i{"\u00E7"}in ehil ve tecr{"\u00FC"}beli
+                hocalar{"\u0131"}m{"\u0131"}z{"\u0131"}n rehberli{"\u011F"}inde
+                hac ve umre i{"\u00E7"}in l{"\u00FC"}tfen{" "}
+                <strong style={{ color: "var(--emerald)" }}>
+                  0312 309 00 26
+                </strong>{" "}
+                nolu telefondan bizi aray{"\u0131"}n{"\u0131"}z
               </p>
               <p>
                 Vuslat Turizm web sitemizde{" "}
-                <strong className="text-gray-800">umre turlarÄ±</strong> ve{" "}
-                <strong className="text-gray-800">
-                  2025 yÄ±lÄ± umre fiyatlarÄ± ve hac fiyatlarÄ±
+                <strong style={{ color: "var(--emerald)" }}>
+                  umre turlar{"\u0131"}
                 </strong>{" "}
-                hakkÄ±nda detaylÄ± bilgiye sahip olabilirsiniz.
+                ve{" "}
+                <strong style={{ color: "var(--emerald)" }}>
+                  2025 y{"\u0131"}l{"\u0131"} umre fiyatlar{"\u0131"} ve hac
+                  fiyatlar{"\u0131"}
+                </strong>{" "}
+                hakk{"\u0131"}nda detayl{"\u0131"} bilgiye sahip olabilirsiniz.
               </p>
               <p>
-                Hac ve umre nedir, nasÄ±l yapÄ±lÄ±r, tavaf, say gibi merak
-                ettiÄŸiniz tÃ¼m sorulara web sitemizde cevap bulabilirsiniz.
-                Gerek Ã¶ncesinde, gerekse bizzat{" "}
-                <strong className="text-gray-800">
-                  hac ve umre esnasÄ±nda
+                Hac ve umre nedir, nas{"\u0131"}l yap{"\u0131"}l{"\u0131"}r,
+                tavaf, say gibi merak etti{"\u011F"}iniz t{"\u00FC"}m sorulara
+                web sitemizde cevap bulabilirsiniz. Gerek {"\u00F6"}ncesinde,
+                gerekse bizzat{" "}
+                <strong style={{ color: "var(--emerald)" }}>
+                  hac ve umre esnas{"\u0131"}nda
                 </strong>{" "}
-                bilginize bilgi katacaÄŸÄ±nÄ±zdan emin olabilirsiniz.
+                bilginize bilgi kataca{"\u011F\u0131"}n{"\u0131"}zdan emin
+                olabilirsiniz.
               </p>
               <p>
-                Hac oda tercihli konaklama ve hac otel tercihli konaklama
-                turlarÄ± ile bÃ¼tÃ§enize en uygun hac ve{" "}
-                <strong className="text-gray-800">2025 yÄ±lÄ± umre turu</strong>{" "}
-                seÃ§eneÄŸi tercih ederek, Hazreti Allah'Ä±n (Celle CelÃ¢lÃ¼hÃ¼),
-                Sevgili Resullah Efendimiz'in (Sallallahu Aleyhi Vesellem)
-                misafirleri olarak tam anlamÄ±yla hac yapmanÄ±z iÃ§in
-                dÃ¼ÅŸÃ¼ndÃ¼ÄŸÃ¼nÃ¼zÃ¼n de Ã¶tesinde muazzam bir hizmet sizleri
-                bekliyor.
+                Hac oda tercihli konaklama ve hac otel tercihli konaklama turlar
+                {"\u0131"} ile b{"\u00FC"}t{"\u00E7"}enize en uygun hac ve{" "}
+                <strong style={{ color: "var(--emerald)" }}>
+                  2025 y{"\u0131"}l{"\u0131"} umre turu
+                </strong>{" "}
+                se{"\u00E7"}ene{"\u011F"}i tercih ederek, Hazreti Allah&apos;
+                {"\u0131"}n (Celle Cel{"\u00E2"}l{"\u00FC"}h{"\u00FC"}), Sevgili
+                Resullah Efendimiz&apos;in (Sallallahu Aleyhi Vesellem)
+                misafirleri olarak tam anlam{"\u0131"}yla hac yapman{"\u0131"}z
+                i{"\u00E7"}in d{"\u00FC\u015F\u00FC"}nd{"\u00FC\u011F\u00FC"}n
+                {"\u00FC"}z{"\u00FC"}n de {"\u00F6"}tesinde muazzam bir hizmet
+                sizleri bekliyor.
               </p>
             </div>
           )}
           {activeTab === "UMRE" && (
             <div className="animate-fade-in">
               <p>
-                Umre ibadeti, MÃ¼slÃ¼manlarÄ±n Kabe-i Muazzama'yÄ± ziyaret
-                ederek manevi duygularÄ±nÄ± pekiÅŸtirdiÄŸi Ã¶zel bir
-                yolculuktur. Vuslat Turizm olarak bu kutsal yolculukta sizlere
-                en iyi hizmeti sunmak iÃ§in buradayÄ±z.
+                Umre ibadeti, M{"\u00FC"}sl{"\u00FC"}manlar{"\u0131"}n Kabe-i
+                Muazzama&apos;y{"\u0131"} ziyaret ederek manevi duygular
+                {"\u0131"}n{"\u0131"} peki{"\u015F"}tirdi{"\u011F"}i {"\u00F6"}
+                zel bir yolculuktur. Vuslat Turizm olarak bu kutsal yolculukta
+                sizlere en iyi hizmeti sunmak i{"\u00E7"}in burada{"\u0131"}z.
               </p>
               <p>
-                FarklÄ± konaklama seÃ§enekleri ve tecrÃ¼beli rehberlerimiz
-                eÅŸliÄŸinde, gÃ¶nÃ¼l rahatlÄ±ÄŸÄ±yla ibadetinizi yerine
-                getirebilirsiniz. DetaylÄ± bilgi iÃ§in bizimle iletiÅŸime
-                geÃ§in.
+                Farkl{"\u0131"} konaklama se{"\u00E7"}enekleri ve tecr{"\u00FC"}
+                beli rehberlerimiz e{"\u015F"}li{"\u011F"}inde, g{"\u00F6"}n
+                {"\u00FC"}l rahatl{"\u0131\u011F\u0131"}yla ibadetinizi yerine
+                getirebilirsiniz. Detayl{"\u0131"} bilgi i{"\u00E7"}in bizimle
+                ileti{"\u015F"}ime ge{"\u00E7"}in.
               </p>
             </div>
           )}
@@ -493,95 +632,133 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="mx-auto max-w-4xl px-4 py-20 text-center">
-        <h2 className="mb-12 text-3xl font-bold text-[#1f2937]">
-          Misafirlerimiz Ne Diyor ?
-        </h2>
-        <p className="mb-8 text-sm text-gray-400">
-          TÃ¼m yorumlar Google'dan alÄ±nmÄ±ÅŸtÄ±r. DiÄŸer yorumlarÄ± gÃ¶rmek
-          iÃ§in Google profilimizi ziyaret edebilirsiniz.
-        </p>
+      <section
+        className="py-20 text-center"
+        style={{ backgroundColor: "var(--sand)" }}
+      >
+        <div className="mx-auto max-w-4xl px-4">
+          <p
+            className="mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+            style={{ color: "var(--gold)" }}
+          >
+            Referanslar
+          </p>
+          <h2
+            className="mb-12 text-3xl font-bold"
+            style={{ color: "var(--emerald)" }}
+          >
+            Misafirlerimiz Ne Diyor?
+          </h2>
+          <p className="mb-8 text-sm text-gray-400">
+            T{"\u00FC"}m yorumlar Google&apos;dan al{"\u0131"}nm{"\u0131\u015F"}
+            t{"\u0131"}r. Di{"\u011F"}er yorumlar{"\u0131"} g{"\u00F6"}rmek i
+            {"\u00E7"}in Google profilimizi ziyaret edebilirsiniz.
+          </p>
 
-        <div className="mx-auto flex h-32 max-w-2xl items-center justify-center text-xl leading-relaxed font-light text-gray-500 italic transition-all duration-500 ease-in-out md:text-2xl">
-          "{testimonials[currentTestimonial]?.text}"
-        </div>
-
-        <div className="mt-8 flex flex-col items-center">
-          <h4 className="mb-2 text-base font-bold text-gray-800">
-            {testimonials[currentTestimonial]?.author}
-          </h4>
-          <div className="flex gap-0.5 text-yellow-400">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-sm">
-                â˜…
-              </span>
-            ))}
+          <div
+            className="mx-auto flex h-32 max-w-2xl items-center justify-center text-xl leading-relaxed font-light italic transition-all duration-500 ease-in-out md:text-2xl"
+            style={{ color: "var(--emerald-light)" }}
+          >
+            &ldquo;{testimonials[currentTestimonial]?.text}&rdquo;
           </div>
-          <div className="mt-6 flex gap-2">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentTestimonial(idx)}
-                className={`h-1.5 w-1.5 rounded-full transition-all ${currentTestimonial === idx ? "bg-gray-800" : "bg-gray-300"}`}
-              />
-            ))}
+
+          <div className="mt-8 flex flex-col items-center">
+            <h4
+              className="mb-2 text-base font-bold"
+              style={{ color: "var(--emerald)" }}
+            >
+              {testimonials[currentTestimonial]?.author}
+            </h4>
+            <div className="flex gap-0.5" style={{ color: "var(--gold)" }}>
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-sm">
+                  {"\u2605"}
+                </span>
+              ))}
+            </div>
+            <div className="mt-6 flex gap-2">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentTestimonial(idx)}
+                  className="h-2 w-2 rounded-full transition-all"
+                  style={{
+                    backgroundColor:
+                      currentTestimonial === idx
+                        ? "var(--emerald)"
+                        : "rgba(200, 168, 78, 0.27)",
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1a1f24] px-4 py-16 text-sm text-gray-400">
+      <footer
+        className="px-4 py-16 text-sm"
+        style={{
+          backgroundColor: "var(--emerald)",
+          color: "rgba(255,255,255,0.6)",
+        }}
+      >
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-4">
           <div className="space-y-6">
             <div className="mb-4 flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Logo"
-                width={32}
-                height={32}
-                className="h-8 w-8"
+                width={48}
+                height={48}
+                className="h-12 w-12"
               />
               <span className="font-display text-2xl font-bold tracking-wide text-white">
-                Şükür
-                <span className="-mt-1 block font-sans text-xs font-normal tracking-normal text-gray-400">
-                  Turism
+                Vuslat
+                <span
+                  className="-mt-1 block font-sans text-xs font-normal tracking-normal"
+                  style={{ color: "var(--gold-light)" }}
+                >
+                  Turizm
                 </span>
               </span>
             </div>
             <div className="flex gap-4">
               <Link
                 href="#"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-[#00c4b4] hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full transition-all"
+                style={{ backgroundColor: "var(--emerald-light)" }}
               >
-                <IconFacebook className="h-4 w-4" />
+                <IconFacebook className="h-4 w-4 text-white" />
               </Link>
               <Link
                 href="#"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-[#00c4b4] hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full transition-all"
+                style={{ backgroundColor: "var(--emerald-light)" }}
               >
-                <IconInstagram className="h-4 w-4" />
+                <IconInstagram className="h-4 w-4 text-white" />
               </Link>
             </div>
           </div>
 
           <div>
             <h3 className="mb-6 text-base font-bold text-white">
-              Ã–ne Ã‡Ä±kan Turlar
+              {"\u00D6"}ne {"\u00C7\u0131"}kan Turlar
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  Umre TurlarÄ±
+                  Umre Turlar{"\u0131"}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  KÃ¼ltÃ¼r TurlarÄ±
+                  K{"\u00FC"}lt{"\u00FC"}r Turlar{"\u0131"}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  YurtdÄ±ÅŸÄ± Turlar
+                  Yurtd{"\u0131\u015F\u0131"} Turlar
                 </Link>
               </li>
             </ul>
@@ -592,40 +769,44 @@ export default function Home() {
             <ul className="space-y-3">
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  HakkÄ±mÄ±zda
+                  Hakk{"\u0131"}m{"\u0131"}zda
                 </Link>
               </li>
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  SÄ±kÃ§a Sorulan Sorular
+                  S{"\u0131"}k{"\u00E7"}a Sorulan Sorular
                 </Link>
               </li>
               <li>
                 <Link href="#" className="transition-colors hover:text-white">
-                  KVKK PolitikamÄ±z
+                  KVKK Politikam{"\u0131"}z
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-6 text-base font-bold text-white">Ä°letiÅŸim</h3>
+            <h3 className="mb-6 text-base font-bold text-white">
+              {"\u0130"}leti{"\u015F"}im
+            </h3>
             <ul className="space-y-3">
-              <li>Adliye sk. No:3 ULUS-ALTINDAÄž/ANKARA</li>
+              <li>Adliye sk. No:3 ULUS-ALTINDA{"\u011E"}/ANKARA</li>
               <li>0312 309 00 26</li>
               <li>0554 113 40 02</li>
             </ul>
           </div>
         </div>
 
-        <div className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-center md:flex-row">
-          <p>Â© 2023 TÃ¼m HaklarÄ± SaklÄ±dÄ±r. - www.vuslatturizm.com</p>
-          <div className="flex gap-4 opacity-50">
-            {/* Placeholder for payment logos or associations if needed */}
-          </div>
+        <div
+          className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row"
+          style={{ borderColor: "var(--emerald-light)" }}
+        >
+          <p>
+            &copy; 2025 T{"\u00FC"}m Haklar{"\u0131"} Sakl{"\u0131"}d{"\u0131"}
+            r. - www.vuslatturizm.com
+          </p>
         </div>
       </footer>
     </div>
   );
 }
-

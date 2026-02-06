@@ -34,6 +34,10 @@
   :where(button, input, select, textarea, img):not(.no-radius) {
     border-radius: 24px;
   }
+
+  .nav-link:hover {
+    color: var(--gold-light);
+  }
 }
 
 @layer utilities {
