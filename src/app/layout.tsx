@@ -1,7 +1,7 @@
-﻿import "~/styles/globals.css";
+import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -12,16 +12,16 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const bodyFont = Poppins({
+const bodyFont = Roboto({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "700"],
 });
 
 const displayFont = Poppins({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export default function RootLayout({

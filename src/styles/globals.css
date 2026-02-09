@@ -7,36 +7,35 @@
 
 :root {
   color-scheme: light;
-  --brand: #02CAAD;
-  --brand-dark: #01A890;
-  --emerald: #0A3D2E;
-  --emerald-light: #0F5040;
-  --gold: #C8A84E;
-  --gold-light: #E8CC6E;
-  --cream: #FDFBF7;
-  --sand: #F5F0E8;
+  --brand: #02caad;
+  --brand-dark: #01a890;
+  --emerald: #0a3d2e;
+  --emerald-light: #0f5040;
+  --emerald-deep: #061a16;
+  --gold: #c8a84e;
+  --gold-light: #e8cc6e;
+  --gold-dim: #a08838;
+  --cream: #fdfbf7;
+  --sand: #f5f0e8;
+  --obsidian: #040e0c;
 }
 
 @layer base {
   body {
     font-family: var(--font-body), "Segoe UI", sans-serif;
-    background-color: var(--cream);
+    background-color: #ffffff;
     color: #1a2e28;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.7;
   }
 
   .font-display {
-    font-family: var(--font-display), "Times New Roman", serif;
+    font-family: var(--font-display), "Segoe UI", sans-serif;
     letter-spacing: -0.01em;
   }
 
   :where(button, input, select, textarea, img):not(.no-radius) {
-    border-radius: 24px;
-  }
-
-  .nav-link:hover {
-    color: var(--gold-light);
+    border-radius: 12px;
   }
 }
 
@@ -44,72 +43,108 @@
   .fade-up {
     animation: fadeUp 0.8s ease both;
   }
-
-  .fade-up-delay-1 {
-    animation-delay: 0.12s;
-  }
-
-  .fade-up-delay-2 {
-    animation-delay: 0.24s;
-  }
-
-  .fade-up-delay-3 {
-    animation-delay: 0.36s;
-  }
-
-  .float-slow {
-    animation: float 7s ease-in-out infinite;
-  }
-
-  .text-glow {
-    text-shadow: 0 18px 40px rgba(2, 202, 173, 0.3);
-  }
-
-  .dot-grid {
-    background-image: radial-gradient(
-      rgba(10, 61, 46, 0.06) 1px,
-      transparent 1px
-    );
-    background-size: 10px 10px;
-  }
-
-  .striped-bar {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent 0px,
-      transparent 6px,
-      rgba(255, 255, 255, 0.1) 6px,
-      rgba(255, 255, 255, 0.1) 7px,
-      transparent 7px,
-      transparent 12px,
-      rgba(255, 255, 255, 0.06) 12px,
-      rgba(255, 255, 255, 0.06) 13px
-    );
-    background-size: 18px 18px;
-  }
-
-  .islamic-pattern {
-    background-image:
-      radial-gradient(circle at 25% 25%, rgba(200, 168, 78, 0.04) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba(200, 168, 78, 0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .gold-divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  .fade-up-delay-1 { animation-delay: 0.12s; }
+  .fade-up-delay-2 { animation-delay: 0.24s; }
+  .fade-up-delay-3 { animation-delay: 0.36s; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 }
 
-/* DatePicker theme overrides */
+/* ─── Buttons ─── */
+.lux-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: var(--emerald);
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.lux-button:hover {
+  background: var(--emerald-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(10, 61, 46, 0.25);
+}
+
+/* ─── Inputs ─── */
+.lux-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #1a2e28;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.lux-input::placeholder { color: #9ca3af; }
+
+.lux-input:focus {
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(10, 61, 46, 0.1);
+}
+
+/* ─── Contact rail ─── */
+.contact-rail-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(10, 61, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s;
+  text-decoration: none;
+}
+
+.contact-rail-btn:hover {
+  background: rgba(10, 61, 46, 0.95);
+  transform: translateX(-4px);
+}
+
+.contact-rail-btn--wa {
+  background: #25d366;
+  border-color: #25d366;
+}
+
+.contact-rail-btn--wa:hover { background: #20bd5a; }
+
+/* ─── Keyframes ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── DatePicker overrides ─── */
 .search-calendar.react-datepicker {
   font-family: inherit;
   border: none;
@@ -164,35 +199,8 @@
   color: var(--emerald);
 }
 
-.search-calendar .react-datepicker__day--disabled {
-  color: #d1d5db;
-}
+.search-calendar .react-datepicker__day--disabled { color: #d1d5db; }
 
-.search-calendar .react-datepicker__navigation-icon::before {
-  border-color: white;
-}
+.search-calendar .react-datepicker__navigation-icon::before { border-color: white; }
 
-.search-calendar .react-datepicker__navigation:hover *::before {
-  border-color: var(--gold-light);
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+.search-calendar .react-datepicker__navigation:hover *::before { border-color: var(--gold-light); }
