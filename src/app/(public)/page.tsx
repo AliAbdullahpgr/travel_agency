@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { FaqSection } from "~/components/public/FaqSection";
 import { FeaturedCardSlider } from "~/components/public/FeaturedCardSlider";
 import { HeroCinematic } from "~/components/public/HeroCinematic";
 import { InquiryPanel } from "~/components/public/InquiryPanel";
+import { TestimonialsSection } from "~/components/public/TestimonialsSection";
 
 export const metadata: Metadata = {
   title: "Ana Sayfa",
@@ -22,6 +24,8 @@ export default function HomePage() {
     <>
       <HeroCinematic />
       <FeaturedCardSlider />
+      <TestimonialsSection />
+      <FaqSection />
       <InquiryPanel
         title="Form for Tour Registration"
         subtitle="Move through 3 simple milestones and send your request in under two minutes."

@@ -83,6 +83,39 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
+export const landingFaqs: { question: string; answer: string }[] = [
+  {
+    question: "Umre ve hac turlarınız neleri kapsıyor?",
+    answer:
+      "Turlarımız uçak bileti, otel konaklaması, vize işlemleri, havalimanı transferleri, rehberlik hizmeti ve ziyaret programlarını kapsar. Detaylı kapsam bilgisi her tur sayfasında belirtilmektedir.",
+  },
+  {
+    question: "Rezervasyon için ne kadar önceden başvurmalıyım?",
+    answer:
+      "Umre turları için en az 3-4 hafta, hac turları için ise 4-6 ay önceden başvurmanızı öneriyoruz. Erken başvurularda indirimli fiyatlardan faydalanabilirsiniz.",
+  },
+  {
+    question: "Ödeme seçenekleriniz nelerdir?",
+    answer:
+      "Peşin ödeme, kredi kartına taksit ve havale/EFT seçeneklerimiz mevcuttur. Taksit seçenekleri 3, 6 ve 9 ay olarak sunulmaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+  },
+  {
+    question: "Pasaport ve vize işlemlerinde yardımcı oluyor musunuz?",
+    answer:
+      "Evet, vize başvuru sürecinizde sizlere rehberlik ediyoruz. Gerekli belgelerin hazırlanması, başvuru formlarının doldurulması ve takip sürecinde ekibimiz yanınızdadır.",
+  },
+  {
+    question: "Turlar sırasında sağlık desteği var mı?",
+    answer:
+      "Tüm turlarımızda seyahat sağlık sigortası dahildir. Hac turlarında ek olarak sahada sağlık ekibi bulunmaktadır. Kronik rahatsızlığı olan misafirlerimiz için özel düzenlemeler yapılabilir.",
+  },
+  {
+    question: "İptal ve iade politikanız nasıl?",
+    answer:
+      "Hareket tarihinden 30 gün önce yapılan iptallerde tam iade, 15-30 gün arası %50 iade uygulanır. 15 günden kısa sürede yapılan iptallerde iade yapılamamaktadır. Mücbir sebepler ayrıca değerlendirilir.",
+  },
+];
+
 export const categoryHeroCopy: Record<
   TourCategory,
   {
