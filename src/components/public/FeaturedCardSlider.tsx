@@ -28,7 +28,7 @@ const currencySymbols = {
 } as const;
 
 const AUTOPLAY_MS = 5600;
-const SWIPE_THRESHOLD = 44;
+const SWIPE_THRESHOLD = 40;
 const WHEEL_THRESHOLD = 22;
 const WHEEL_COOLDOWN_MS = 420;
 const placeholderImages = ["/kabbah1.jpg", "/kabbah2.jpg", "/kabbah3.jpg"] as const;
@@ -98,7 +98,7 @@ export function FeaturedCardSlider() {
   return (
     <section
       className="relative isolate overflow-hidden bg-white"
-      aria-label="One cikan tur kartlari"
+      aria-label="Öne çıkan tur kartları"
     >
       <div className="pointer-events-none absolute -left-16 top-8 h-52 w-52 rounded-full bg-[color:var(--gold)]/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-16 bottom-8 h-52 w-52 rounded-full bg-[color:var(--brand)]/20 blur-3xl" />
@@ -302,16 +302,20 @@ export function FeaturedCardSlider() {
                       </div>
                     </div>
 
-                    <Link
-                      href={`/turlar/${tour.slug}`}
-                      tabIndex={isActive ? 0 : -1}
-                      className={`group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[color:var(--gold)]/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-[color:var(--gold-light)] transition hover:border-[color:var(--gold)]/45 hover:bg-[linear-gradient(120deg,rgba(200,168,78,0.42),rgba(200,168,78,0.22))] ${
-                        isActive ? "" : "pointer-events-none opacity-60"
-                      }`}
-                    >
-                      Programi Incele
-                      <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                    {isActive ? (
+                      <Link
+                        href={`/turlar/${tour.slug}`}
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--gold)/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-(--gold-light) transition hover:border-(--gold)/45 hover:bg-[linear-gradient(120deg,rgba(200,168,78,0.42),rgba(200,168,78,0.22))]"
+                      >
+                        Programi Incele
+                        <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    ) : (
+                      <div className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--gold)/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-(--gold-light) opacity-60">
+                        Programi Incele
+                        <FiArrowRight className="h-4 w-4" />
+                      </div>
+                    )}
                   </div>
                 </motion.article>
               );

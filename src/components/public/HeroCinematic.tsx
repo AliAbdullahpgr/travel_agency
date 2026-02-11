@@ -116,12 +116,12 @@ export function HeroCinematic() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
             >
-              <h1 className="font-display text-4xl leading-[1.15] font-bold text-white drop-shadow-lg md:text-5xl lg:text-6xl whitespace-pre-line">
+              <h1 className="font-display text-4xl leading-[1.15] font-bold text-white [text-shadow:0_2px_12px_rgb(0_0_0/80%),0_4px_24px_rgb(0_0_0/60%)] md:text-5xl lg:text-6xl whitespace-pre-line">
                 {heroSlides[current]!.title}
               </h1>
-              <p className="mt-3 text-xl font-medium text-white/90 drop-shadow-md md:text-2xl italic">
+              <p className="mt-3 text-xl font-medium text-white/90 [text-shadow:0_2px_8px_rgb(0_0_0/70%)] md:text-2xl italic">
                 {heroSlides[current]!.subtitle}
               </p>
               <Link
@@ -140,7 +140,7 @@ export function HeroCinematic() {
       <button
         type="button"
         onClick={prev}
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/40 md:left-5 md:p-3"
+        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition hover:bg-white/40 md:left-5"
         aria-label="Önceki slayt"
       >
         <FiChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
@@ -148,7 +148,7 @@ export function HeroCinematic() {
       <button
         type="button"
         onClick={next}
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/40 md:right-5 md:p-3"
+        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition hover:bg-white/40 md:right-5"
         aria-label="Sonraki slayt"
       >
         <FiChevronRight className="h-5 w-5 md:h-6 md:w-6" />
@@ -170,7 +170,7 @@ export function HeroCinematic() {
       </div>
 
       {/* Featured tour card - positioned on the right, overlaying the hero */}
-      <div className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 lg:block xl:right-8">
+      <div className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 md:block xl:right-8">
         <div className="w-[340px] overflow-hidden rounded-2xl bg-white shadow-2xl xl:w-[380px]">
           {/* Category + Price header */}
           <div className="relative">

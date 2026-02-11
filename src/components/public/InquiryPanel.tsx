@@ -148,7 +148,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
     >
       <form
         onSubmit={handleSubmit}
-        className="rounded-[2rem] bg-white p-6 text-black shadow-[0_30px_90px_rgba(0,0,0,0.12)] sm:p-10"
+        className="rounded-[2rem] bg-white p-5 text-black shadow-[0_30px_90px_rgba(0,0,0,0.12)] sm:p-10"
       >
         <div className="mb-10">
           <div className="relative">
@@ -156,6 +156,11 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             <div
               className="absolute left-6 top-6 h-0.5 bg-black transition-all duration-300"
               style={{ width: `calc((100% - 3rem) * ${progressRatio})` }}
+              role="progressbar"
+              aria-valuenow={Math.round(progressRatio * 100)}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`Form progress: ${Math.round(progressRatio * 100)}%`}
             />
 
             <ol className="relative grid grid-cols-3 gap-3">
@@ -518,15 +523,15 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
               />
             </label>
 
-            <label className="md:col-span-2 flex items-start gap-3 rounded-xl bg-black/[0.04] px-4 py-4 text-base text-black/85">
+            <label className="md:col-span-2 flex items-start gap-3 rounded-xl bg-black/6 px-4 py-4 text-base text-black/85">
               <input
                 type="checkbox"
                 checked={form.consentAccepted}
                 onChange={(e) =>
                   setForm((prev) => ({ ...prev, consentAccepted: e.target.checked }))
                 }
-                className="mt-1 h-4 w-4 shrink-0"
-                style={{ accentColor: "#111111" }}
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer"
+                style={{ accentColor: "#0a3d2e" }}
               />
               I approve this UI demo registration form.
             </label>
@@ -537,9 +542,10 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
           <button
             type="button"
             onClick={goBack}
+            disabled={currentStep === 0}
             className={`inline-flex items-center justify-center gap-2 rounded-full border px-7 py-3.5 text-base font-semibold transition ${
               currentStep === 0
-                ? "pointer-events-none opacity-0"
+                ? "invisible"
                 : "border-black/25 text-black hover:border-black hover:bg-black/5"
             }`}
           >

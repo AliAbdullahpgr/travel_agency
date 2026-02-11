@@ -35,6 +35,7 @@ function AccordionItem({
         onClick={toggle}
         className="flex w-full items-center gap-4 px-6 py-5 text-left transition"
         aria-expanded={isOpen}
+        aria-label={`Soru ${index + 1}: ${item.question}`}
       >
         {/* Number badge */}
         <span
@@ -43,11 +44,12 @@ function AccordionItem({
               ? "bg-[color:var(--emerald)] text-white"
               : "bg-[color:var(--sand)] text-[color:var(--emerald)]"
           }`}
+          aria-hidden="true"
         >
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        <span className="flex-1 text-sm font-semibold text-[color:var(--obsidian)] md:text-base">
+        <span className="flex-1 text-base font-semibold text-(--obsidian) md:text-lg">
           {item.question}
         </span>
 
@@ -67,7 +69,7 @@ function AccordionItem({
             transition={{ duration: 0.35, ease }}
           >
             <div className="border-t border-gray-100 px-6 pb-5 pt-4">
-              <p className="pl-12 text-sm leading-relaxed text-gray-600">
+              <p className="pl-12 text-sm leading-relaxed text-gray-600 md:text-base">
                 {item.answer}
               </p>
             </div>
@@ -117,7 +119,7 @@ export function FaqSection() {
         </motion.div>
 
         {/* Accordion list */}
-        <div className="mt-12 space-y-3">
+        <div className="mt-12 space-y-4">
           {landingFaqs.map((faq, i) => (
             <AccordionItem
               key={i}
