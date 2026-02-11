@@ -7,24 +7,47 @@
 
 :root {
   color-scheme: light;
-  --brand: #02caad;
-  --brand-dark: #01a890;
+
+  /* ─── Primary — Deep emerald greens ─── */
   --emerald: #0a3d2e;
   --emerald-light: #0f5040;
   --emerald-deep: #061a16;
+
+  /* ─── Accent — Gold ─── */
   --gold: #c8a84e;
   --gold-light: #e8cc6e;
   --gold-dim: #a08838;
+  --gold-dark: #8a7030;
+
+  /* ─── Brand teal ─── */
+  --brand: #02caad;
+  --brand-dark: #01a890;
+
+  /* ─── Surfaces ─── */
   --cream: #fdfbf7;
   --sand: #f5f0e8;
   --obsidian: #040e0c;
+
+  /* ─── Text — warm emerald-tinted neutrals ─── */
+  --text: #1a2e28;
+  --text-secondary: #3d5a50;
+  --text-muted: #6b857b;
+  --text-faint: #9aada5;
+
+  /* ─── Borders — warm tones ─── */
+  --border: #ddd8d0;
+  --border-light: #eae6df;
+  --border-hover: #c5bfb5;
+
+  /* ─── Utility ─── */
+  --whatsapp: #25d366;
 }
 
 @layer base {
   body {
     font-family: var(--font-body), "Segoe UI", sans-serif;
     background-color: #ffffff;
-    color: #1a2e28;
+    color: var(--text);
     font-size: 1rem;
     line-height: 1.7;
   }
@@ -81,15 +104,15 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   background: white;
-  color: #1a2e28;
+  color: var(--text);
   font-size: 0.9rem;
   outline: none;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-.lux-input::placeholder { color: #9ca3af; }
+.lux-input::placeholder { color: var(--text-faint); }
 
 .lux-input:focus {
   border-color: var(--emerald);
@@ -178,7 +201,7 @@
   line-height: 2.2rem;
   border-radius: 8px;
   font-size: 0.85rem;
-  color: #1a2e28;
+  color: var(--text);
   transition: all 0.15s;
 }
 
@@ -199,7 +222,7 @@
   color: var(--emerald);
 }
 
-.search-calendar .react-datepicker__day--disabled { color: #d1d5db; }
+.search-calendar .react-datepicker__day--disabled { color: var(--text-faint); }
 
 .search-calendar .react-datepicker__navigation-icon::before { border-color: white; }
 

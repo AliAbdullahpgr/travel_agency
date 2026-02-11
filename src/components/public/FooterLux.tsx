@@ -13,7 +13,7 @@ export function FooterLux() {
   return (
     <footer className="relative overflow-hidden border-t border-white/[0.08] bg-[radial-gradient(circle_at_20%_0%,rgba(200,168,78,0.12),transparent_46%),linear-gradient(165deg,rgba(5,26,23,1),rgba(4,35,29,1))] px-4 pb-10 pt-14 text-white md:px-8">
       {/* Dot pattern */}
-      <div className="pointer-events-none absolute inset-0 opacity-15 mix-blend-screen [background-image:radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:16px_16px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-15 mix-blend-screen [background-image:radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:20px_20px]" />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
         {/* Brand column */}
@@ -116,7 +116,7 @@ export function FooterLux() {
       <div className="relative mx-auto mt-10 flex max-w-7xl items-center justify-between border-t border-white/[0.08] pt-6 text-xs text-white/40">
         <p>© {new Date().getFullYear()} Şükür Turizm. Tüm hakları saklıdır.</p>
         <p className="hidden tracking-[0.2em] uppercase md:block">
-          Spiritual Luxury Travel
+          Manevi Lüks Seyahat
         </p>
       </div>
     </footer>

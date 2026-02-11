@@ -78,7 +78,7 @@ export function HeroCinematic() {
   const next = () => goTo((current + 1) % heroSlides.length);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gray-900" style={{ height: "clamp(420px, 75vh, 700px)" }}>
+    <section className="relative w-full overflow-hidden bg-[color:var(--obsidian)]" style={{ height: "clamp(420px, 75vh, 700px)" }}>
       {/* Slides */}
       <AnimatePresence mode="wait">
         {heroSlides.map(
@@ -126,7 +126,7 @@ export function HeroCinematic() {
               </p>
               <Link
                 href="/umre-turlari"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--gold)] px-6 py-3 text-sm font-bold text-gray-900 shadow-lg transition hover:bg-[color:var(--gold-light)] hover:shadow-xl"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--gold)] px-6 py-3 text-sm font-bold text-[color:var(--obsidian)] shadow-lg transition hover:bg-[color:var(--gold-light)] hover:shadow-xl"
               >
                 Turları İncele
                 <FiArrowRight className="h-4 w-4" />
@@ -192,19 +192,19 @@ export function HeroCinematic() {
               ))}
 
               {/* Category badge */}
-              <span className="absolute left-3 top-3 rounded-md bg-orange-500 px-2.5 py-1 text-xs font-bold text-white shadow">
+              <span className="absolute left-3 top-3 rounded-md bg-[color:var(--gold)] px-2.5 py-1 text-xs font-bold text-white shadow">
                 {featuredCard.category}
               </span>
 
               {/* Price badge */}
-              <span className="absolute left-3 bottom-3 rounded-lg bg-red-600 px-3 py-1.5 text-sm font-extrabold text-white shadow-lg">
+              <span className="absolute left-3 bottom-3 rounded-lg bg-[color:var(--emerald)] px-3 py-1.5 text-sm font-extrabold text-white shadow-lg">
                 {featuredCard.price}
                 <sup className="text-[0.6em]">{featuredCard.currency}</sup>{" "}
                 <span className="text-xs font-normal opacity-90">{featuredCard.perPerson}</span>
               </span>
 
               {/* Remaining seats */}
-              <span className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white shadow">
+              <span className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-[color:var(--emerald)] px-2.5 py-1 text-xs font-bold text-white shadow">
                 <FiUsers className="h-3 w-3" />
                 Son {featuredCard.remainingSeats} Yer
               </span>
@@ -215,7 +215,7 @@ export function HeroCinematic() {
                 className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-1.5 shadow transition hover:bg-white"
                 aria-label="Sonraki tur"
               >
-                <FiChevronRight className="h-4 w-4 text-gray-700" />
+                <FiChevronRight className="h-4 w-4 text-[color:var(--text-secondary)]" />
               </button>
             </div>
           </div>
@@ -224,10 +224,10 @@ export function HeroCinematic() {
           <div className="px-4 py-3.5">
             {/* Tour code + flight */}
             <div className="flex items-center justify-between">
-              <p className="text-sm font-bold text-gray-800">
-                Tur Adı: <span className="text-gray-600">{featuredCard.tourCode}</span>
+              <p className="text-sm font-bold text-[color:var(--text)]">
+                Tur Adı: <span className="text-[color:var(--text-secondary)]">{featuredCard.tourCode}</span>
               </p>
-              <span className="rounded bg-amber-100 px-2 py-0.5 text-[0.65rem] font-semibold text-amber-700">
+              <span className="rounded bg-[color:var(--gold)]/10 px-2 py-0.5 text-[0.65rem] font-semibold text-[color:var(--gold-dim)]">
                 {featuredCard.flightType}
               </span>
             </div>
@@ -237,7 +237,7 @@ export function HeroCinematic() {
               {featuredCard.badges.map((badge) => (
                 <span
                   key={badge}
-                  className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[0.65rem] font-semibold text-emerald-700"
+                  className="rounded-full border border-[color:var(--emerald)]/15 bg-[color:var(--emerald)]/[0.06] px-2.5 py-1 text-[0.65rem] font-semibold text-[color:var(--emerald)]"
                 >
                   {badge}
                 </span>
@@ -245,14 +245,14 @@ export function HeroCinematic() {
             </div>
 
             {/* Hotels row */}
-            <div className="mt-3 grid grid-cols-2 gap-3 border-t border-gray-100 pt-3">
+            <div className="mt-3 grid grid-cols-2 gap-3 border-t border-[color:var(--border-light)] pt-3">
               {featuredCard.hotels.map((hotel) => (
                 <div key={hotel.name} className="text-center">
-                  <div className="flex items-center justify-center gap-1 text-[0.65rem] font-medium text-emerald-600">
+                  <div className="flex items-center justify-center gap-1 text-[0.65rem] font-medium text-[color:var(--emerald)]">
                     <FiMapPin className="h-3 w-3" />
                     {hotel.nights} GECE {hotel.city}
                   </div>
-                  <p className="mt-0.5 text-xs font-bold text-gray-800 uppercase leading-tight">
+                  <p className="mt-0.5 text-xs font-bold text-[color:var(--text)] uppercase leading-tight">
                     {hotel.name}
                   </p>
                 </div>
@@ -260,26 +260,26 @@ export function HeroCinematic() {
             </div>
 
             {/* Dates row */}
-            <div className="mt-3 grid grid-cols-3 gap-2 border-t border-gray-100 pt-3 text-center">
+            <div className="mt-3 grid grid-cols-3 gap-2 border-t border-[color:var(--border-light)] pt-3 text-center">
               <div>
-                <p className="text-[0.6rem] font-medium text-gray-400 uppercase tracking-wide">Gidiş</p>
+                <p className="text-[0.65rem] font-medium text-[color:var(--text-faint)] uppercase tracking-wide">Gidiş</p>
                 <div className="mt-0.5 flex items-center justify-center gap-1">
-                  <FiCalendar className="h-3 w-3 text-emerald-500" />
-                  <p className="text-xs font-bold text-gray-800">{featuredCard.dates.departure}</p>
+                  <FiCalendar className="h-3 w-3 text-[color:var(--emerald)]" />
+                  <p className="text-xs font-bold text-[color:var(--text)]">{featuredCard.dates.departure}</p>
                 </div>
               </div>
               <div>
-                <p className="text-[0.6rem] font-medium text-gray-400 uppercase tracking-wide">Geçiş</p>
+                <p className="text-[0.65rem] font-medium text-[color:var(--text-faint)] uppercase tracking-wide">Geçiş</p>
                 <div className="mt-0.5 flex items-center justify-center gap-1">
-                  <FiCalendar className="h-3 w-3 text-amber-500" />
-                  <p className="text-xs font-bold text-gray-800">{featuredCard.dates.transfer}</p>
+                  <FiCalendar className="h-3 w-3 text-[color:var(--gold)]" />
+                  <p className="text-xs font-bold text-[color:var(--text)]">{featuredCard.dates.transfer}</p>
                 </div>
               </div>
               <div>
-                <p className="text-[0.6rem] font-medium text-gray-400 uppercase tracking-wide">Dönüş</p>
+                <p className="text-[0.65rem] font-medium text-[color:var(--text-faint)] uppercase tracking-wide">Dönüş</p>
                 <div className="mt-0.5 flex items-center justify-center gap-1">
-                  <FiCalendar className="h-3 w-3 text-red-500" />
-                  <p className="text-xs font-bold text-gray-800">{featuredCard.dates.returnDate}</p>
+                  <FiCalendar className="h-3 w-3 text-[color:var(--gold)]" />
+                  <p className="text-xs font-bold text-[color:var(--text)]">{featuredCard.dates.returnDate}</p>
                 </div>
               </div>
             </div>

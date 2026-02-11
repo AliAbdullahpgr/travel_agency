@@ -27,7 +27,7 @@ function AccordionItem({
       className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${
         isOpen
           ? "border-[color:var(--emerald)]/20 bg-white shadow-lg shadow-[color:var(--emerald)]/[0.04]"
-          : "border-gray-200/80 bg-white hover:border-[color:var(--emerald)]/15"
+          : "border-[color:var(--border)] bg-white hover:border-[color:var(--border-hover)]"
       }`}
     >
       <button
@@ -49,12 +49,12 @@ function AccordionItem({
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        <span className="flex-1 text-base font-semibold text-(--obsidian) md:text-lg">
+        <span className="flex-1 text-base font-semibold text-[color:var(--text)] md:text-lg">
           {item.question}
         </span>
 
         <FiChevronDown
-          className={`h-5 w-5 shrink-0 text-[color:var(--emerald)]/60 transition-transform duration-300 ${
+          className={`h-5 w-5 shrink-0 text-[color:var(--text-faint)] transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -68,8 +68,8 @@ function AccordionItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease }}
           >
-            <div className="border-t border-gray-100 px-6 pb-5 pt-4">
-              <p className="pl-12 text-sm leading-relaxed text-gray-600 md:text-base">
+            <div className="border-t border-[color:var(--border-light)] px-6 pb-5 pt-4">
+              <p className="pl-12 text-sm leading-relaxed text-[color:var(--text-secondary)] md:text-base">
                 {item.answer}
               </p>
             </div>
@@ -96,9 +96,9 @@ export function FaqSection() {
       {/* Decorative elements */}
       <div className="pointer-events-none absolute -left-20 top-20 h-64 w-64 rounded-full bg-[color:var(--gold)]/[0.06] blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-20 h-64 w-64 rounded-full bg-[color:var(--brand)]/[0.06] blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--emerald)]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--border)] to-transparent" />
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -112,7 +112,7 @@ export function FaqSection() {
           <h2 className="font-display mt-3 text-3xl leading-tight text-[color:var(--emerald)] md:text-5xl">
             Merak Ettikleriniz
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-gray-500">
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-[color:var(--text-muted)]">
             Turlarımız ve hizmetlerimiz hakkında en çok sorulan soruların
             yanıtlarını burada bulabilirsiniz.
           </p>
@@ -138,7 +138,7 @@ export function FaqSection() {
           transition={{ duration: 0.6, delay: 0.5, ease }}
           className="mt-12 text-center"
         >
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-[color:var(--text-muted)]">
             Sorunuzun yanıtını bulamadınız mı?
           </p>
           <a

@@ -18,7 +18,7 @@ import { useMotionTier } from "~/lib/motion/use-motion-tier";
 const categoryLabels = {
   umre: "Umre",
   hac: "Hac",
-  kultur: "Kultur",
+  kultur: "Kültür",
 } as const;
 
 const currencySymbols = {
@@ -105,10 +105,10 @@ export function FeaturedCardSlider() {
       <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(4,14,12,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(4,14,12,0.12)_1px,transparent_1px)] [background-size:44px_44px]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--gold)]/45 to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-[92rem] px-4 py-16 md:px-8 md:py-24">
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 md:px-8 md:py-24">
         <div className="max-w-3xl">
           <h2 className="font-display text-3xl leading-tight text-[color:var(--emerald)] md:text-5xl">
-            Featured Tours
+            Öne Çıkan Turlar
           </h2>
         </div>
 
@@ -210,10 +210,10 @@ export function FeaturedCardSlider() {
                     duration: motionTier === "cinematic" ? 0.72 : 0.46,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={`absolute left-1/2 top-1/2 w-[min(92vw,39rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[1.9rem] shadow-[0_38px_95px_rgba(1,10,8,0.75)] ${
+                  className={`absolute left-1/2 top-1/2 w-[min(92vw,39rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] shadow-[0_38px_95px_rgba(1,10,8,0.75)] ${
                     isActive
-                      ? "border border-white/20 bg-[linear-gradient(150deg,#08221e,#040f0d)] opacity-100"
-                      : "border border-white/12 bg-[linear-gradient(150deg,rgba(8,34,30,0.92),rgba(4,15,13,0.96))]"
+                      ? "border border-white/20 bg-[linear-gradient(150deg,var(--emerald-deep),var(--obsidian))] opacity-100"
+                      : "border border-white/12 bg-[linear-gradient(150deg,var(--emerald-deep),var(--obsidian))]"
                   } ${
                     isVisible ? "pointer-events-auto" : "pointer-events-none"
                   } ${isActive ? "" : "cursor-pointer"}`}
@@ -235,18 +235,18 @@ export function FeaturedCardSlider() {
                     <div className="absolute inset-0 bg-[linear-gradient(170deg,rgba(2,11,9,0.24)_5%,rgba(2,11,9,0.54)_48%,rgba(2,11,9,0.9)_100%)]" />
 
                     <div className="absolute left-4 top-4 flex items-center gap-2">
-                      <span className="rounded-full border border-[color:var(--gold)]/38 bg-[color:var(--gold)]/[0.16] px-3 py-1 text-[0.62rem] font-bold tracking-[0.14em] uppercase text-[color:var(--gold-light)]">
+                      <span className="rounded-full border border-[color:var(--gold)]/38 bg-[color:var(--gold)]/[0.16] px-3 py-1 text-[0.65rem] font-bold tracking-[0.14em] uppercase text-[color:var(--gold-light)]">
                         {categoryLabels[tour.category]}
                       </span>
-                      <span className="rounded-full border border-white/20 bg-black/28 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.08em] uppercase text-white/78">
+                      <span className="rounded-full border border-white/20 bg-black/28 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.08em] uppercase text-white/78">
                         Premium
                       </span>
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3">
                       <div className="rounded-xl border border-white/12 bg-black/32 px-3 py-2 backdrop-blur-md">
-                        <p className="text-[0.6rem] font-semibold tracking-[0.14em] uppercase text-white/65">
-                          Baslangic Fiyati
+                        <p className="text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-white/65">
+                          Başlangıç Fiyatı
                         </p>
                         <p className="font-display text-xl text-white">
                           {formatPrice(tour.priceFrom, tour.currency)}
@@ -257,10 +257,10 @@ export function FeaturedCardSlider() {
                       </div>
 
                       <div className="rounded-xl border border-white/12 bg-black/32 px-3 py-2 text-right backdrop-blur-md">
-                        <p className="text-[0.6rem] font-semibold tracking-[0.14em] uppercase text-white/65">
-                          Sure
+                        <p className="text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-white/65">
+                          Süre
                         </p>
-                        <p className="font-display text-lg text-white">{tour.durationDays} Gun</p>
+                        <p className="font-display text-lg text-white">{tour.durationDays} Gün</p>
                       </div>
                     </div>
                   </div>
@@ -275,7 +275,7 @@ export function FeaturedCardSlider() {
                       {tour.badges.slice(0, 3).map((badge) => (
                         <span
                           key={badge}
-                          className="inline-flex items-center gap-1 rounded-full border border-emerald-300/24 bg-emerald-400/12 px-3 py-1 text-[0.66rem] font-medium text-emerald-100"
+                          className="inline-flex items-center gap-1 rounded-full border border-emerald-300/24 bg-emerald-400/12 px-3 py-1 text-[0.65rem] font-medium text-emerald-100"
                         >
                           <FiTag className="h-3 w-3" />
                           {badge}
@@ -283,13 +283,13 @@ export function FeaturedCardSlider() {
                       ))}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-[0.72rem] text-white/74">
+                      <div className="grid grid-cols-2 gap-2 text-xs text-white/74">
                       <div className="rounded-xl border border-white/12 bg-black/26 px-3 py-2">
                         <span className="inline-flex items-center gap-1 text-white/64">
                           <FiCalendar className="h-3.5 w-3.5" />
                           Program Tipi
                         </span>
-                        <p className="mt-1 font-semibold text-white">Planli Grup</p>
+                        <p className="mt-1 font-semibold text-white">Planlı Grup</p>
                       </div>
                       <div className="rounded-xl border border-white/12 bg-black/26 px-3 py-2">
                         <span className="inline-flex items-center gap-1 text-white/64">
@@ -305,14 +305,14 @@ export function FeaturedCardSlider() {
                     {isActive ? (
                       <Link
                         href={`/turlar/${tour.slug}`}
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--gold)/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-(--gold-light) transition hover:border-(--gold)/45 hover:bg-[linear-gradient(120deg,rgba(200,168,78,0.42),rgba(200,168,78,0.22))]"
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[color:var(--gold)]/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-[color:var(--gold-light)] transition hover:border-[color:var(--gold)]/45 hover:bg-[linear-gradient(120deg,rgba(200,168,78,0.42),rgba(200,168,78,0.22))]"
                       >
-                        Programi Incele
+                        Programı İncele
                         <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     ) : (
-                      <div className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--gold)/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-(--gold-light) opacity-60">
-                        Programi Incele
+                      <div className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[color:var(--gold)]/28 bg-[linear-gradient(120deg,rgba(200,168,78,0.32),rgba(200,168,78,0.16))] px-4 py-3 text-sm font-semibold text-[color:var(--gold-light)] opacity-60">
+                        Programı İncele
                         <FiArrowRight className="h-4 w-4" />
                       </div>
                     )}
@@ -327,7 +327,7 @@ export function FeaturedCardSlider() {
               type="button"
               onClick={goPrev}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--emerald)]/20 bg-white text-[color:var(--emerald)] shadow-sm transition hover:border-[color:var(--gold)]/45 hover:text-[color:var(--gold-dim)]"
-              aria-label="Onceki kart"
+              aria-label="Önceki kart"
             >
               <FiChevronLeft className="h-5 w-5" />
             </button>

@@ -67,16 +67,16 @@ const initialState: InquiryState = {
 };
 
 const steps = [
-  { number: "01", title: "Personal" },
-  { number: "02", title: "Trip" },
-  { number: "03", title: "Confirm" },
+  { number: "01", title: "Kişisel Bilgiler" },
+  { number: "02", title: "Seyahat Detayları" },
+  { number: "03", title: "Onay" },
 ] as const;
 
 const fieldClass =
-  "w-full rounded-xl border border-transparent bg-black/[0.04] px-4 py-4 text-base text-black placeholder:text-black/45 outline-none transition focus:bg-white focus:ring-2 focus:ring-black/20";
+  "w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--cream)] px-4 py-4 text-base text-[color:var(--text)] placeholder:text-[color:var(--text-faint)] outline-none transition focus:bg-white focus:border-[color:var(--emerald)] focus:ring-2 focus:ring-[color:var(--emerald)]/15";
 const labelClass = "flex flex-col gap-2.5";
 
-export function InquiryPanel({ compact = false }: InquiryPanelProps) {
+export function InquiryPanel({ title, subtitle, compact = false }: InquiryPanelProps) {
   const [form, setForm] = useState<InquiryState>(initialState);
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -89,20 +89,20 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
   const validateStep = (step: number) => {
     if (step === 0) {
       if (form.fullName.trim().length < 2 || form.phone.trim().length < 8) {
-        setFeedback({ type: "error", message: "Enter full name and valid phone." });
+        setFeedback({ type: "error", message: "Ad soyad ve geçerli telefon numarası girin." });
         return false;
       }
     }
 
     if (step === 1) {
       if (!form.plannedMonth || !form.adults) {
-        setFeedback({ type: "error", message: "Planned month and adults are required." });
+        setFeedback({ type: "error", message: "Planlanan ay ve yetişkin sayısı zorunludur." });
         return false;
       }
     }
 
     if (step === 2 && !form.consentAccepted) {
-      setFeedback({ type: "error", message: "Accept consent to complete." });
+      setFeedback({ type: "error", message: "Devam etmek için onay verin." });
       return false;
     }
 
@@ -137,7 +137,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
       setIsSubmitting(false);
       setForm(initialState);
       setCurrentStep(0);
-      setFeedback({ type: "success", message: "Form completed (UI only)." });
+      setFeedback({ type: "success", message: "Başvurunuz alınmıştır." });
     }, 350);
   };
 
@@ -146,21 +146,35 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
       id="hizli-basvuru"
       className={`mx-auto px-4 py-20 md:px-8 md:py-28 ${compact ? "max-w-5xl" : "max-w-7xl"}`}
     >
+      {(title || subtitle) && (
+        <div className="mb-10 text-center">
+          {title && (
+            <h2 className="font-display text-3xl leading-tight text-[color:var(--emerald)] md:text-5xl">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-[color:var(--text-muted)]">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
-        className="rounded-[2rem] bg-white p-5 text-black shadow-[0_30px_90px_rgba(0,0,0,0.12)] sm:p-10"
+        className="rounded-[2rem] border border-[color:var(--border-light)] bg-white p-5 text-[color:var(--text)] shadow-[0_30px_90px_rgba(0,0,0,0.08)] sm:p-10"
       >
         <div className="mb-10">
           <div className="relative">
-            <div className="absolute left-6 right-6 top-6 h-px bg-black/20" />
+            <div className="absolute left-6 right-6 top-6 h-px bg-[color:var(--border)]" />
             <div
-              className="absolute left-6 top-6 h-0.5 bg-black transition-all duration-300"
+              className="absolute left-6 top-6 h-0.5 bg-[color:var(--emerald)] transition-all duration-300"
               style={{ width: `calc((100% - 3rem) * ${progressRatio})` }}
               role="progressbar"
               aria-valuenow={Math.round(progressRatio * 100)}
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-label={`Form progress: ${Math.round(progressRatio * 100)}%`}
+              aria-label={`Form ilerleme: ${Math.round(progressRatio * 100)}%`}
             />
 
             <ol className="relative grid grid-cols-3 gap-3">
@@ -173,15 +187,15 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                     <span
                       className={`mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border text-base font-semibold transition ${
                         done
-                          ? "border-[#f59e0b] bg-[#f59e0b] text-white"
+                          ? "border-[color:var(--gold)] bg-[color:var(--gold)] text-white"
                           : active
-                            ? "border-black bg-white text-black"
-                            : "border-black/30 bg-white text-black/60"
+                            ? "border-[color:var(--emerald)] bg-white text-[color:var(--emerald)]"
+                            : "border-[color:var(--border)] bg-white text-[color:var(--text-faint)]"
                       }`}
                     >
                       {step.number}
                     </span>
-                    <p className="mt-2 text-base font-semibold text-black/75">{step.title}</p>
+                    <p className="mt-2 text-base font-semibold text-[color:var(--text-secondary)]">{step.title}</p>
                   </li>
                 );
               })}
@@ -192,11 +206,11 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
         {currentStep === 0 && (
           <div className="grid gap-7 md:grid-cols-2 md:gap-8">
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Full Name</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Ad Soyad</span>
               <input
                 className={fieldClass}
                 type="text"
-                placeholder="John Doe"
+                placeholder="Ad Soyad"
                 value={form.fullName}
                 onChange={(e) => setForm((prev) => ({ ...prev, fullName: e.target.value }))}
                 required
@@ -204,7 +218,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Phone</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Telefon</span>
               <input
                 className={fieldClass}
                 type="tel"
@@ -216,18 +230,18 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Email</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">E-posta</span>
               <input
                 className={fieldClass}
                 type="email"
-                placeholder="you@email.com"
+                placeholder="ornek@email.com"
                 value={form.email}
                 onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
               />
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">City</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Şehir</span>
               <input
                 className={fieldClass}
                 type="text"
@@ -238,18 +252,18 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Country</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Ülke</span>
               <input
                 className={fieldClass}
                 type="text"
-                placeholder="Turkey"
+                placeholder="Türkiye"
                 value={form.country}
                 onChange={(e) => setForm((prev) => ({ ...prev, country: e.target.value }))}
               />
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Date of Birth</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Doğum Tarihi</span>
               <input
                 className={fieldClass}
                 type="date"
@@ -263,14 +277,14 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
         {currentStep === 1 && (
           <div className="grid gap-7 md:grid-cols-2 md:gap-8">
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Planned Month</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Planlanan Ay</span>
               <select
                 className={fieldClass}
                 value={form.plannedMonth}
                 onChange={(e) => setForm((prev) => ({ ...prev, plannedMonth: e.target.value }))}
                 required
               >
-                <option value="">Select month</option>
+                <option value="">Ay seçin</option>
                 {plannedMonths.map((month) => (
                   <option key={month} value={month}>
                     {month}
@@ -280,27 +294,27 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Duration</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Süre</span>
               <select
                 className={fieldClass}
                 value={form.duration}
                 onChange={(e) => setForm((prev) => ({ ...prev, duration: e.target.value }))}
               >
-                <option value="">Select duration</option>
-                <option value="7">7 Days</option>
-                <option value="10">10 Days</option>
-                <option value="15">15 Days</option>
-                <option value="20">20 Days</option>
-                <option value="30">30 Days</option>
+                <option value="">Süre seçin</option>
+                <option value="7">7 Gün</option>
+                <option value="10">10 Gün</option>
+                <option value="15">15 Gün</option>
+                <option value="20">20 Gün</option>
+                <option value="30">30 Gün</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Departure City</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Kalkış Şehri</span>
               <input
                 className={fieldClass}
                 type="text"
-                placeholder="Istanbul"
+                placeholder="İstanbul"
                 value={form.departureCity}
                 onChange={(e) =>
                   setForm((prev) => ({ ...prev, departureCity: e.target.value }))
@@ -309,21 +323,21 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Tour Category</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Tur Kategorisi</span>
               <select
                 className={fieldClass}
                 value={form.tourCategory}
                 onChange={(e) => setForm((prev) => ({ ...prev, tourCategory: e.target.value }))}
               >
-                <option value="">Select category</option>
+                <option value="">Kategori seçin</option>
                 <option value="umre">Umre</option>
                 <option value="hac">Hac</option>
-                <option value="kultur">Cultural</option>
+                <option value="kultur">Kültür</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Traveler Profile</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Yolcu Profili</span>
               <select
                 className={fieldClass}
                 value={form.travelerProfile}
@@ -331,16 +345,16 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, travelerProfile: e.target.value }))
                 }
               >
-                <option value="">Select profile</option>
-                <option value="solo">Solo</option>
-                <option value="couple">Couple</option>
-                <option value="family">Family</option>
-                <option value="group">Group</option>
+                <option value="">Profil seçin</option>
+                <option value="solo">Bireysel</option>
+                <option value="couple">Çift</option>
+                <option value="family">Aile</option>
+                <option value="group">Grup</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Adults</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Yetişkin</span>
               <input
                 className={fieldClass}
                 type="number"
@@ -353,7 +367,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Children</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Çocuk</span>
               <input
                 className={fieldClass}
                 type="number"
@@ -365,36 +379,36 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Room Type</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Oda Tipi</span>
               <select
                 className={fieldClass}
                 value={form.roomType}
                 onChange={(e) => setForm((prev) => ({ ...prev, roomType: e.target.value }))}
               >
-                <option value="">Select room type</option>
-                <option value="double">Double</option>
-                <option value="triple">Triple</option>
-                <option value="quad">Quad</option>
-                <option value="single">Single</option>
+                <option value="">Oda tipi seçin</option>
+                <option value="double">Çift Kişilik</option>
+                <option value="triple">Üç Kişilik</option>
+                <option value="quad">Dört Kişilik</option>
+                <option value="single">Tek Kişilik</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Budget Range</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Bütçe Aralığı</span>
               <select
                 className={fieldClass}
                 value={form.budgetRange}
                 onChange={(e) => setForm((prev) => ({ ...prev, budgetRange: e.target.value }))}
               >
-                <option value="">Select budget</option>
-                <option value="economy">Economy</option>
-                <option value="comfort">Comfort</option>
+                <option value="">Bütçe seçin</option>
+                <option value="economy">Ekonomik</option>
+                <option value="comfort">Konfor</option>
                 <option value="premium">Premium</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Flexible Dates</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Esnek Tarih</span>
               <select
                 className={fieldClass}
                 value={form.flexibleDates}
@@ -402,14 +416,14 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, flexibleDates: e.target.value }))
                 }
               >
-                <option value="">Select option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="">Seçin</option>
+                <option value="yes">Evet</option>
+                <option value="no">Hayır</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Accommodation Style</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Konaklama Tercihi</span>
               <select
                 className={fieldClass}
                 value={form.accommodationStyle}
@@ -417,10 +431,10 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, accommodationStyle: e.target.value }))
                 }
               >
-                <option value="">Select style</option>
-                <option value="near-haram">Near Haram</option>
-                <option value="balanced">Balanced</option>
-                <option value="budget">Budget Friendly</option>
+                <option value="">Stil seçin</option>
+                <option value="near-haram">Harem Yakını</option>
+                <option value="balanced">Dengeli</option>
+                <option value="budget">Bütçe Dostu</option>
               </select>
             </label>
           </div>
@@ -429,7 +443,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
         {currentStep === 2 && (
           <div className="grid gap-7 md:grid-cols-2 md:gap-8">
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Contact Channel</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">İletişim Kanalı</span>
               <select
                 className={fieldClass}
                 value={form.contactChannel}
@@ -437,29 +451,29 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, contactChannel: e.target.value }))
                 }
               >
-                <option value="">Select channel</option>
-                <option value="phone">Phone Call</option>
+                <option value="">Kanal seçin</option>
+                <option value="phone">Telefon</option>
                 <option value="whatsapp">WhatsApp</option>
-                <option value="email">Email</option>
+                <option value="email">E-posta</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Best Contact Time</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Uygun İletişim Saati</span>
               <select
                 className={fieldClass}
                 value={form.contactTime}
                 onChange={(e) => setForm((prev) => ({ ...prev, contactTime: e.target.value }))}
               >
-                <option value="">Select time</option>
-                <option value="morning">Morning</option>
-                <option value="afternoon">Afternoon</option>
-                <option value="evening">Evening</option>
+                <option value="">Zaman seçin</option>
+                <option value="morning">Sabah</option>
+                <option value="afternoon">Öğleden Sonra</option>
+                <option value="evening">Akşam</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Passport Status</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Pasaport Durumu</span>
               <select
                 className={fieldClass}
                 value={form.passportStatus}
@@ -467,32 +481,32 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, passportStatus: e.target.value }))
                 }
               >
-                <option value="">Select status</option>
-                <option value="ready">Ready</option>
-                <option value="renewal">Need Renewal</option>
-                <option value="new">Need New Passport</option>
+                <option value="">Durum seçin</option>
+                <option value="ready">Hazır</option>
+                <option value="renewal">Yenileme Gerekli</option>
+                <option value="new">Yeni Pasaport Gerekli</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Visa Status</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Vize Durumu</span>
               <select
                 className={fieldClass}
                 value={form.visaStatus}
                 onChange={(e) => setForm((prev) => ({ ...prev, visaStatus: e.target.value }))}
               >
-                <option value="">Select status</option>
-                <option value="ready">Ready</option>
-                <option value="required">Need Support</option>
+                <option value="">Durum seçin</option>
+                <option value="ready">Hazır</option>
+                <option value="required">Destek Gerekli</option>
               </select>
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Emergency Contact Name</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Acil Durum Kişisi</span>
               <input
                 className={fieldClass}
                 type="text"
-                placeholder="Contact person"
+                placeholder="İrtibat kişisi"
                 value={form.emergencyContactName}
                 onChange={(e) =>
                   setForm((prev) => ({ ...prev, emergencyContactName: e.target.value }))
@@ -501,7 +515,7 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className={labelClass}>
-              <span className="text-base font-semibold text-black/85">Emergency Contact Phone</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Acil Durum Telefonu</span>
               <input
                 className={fieldClass}
                 type="tel"
@@ -514,16 +528,16 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             </label>
 
             <label className="md:col-span-2 flex flex-col gap-2.5">
-              <span className="text-base font-semibold text-black/85">Notes</span>
+              <span className="text-base font-semibold text-[color:var(--text)]">Notlar</span>
               <textarea
-                className="min-h-36 w-full rounded-xl border border-transparent bg-black/[0.04] px-4 py-4 text-base text-black placeholder:text-black/45 outline-none transition focus:bg-white focus:ring-2 focus:ring-black/20"
-                placeholder="Extra details"
+                className="min-h-36 w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--cream)] px-4 py-4 text-base text-[color:var(--text)] placeholder:text-[color:var(--text-faint)] outline-none transition focus:bg-white focus:border-[color:var(--emerald)] focus:ring-2 focus:ring-[color:var(--emerald)]/15"
+                placeholder="Ek detaylar"
                 value={form.notes}
                 onChange={(e) => setForm((prev) => ({ ...prev, notes: e.target.value }))}
               />
             </label>
 
-            <label className="md:col-span-2 flex items-start gap-3 rounded-xl bg-black/6 px-4 py-4 text-base text-black/85">
+            <label className="md:col-span-2 flex items-start gap-3 rounded-xl bg-[color:var(--sand)] px-4 py-4 text-base text-[color:var(--text)]">
               <input
                 type="checkbox"
                 checked={form.consentAccepted}
@@ -531,9 +545,9 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
                   setForm((prev) => ({ ...prev, consentAccepted: e.target.checked }))
                 }
                 className="mt-1 h-5 w-5 shrink-0 cursor-pointer"
-                style={{ accentColor: "#0a3d2e" }}
+                style={{ accentColor: "var(--emerald)" }}
               />
-              I approve this UI demo registration form.
+              Kişisel verilerimin işlenmesini ve tur kayıt sürecimi onaylıyorum.
             </label>
           </div>
         )}
@@ -546,29 +560,29 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
             className={`inline-flex items-center justify-center gap-2 rounded-full border px-7 py-3.5 text-base font-semibold transition ${
               currentStep === 0
                 ? "invisible"
-                : "border-black/25 text-black hover:border-black hover:bg-black/5"
+                : "border-[color:var(--emerald)]/25 text-[color:var(--emerald)] hover:border-[color:var(--emerald)] hover:bg-[color:var(--emerald)]/5"
             }`}
           >
             <FiArrowLeft className="h-4 w-4" />
-            Back
+            Geri
           </button>
 
           {currentStep < steps.length - 1 ? (
             <button
               type="button"
               onClick={goNext}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-black px-7 py-3.5 text-base font-semibold text-white transition hover:bg-black/85"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--emerald)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[color:var(--emerald-light)]"
             >
-              Next
+              İleri
               <FiArrowRight className="h-4 w-4" />
             </button>
           ) : (
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-black px-7 py-3.5 text-base font-semibold text-white transition hover:bg-black/85 disabled:opacity-60"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--emerald)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[color:var(--emerald-light)] disabled:opacity-60"
             >
-              {isSubmitting ? "Saving..." : "Finish"}
+              {isSubmitting ? "Gönderiliyor..." : "Gönder"}
               {!isSubmitting && <FiArrowRight className="h-4 w-4" />}
             </button>
           )}
@@ -578,8 +592,8 @@ export function InquiryPanel({ compact = false }: InquiryPanelProps) {
           <p
             className={`mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium ${
               feedback.type === "success"
-                ? "bg-black text-white"
-                : "bg-black/[0.06] text-black"
+                ? "bg-[color:var(--emerald)] text-white"
+                : "bg-[color:var(--emerald)]/[0.06] text-[color:var(--emerald-deep)]"
             }`}
           >
             {feedback.type === "success" && <FiCheckCircle className="h-4 w-4" />}

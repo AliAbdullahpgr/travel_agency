@@ -4,6 +4,7 @@ import { FeaturedCardSlider } from "~/components/public/FeaturedCardSlider";
 import { HeroCinematic } from "~/components/public/HeroCinematic";
 import { InquiryPanel } from "~/components/public/InquiryPanel";
 import { TestimonialsSection } from "~/components/public/TestimonialsSection";
+import { WhyChooseUs } from "~/components/public/WhyChooseUs";
 
 export const metadata: Metadata = {
   title: "Ana Sayfa",
@@ -24,11 +25,12 @@ export default function HomePage() {
     <>
       <HeroCinematic />
       <FeaturedCardSlider />
+      <WhyChooseUs />
       <TestimonialsSection />
       <FaqSection />
       <InquiryPanel
-        title="Form for Tour Registration"
-        subtitle="Move through 3 simple milestones and send your request in under two minutes."
+        title="Tur Kayıt Başvurusu"
+        subtitle="3 basit adımda başvurunuzu iki dakikadan kısa sürede gönderin."
       />
     </>
   );
