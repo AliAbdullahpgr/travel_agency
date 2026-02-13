@@ -20,19 +20,6 @@ export default async function AdminLoginPage() {
             Landing page uzerinden gelen basvurulari ve CMS iceriklerini bu panelden
             yonetebilirsiniz.
           </p>
-          <div className="admin-card-soft mt-7 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--text-muted)]">
-              Not
-            </p>
-            <p className="mt-2 text-sm text-[color:var(--text-secondary)]">
-              Bu panel veritabanindaki admin kullanicilariyla calisir. Ilk
-              <span className="mx-1 font-semibold">SUPER_ADMIN</span> icin
-              <code className="mx-1 rounded-md bg-[color:var(--emerald)]/[0.08] px-1.5 py-0.5 text-[0.78rem]">
-                npm run admin:bootstrap -- &lt;kullanici&gt; &lt;sifre&gt;
-              </code>
-              komutunu calistirin.
-            </p>
-          </div>
           <Link href="/" className="admin-btn admin-btn-ghost mt-7">
             Ana Sayfaya Don
           </Link>
