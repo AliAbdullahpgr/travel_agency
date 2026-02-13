@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const inquiry = await (db as any).inquiry.create({
+    const inquiry = await db.inquiry.create({
       data: {
         fullName: parsed.data.fullName,
         phone: parsed.data.phone,

@@ -57,7 +57,7 @@ async function updateInquiryStatus(formData: FormData) {
     return;
   }
 
-  await (db as any).inquiry.update({
+  await db.inquiry.update({
     where: { id: inquiryId },
     data: {
       status: nextStatus as InquiryStatus,
