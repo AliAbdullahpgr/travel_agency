@@ -25,9 +25,7 @@ export default async function ContactPage() {
         primaryCta={{ href: "#hizli-basvuru", label: "Hızlı Form" }}
       />
 
-      <div className="bg-(--emerald-deep)">
-        <ContactShowcase contactInfo={contactInfo} whatsapp={shell.socialUrls.whatsapp} />
-      </div>
+      <ContactShowcase contactInfo={contactInfo} whatsapp={shell.socialUrls.whatsapp} />
     </>
   );
 }

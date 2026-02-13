@@ -33,41 +33,39 @@ export default async function KulturToursPage() {
         secondaryCta={{ href: "/turlar/kudus-mescid-i-aksa-6-gun", label: "Kudüs Programı" }}
       />
 
-      <div className="bg-(--emerald-deep)">
-        <TourGrid
-          tours={tours}
-          title="Kültür Programları"
-          subtitle="Her rotada tarihi bağlamı güçlü, temposu dengeli ve anlatısı zengin kültür turları."
-        />
+      <TourGrid
+        tours={tours}
+        title="Kültür Programları"
+        subtitle="Her rotada tarihi bağlamı güçlü, temposu dengeli ve anlatısı zengin kültür turları."
+      />
 
-        <StorySection
-          eyebrow="Rota Kurgusu"
-          title="Sadece Gezi Değil, Anlamlı Bir Hafıza"
-          intro="Kültür turlarımız şehirleri hızlı tüketmez; mekânların tarihsel bağlamını ve inanç mirasını birlikte anlatır."
-          items={[
-            {
-              title: "Katmanlı Anlatım",
-              description:
-                "Mekan, dönem ve olaylar arasında bağ kuran anlatı dili ile ziyaretler daha anlamlı hale gelir.",
-            },
-            {
-              title: "Dengeli Tempo",
-              description:
-                "Yüksek hareketli şehir akışı ile dinlenme blokları dengelenerek yorgunluk yönetilir.",
-            },
-            {
-              title: "Yerel Dokuyla Buluşma",
-              description:
-                "Yalnızca turistik noktalara değil, yerel yaşam ritmini hissettiren duraklara da yer verilir.",
-            },
-            {
-              title: "Profesyonel Rehberlik",
-              description:
-                "Tarihsel ve dini arka planı güçlü rehber kadrosu ile her durakta bağlam net kalır.",
-            },
-          ]}
-        />
-      </div>
+      <StorySection
+        eyebrow="Rota Kurgusu"
+        title="Sadece Gezi Değil, Anlamlı Bir Hafıza"
+        intro="Kültür turlarımız şehirleri hızlı tüketmez; mekânların tarihsel bağlamını ve inanç mirasını birlikte anlatır."
+        items={[
+          {
+            title: "Katmanlı Anlatım",
+            description:
+              "Mekan, dönem ve olaylar arasında bağ kuran anlatı dili ile ziyaretler daha anlamlı hale gelir.",
+          },
+          {
+            title: "Dengeli Tempo",
+            description:
+              "Yüksek hareketli şehir akışı ile dinlenme blokları dengelenerek yorgunluk yönetilir.",
+          },
+          {
+            title: "Yerel Dokuyla Buluşma",
+            description:
+              "Yalnızca turistik noktalara değil, yerel yaşam ritmini hissettiren duraklara da yer verilir.",
+          },
+          {
+            title: "Profesyonel Rehberlik",
+            description:
+              "Tarihsel ve dini arka planı güçlü rehber kadrosu ile her durakta bağlam net kalır.",
+          },
+        ]}
+      />
 
       <InquiryPanel
         compact

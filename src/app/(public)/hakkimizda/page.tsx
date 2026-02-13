@@ -23,36 +23,34 @@ export default function AboutPage() {
         primaryCta={{ href: "/iletisim", label: "Ekibimizle Tanışın" }}
       />
 
-      <div className="bg-(--emerald-deep)">
-        <StorySection
-          eyebrow="Yaklaşım"
-          title="Nasıl Çalışıyoruz?"
-          intro="Süreçlerimizi üç ana eksende tasarlarız: planlama, saha yönetimi ve iletişim sürekliliği."
-          items={[
-            {
-              title: "Planlama Önceliği",
-              description:
-                "Her tur döneminden önce program akışı, konaklama senaryosu ve transfer planı detaylı biçimde gözden geçirilir.",
-            },
-            {
-              title: "Sahada Çevik Operasyon",
-              description:
-                "Grup yönetiminde hızlı karar alabilmek için rehber ve merkez ekip anlık iletişim altyapısı ile çalışır.",
-            },
-            {
-              title: "İnsan Odaklı İletişim",
-              description:
-                "Misafirlerimize kayıt sürecinden dönüşe kadar aynı iletişim çizgisinde, net ve sade bilgi sunarız.",
-            },
-            {
-              title: "Sürekli İyileştirme",
-              description:
-                "Her dönemin sonunda geri bildirimleri raporlar, bir sonraki sezona operasyonel geliştirme olarak taşırız.",
-            },
-          ]}
-        />
-        <TestimonialsDeck />
-      </div>
+      <StorySection
+        eyebrow="Yaklaşım"
+        title="Nasıl Çalışıyoruz?"
+        intro="Süreçlerimizi üç ana eksende tasarlarız: planlama, saha yönetimi ve iletişim sürekliliği."
+        items={[
+          {
+            title: "Planlama Önceliği",
+            description:
+              "Her tur döneminden önce program akışı, konaklama senaryosu ve transfer planı detaylı biçimde gözden geçirilir.",
+          },
+          {
+            title: "Sahada Çevik Operasyon",
+            description:
+              "Grup yönetiminde hızlı karar alabilmek için rehber ve merkez ekip anlık iletişim altyapısı ile çalışır.",
+          },
+          {
+            title: "İnsan Odaklı İletişim",
+            description:
+              "Misafirlerimize kayıt sürecinden dönüşe kadar aynı iletişim çizgisinde, net ve sade bilgi sunarız.",
+          },
+          {
+            title: "Sürekli İyileştirme",
+            description:
+              "Her dönemin sonunda geri bildirimleri raporlar, bir sonraki sezona operasyonel geliştirme olarak taşırız.",
+          },
+        ]}
+      />
+      <TestimonialsDeck />
     </>
   );
 }

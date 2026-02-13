@@ -103,7 +103,7 @@ export function FaqSection({
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[color:var(--cream)] px-4 py-20 md:px-8 md:py-28"
+      className="relative isolate overflow-hidden bg-white px-4 py-20 md:px-8 md:py-28"
     >
       <div className="pointer-events-none absolute -left-20 top-20 h-64 w-64 rounded-full bg-[color:var(--gold)]/[0.06] blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-20 h-64 w-64 rounded-full bg-[color:var(--brand)]/[0.06] blur-3xl" />

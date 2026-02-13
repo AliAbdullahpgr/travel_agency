@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
@@ -72,7 +72,7 @@ export function TourCard3D({ tour }: TourCard3DProps) {
     <motion.article
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      className="tour-card-3d group"
+      className="tour-card-3d group rounded-[1.8rem] border border-gray-200 bg-white p-3 shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-(--gold)/40"
       whileHover={
         motionTier === "cinematic" ? { y: -7, scale: 1.012 } : { y: -3, scale: 1.006 }
       }
@@ -93,28 +93,28 @@ export function TourCard3D({ tour }: TourCard3DProps) {
         </div>
 
         <div className="mt-4 space-y-3">
-          <h3 className="line-clamp-2 font-display text-2xl leading-tight text-white">{tour.title}</h3>
-          <p className="line-clamp-2 text-sm leading-relaxed text-white/70">{tour.shortBlurb}</p>
+          <h3 className="line-clamp-2 font-display text-2xl leading-tight text-gray-900">{tour.title}</h3>
+          <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">{tour.shortBlurb}</p>
 
           <div className="flex flex-wrap gap-2">
             {tour.badges.slice(0, 2).map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-white/75"
+                className="rounded-full border border-[color:var(--emerald)]/15 bg-[color:var(--emerald)]/[0.05] px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-[color:var(--emerald)]"
               >
                 {badge}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-3">
+          <div className="flex items-center justify-between border-t border-gray-100 pt-3">
             <div>
-              <p className="text-[0.65rem] tracking-[0.15em] uppercase text-white/55">Başlangıç</p>
-              <p className="text-lg font-semibold text-[color:var(--gold-light)]">
+              <p className="text-[0.65rem] tracking-[0.15em] uppercase text-gray-400">Başlangıç</p>
+              <p className="text-lg font-semibold text-[color:var(--gold)]">
                 {formatTourPrice(tour.priceFrom, tour.currency)}
               </p>
             </div>
-            <span className="inline-flex items-center gap-1 text-sm font-semibold text-white">
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--emerald)]">
               Detay
               <FiArrowUpRight className="h-4 w-4" />
             </span>

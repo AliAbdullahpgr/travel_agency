@@ -33,41 +33,39 @@ export default async function HacToursPage() {
         secondaryCta={{ href: "/turlar/otel-tercihli-hac-2026", label: "Örnek Program" }}
       />
 
-      <div className="bg-(--emerald-deep)">
-        <TourGrid
-          tours={tours}
-          title="Hac Paketleri"
-          subtitle="Saha planlaması, konaklama tercihi ve ulaşım modeline göre hazırlanmış hac programları."
-        />
+      <TourGrid
+        tours={tours}
+        title="Hac Paketleri"
+        subtitle="Saha planlaması, konaklama tercihi ve ulaşım modeline göre hazırlanmış hac programları."
+      />
 
-        <StorySection
-          eyebrow="Saha Yönetimi"
-          title="Hac Operasyonunda Kritik Noktalar"
-          intro="Hac programında başarıyı belirleyen unsur; yalnızca otel kalitesi değil, yoğun günlerdeki saha koordinasyonudur."
-          items={[
-            {
-              title: "Kritik Gün Senaryoları",
-              description:
-                "Arafat ve Mina geçişleri için alternatif zamanlama ve toplanma planları önceden hazırlanır.",
-            },
-            {
-              title: "Grup İçi Segmentasyon",
-              description:
-                "Yaş, fiziksel durum ve tempo beklentisine göre mikro grup düzeni kurularak kalabalık yönetimi iyileştirilir.",
-            },
-            {
-              title: "Gerçek Zamanlı İletişim",
-              description:
-                "Saha sorumluları, rehberler ve merkez ekip aynı operasyon hattında ilerleyerek gecikmeleri azaltır.",
-            },
-            {
-              title: "Konfor ve İbadet Dengesi",
-              description:
-                "Konaklama tercihi ibadet akışını destekleyecek şekilde belirlenir; yorgunluğu artıran gereksiz hareket azaltılır.",
-            },
-          ]}
-        />
-      </div>
+      <StorySection
+        eyebrow="Saha Yönetimi"
+        title="Hac Operasyonunda Kritik Noktalar"
+        intro="Hac programında başarıyı belirleyen unsur; yalnızca otel kalitesi değil, yoğun günlerdeki saha koordinasyonudur."
+        items={[
+          {
+            title: "Kritik Gün Senaryoları",
+            description:
+              "Arafat ve Mina geçişleri için alternatif zamanlama ve toplanma planları önceden hazırlanır.",
+          },
+          {
+            title: "Grup İçi Segmentasyon",
+            description:
+              "Yaş, fiziksel durum ve tempo beklentisine göre mikro grup düzeni kurularak kalabalık yönetimi iyileştirilir.",
+          },
+          {
+            title: "Gerçek Zamanlı İletişim",
+            description:
+              "Saha sorumluları, rehberler ve merkez ekip aynı operasyon hattında ilerleyerek gecikmeleri azaltır.",
+          },
+          {
+            title: "Konfor ve İbadet Dengesi",
+            description:
+              "Konaklama tercihi ibadet akışını destekleyecek şekilde belirlenir; yorgunluğu artıran gereksiz hareket azaltılır.",
+          },
+        ]}
+      />
 
       <InquiryPanel
         compact

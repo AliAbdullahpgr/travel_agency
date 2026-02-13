@@ -33,41 +33,39 @@ export default async function UmreToursPage() {
         secondaryCta={{ href: "/turlar/vip-umre-altin-15-gun", label: "VIP Paketi Gör" }}
       />
 
-      <div className="bg-(--emerald-deep)">
-        <TourGrid
-          tours={tours}
-          title="Umre Paketleri"
-          subtitle="Süre, konaklama ve rehberlik yoğunluğuna göre katmanlı umre koleksiyonumuzu inceleyin."
-        />
+      <TourGrid
+        tours={tours}
+        title="Umre Paketleri"
+        subtitle="Süre, konaklama ve rehberlik yoğunluğuna göre katmanlı umre koleksiyonumuzu inceleyin."
+      />
 
-        <StorySection
-          eyebrow="Planlama"
-          title="Umrede Doğru Paket Nasıl Seçilir?"
-          intro="Paket seçimini sadece fiyat üzerinden değil, yolculuğun fiziksel temposu ve hedeflenen ibadet yoğunluğu üzerinden yapmalısınız."
-          items={[
-            {
-              title: "Süreye Göre Seçim",
-              description:
-                "10 günlük paketler yoğun tempoya uygundur; 15-20 gün programları daha geniş ve dengeli bir ritim sunar.",
-            },
-            {
-              title: "Konaklama Konumu",
-              description:
-                "Mescidlere yakınlık yürüyüş yükünü doğrudan etkiler. Özellikle ileri yaş gruplarında kritik fark yaratır.",
-            },
-            {
-              title: "Rehberlik Modeli",
-              description:
-                "Kalabalık gruplarda rehber başına düşen kişi sayısı, program kalitesini belirleyen ana göstergedir.",
-            },
-            {
-              title: "Ulaşım ve Transfer",
-              description:
-                "Uçuş tipi ve transfer akışının netliği, ilk ve son günlerdeki yorgunluğu ciddi şekilde düşürür.",
-            },
-          ]}
-        />
-      </div>
+      <StorySection
+        eyebrow="Planlama"
+        title="Umrede Doğru Paket Nasıl Seçilir?"
+        intro="Paket seçimini sadece fiyat üzerinden değil, yolculuğun fiziksel temposu ve hedeflenen ibadet yoğunluğu üzerinden yapmalısınız."
+        items={[
+          {
+            title: "Süreye Göre Seçim",
+            description:
+              "10 günlük paketler yoğun tempoya uygundur; 15-20 gün programları daha geniş ve dengeli bir ritim sunar.",
+          },
+          {
+            title: "Konaklama Konumu",
+            description:
+              "Mescidlere yakınlık yürüyüş yükünü doğrudan etkiler. Özellikle ileri yaş gruplarında kritik fark yaratır.",
+          },
+          {
+            title: "Rehberlik Modeli",
+            description:
+              "Kalabalık gruplarda rehber başına düşen kişi sayısı, program kalitesini belirleyen ana göstergedir.",
+          },
+          {
+            title: "Ulaşım ve Transfer",
+            description:
+              "Uçuş tipi ve transfer akışının netliği, ilk ve son günlerdeki yorgunluğu ciddi şekilde düşürür.",
+          },
+        ]}
+      />
 
       <InquiryPanel
         compact
