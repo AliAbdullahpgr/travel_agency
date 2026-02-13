@@ -3,191 +3,194 @@
 const tours: TourDetail[] = [
   {
     slug: "vip-umre-altin-15-gun",
-    title: "VIP Altın Umre 15 Gün",
+    title: "VIP Altın Umre Paketi · 15 Gün",
     category: "umre",
     durationDays: 15,
-    priceFrom: 2450,
+    priceFrom: 2750,
     currency: "USD",
-    heroImage: "/4.jpg",
-    badges: ["5 Yıldız Otel", "VIP Transfer", "Sınırlı Kontenjan"],
+    heroImage: "/kabbah1.jpg",
+    badges: ["5★ Harem Manzaralı Otel", "Özel VIP Transfer", "Sınırlı Kontenjan"],
     shortBlurb:
-      "Mekke ve Medine'de premium konaklama, yakın mesafe transferleri ve yüksek rehber desteği.",
+      "Kabe'ye yürüme mesafesinde 5 yıldızlı konaklama, özel araç transferleri ve birebir rehberlik desteğiyle tasarlanmış premium umre deneyimi.",
     itinerary: [
       {
         day: "1-2. Gün",
-        title: "Ankara Çıkış ve Medine Yerleşim",
+        title: "Ankara Çıkış & Medine Yerleşim",
         description:
-          "Direkt uçuş sonrası otel yerleşimi, grup tanışması ve ilk bilgilendirme oturumu yapılır.",
+          "Direkt uçuş sonrası VIP karşılama, 5 yıldızlı otele yerleşim ve detaylı program bilgilendirmesi.",
       },
       {
         day: "3-6. Gün",
-        title: "Medine Ziyaretleri",
+        title: "Medine Manevi Programı",
         description:
-          "Ravza planlaması, rehberli mescit ziyaretleri ve günlük ibadet akışı organize edilir.",
+          "Mescid-i Nebevi ziyaretleri, Ravza-i Mutahhara planlaması ve rehber eşliğinde tarihi mekanlar turu.",
       },
       {
         day: "7. Gün",
-        title: "Mekke Geçişi",
+        title: "Mekke'ye VIP Geçiş",
         description:
-          "Konforlu transfer, ihram bilgilendirmesi ve umre adımlarının uygulamalı rehberliği sunulur.",
+          "Özel araçla konforlu transfer, ihram rehberliği ve umre ibadetlerinin adım adım uygulamalı anlatımı.",
       },
       {
         day: "8-15. Gün",
-        title: "Mekke Programı ve Dönüş",
+        title: "Mekke İbadet Programı & Dönüş",
         description:
-          "Kabe çevresindeki ibadet düzeni, toplu bilgilendirmeler ve güvenli dönüş koordinasyonu tamamlanır.",
+          "Kabe tavafı, sa'y ibadeti, günlük toplu zikir ve sohbet halkaları; son gün koordineli dönüş.",
       },
     ],
     includes: [
-      "Gidiş-dönüş uçak bileti",
-      "5 yıldızlı otelde konaklama",
+      "Gidiş-dönüş direkt uçak bileti",
+      "5 yıldızlı Harem manzaralı otel",
       "Sabah-akşam açık büfe yemek",
-      "Alan ve şehir içi transferler",
-      "Tecrübeli rehber ekibi",
+      "VIP havalimanı & şehir içi transfer",
+      "Tecrübeli din görevlisi ve rehber",
       "Seyahat sağlık sigortası",
     ],
     excludes: [
       "Kişisel harcamalar",
-      "Ekstra özel oda yükseltmeleri",
+      "Özel oda yükseltme farkı",
       "Yurt dışı çıkış harcı",
     ],
     faq: [
       {
-        question: "Bu pakette yürüyüş mesafesi ne kadar?",
+        question: "Otel Kabe'ye ne kadar uzaklıkta?",
         answer:
-          "Konaklama Kabe ve Mescid-i Nebevi çevresine yakın konumdadır; günlük yoğunluk durumuna göre değişmekle birlikte minimum yürüme hedeflenir.",
+          "Konaklama Harem bölgesine yürüme mesafesindedir; günlük ibadetlerde araç ihtiyacı olmadan ulaşım sağlanır.",
       },
       {
-        question: "Vize süreçlerini siz yönetiyor musunuz?",
+        question: "Vize işlemlerini siz mi yürütüyorsunuz?",
         answer:
-          "Evet. Evrak kontrolü, başvuru ve takip süreçleri ekip tarafından yönetilir.",
+          "Evet. Evrak hazırlığı, başvuru ve takip süreçlerinin tamamı ekibimiz tarafından yürütülür.",
       },
     ],
-    gallery: ["/4.jpg", "/1.jpg", "/3.jpg"],
+    gallery: ["/kabbah1.jpg", "/kabbah2.jpg", "/kabbah3.jpg"],
     seo: {
       title: "VIP Altın Umre 15 Gün | Şükür Turizm",
       description:
-        "Premium konaklama ve yüksek rehberlik standardıyla 15 günlük VIP umre paketi.",
+        "Harem manzaralı 5 yıldızlı konaklama ve VIP transfer ile 15 günlük premium umre paketi.",
     },
   },
   {
     slug: "aile-umre-10-gun",
-    title: "Aile Umre Programı 10 Gün",
+    title: "Aile Umre Programı · 10 Gün",
     category: "umre",
     durationDays: 10,
-    priceFrom: 1290,
+    priceFrom: 1490,
     currency: "USD",
-    heroImage: "/1.jpg",
-    badges: ["Aile Dostu", "Ekonomik", "Kısa Program"],
+    heroImage: "/kabbah2.jpg",
+    badges: ["Aile & Çocuk Dostu", "Esnek Tempo", "Ekonomik Paket"],
     shortBlurb:
-      "Çocuklu ailelere uygun ritimde, kısa süreli ama yoğun manevi program.",
+      "Çocuklu aileler için sakin tempoda planlanmış, kısa ama öz manevi program. Rahat konaklama ve esnek ibadet düzeniyle huzurlu bir umre.",
     itinerary: [
       {
         day: "1. Gün",
-        title: "Uçuş ve Karşılama",
+        title: "Karşılama & Yerleşim",
         description:
-          "Havaalanı karşılama, otel yerleşimi ve aile odaklı bilgilendirme yapılır.",
+          "Havaalanı karşılama, aile odaklı otel yerleşimi ve çocuklar dahil oryantasyon.",
       },
       {
         day: "2-4. Gün",
-        title: "Medine İbadet Programı",
+        title: "Medine Ziyaretleri",
         description:
-          "Ailelerin rahat hareket edebileceği saatlerde rehberli ziyaretler planlanır.",
+          "Çocukların rahat edebileceği saatlerde Mescid-i Nebevi ve çevre ziyaretleri.",
       },
       {
         day: "5. Gün",
-        title: "Mekke Transferi",
+        title: "Mekke'ye Aile Transferi",
         description:
-          "Konforlu geçiş ve umre uygulama akışının adım adım rehberliği sağlanır.",
+          "Klimalı araçlarla konforlu geçiş; ihram ve umre adımlarının aile diline uygun anlatımı.",
       },
       {
         day: "6-10. Gün",
-        title: "Mekke ve Dönüş",
+        title: "Mekke Programı & Dönüş",
         description:
-          "İbadet temposu günlük gruplara bölünür, dönüş öncesi genel değerlendirme yapılır.",
+          "Esnek ibadet temposu, çocuk molalarıyla desteklenmiş tavaf düzeni ve koordineli dönüş.",
       },
     ],
     includes: [
       "Gidiş-dönüş uçak bileti",
-      "4 yıldız otel konaklama",
-      "Transferler",
+      "4 yıldızlı aile odaları",
+      "Günlük kahvaltı & akşam yemeği",
+      "Tüm transferler",
       "Rehberlik hizmeti",
-      "Temel sağlık danışmanlığı",
+      "Seyahat sigortası",
     ],
-    excludes: ["Kişisel alışveriş", "Ekstra geziler"],
+    excludes: ["Kişisel alışveriş", "Ekstra tur satın alımları"],
     faq: [
       {
-        question: "Çocuklar için özel düzen var mı?",
+        question: "Küçük çocuklar için özel düzenleme var mı?",
         answer:
-          "Program saatleri ve yürüyüş yoğunluğu aile konforuna göre planlanır.",
+          "Evet. Program saatleri, yürüyüş mesafeleri ve mola süreleri aile konforuna göre ayarlanır.",
       },
       {
-        question: "Odalar kaç kişilik?",
-        answer: "Aile büyüklüğüne göre 2, 3 veya 4 kişilik seçenekler sunulur.",
+        question: "Oda tipleri nasıl belirleniyor?",
+        answer: "Aile büyüklüğüne göre 2, 3 veya 4 kişilik oda seçenekleri sunulmaktadır.",
       },
     ],
-    gallery: ["/1.jpg", "/3.jpg", "/4.jpg"],
+    gallery: ["/kabbah2.jpg", "/kabbah1.jpg", "/kabbah3.jpg"],
     seo: {
       title: "Aile Umre Programı 10 Gün | Şükür Turizm",
-      description: "Aileler için dengeli tempoda planlanan 10 günlük umre turu.",
+      description: "Çocuklu aileler için esnek tempoda planlanmış 10 günlük umre paketi.",
     },
   },
   {
     slug: "ramazan-umresi-20-gun",
-    title: "Ramazan Umresi 20 Gün",
+    title: "Ramazan Özel Umre · 20 Gün",
     category: "umre",
     durationDays: 20,
-    priceFrom: 1890,
+    priceFrom: 2190,
     currency: "USD",
-    heroImage: "/3.jpg",
-    badges: ["Ramazan Özel", "İftar Programı", "Uzun Konaklama"],
+    heroImage: "/kabbah3.jpg",
+    badges: ["Ramazan Özel", "Sahur & İftar Dahil", "Kadir Gecesi Programı"],
     shortBlurb:
-      "Ramazan ayını kutsal topraklarda geçirmek isteyenler için kapsamlı uzun dönem plan.",
+      "Ramazan'ın maneviyatını Haremeyn'de yaşayın. Sahur-iftar organizasyonu, Kadir Gecesi özel programı ve 20 gün boyunca kesintisiz ibadet düzeni.",
     itinerary: [
       {
         day: "1-5. Gün",
-        title: "Medine Başlangıç",
-        description: "Ritme alışma süreci, ibadet ve ziyaretlerin dengeli dağılımı.",
+        title: "Medine'de Ramazan Başlangıcı",
+        description: "Oruç ritmine uyum, Mescid-i Nebevi'de teravih namazları ve rehberli ziyaret programı.",
       },
       {
         day: "6. Gün",
-        title: "Mekke Geçiş",
-        description: "İhram ve umre adımları için saha rehberliği.",
+        title: "Mekke'ye Geçiş & İhram",
+        description: "Konforlu transfer ile Mekke'ye geçiş; ihram rehberliği ve umre ibadetlerinin uygulanması.",
       },
       {
         day: "7-19. Gün",
-        title: "Ramazan Programı",
+        title: "Mekke Ramazan Programı",
         description:
-          "Sahur/iftar organizasyonu, günlük ibadet rotaları ve bilgilendirme halkaları.",
+          "Günlük sahur-iftar organizasyonu, Harem'de teravih, Kadir Gecesi özel ibadeti ve sohbet halkaları.",
       },
       {
         day: "20. Gün",
-        title: "Dönüş",
-        description: "Grup kapanış toplantısı ve koordineli dönüş.",
+        title: "Veda & Dönüş",
+        description: "Veda tavafı, grup kapanış duası ve koordineli havalimanı transferi.",
       },
     ],
     includes: [
-      "Uçak bileti",
-      "4-5 yıldız otel opsiyonları",
-      "Sahur ve iftar düzeni",
-      "Rehberlik ve transfer",
+      "Gidiş-dönüş uçak bileti",
+      "4-5 yıldızlı otel seçenekleri",
+      "20 gün sahur & iftar programı",
+      "Tüm transferler",
+      "Din görevlisi ve rehber",
+      "Seyahat sigortası",
     ],
-    excludes: ["Kişisel ikramlar", "Ekstra tur satın alımları"],
+    excludes: ["Kişisel harcamalar", "Ekstra tur satın alımları"],
     faq: [
       {
-        question: "İftar programı otele dahil mi?",
-        answer: "Evet, paket kapsamındaki konaklamada iftar düzeni sağlanır.",
+        question: "Sahur ve iftar programı nasıl işliyor?",
+        answer: "Her gün otelde organize sahur ve iftar servisi sunulur; Harem yakınında alternatif düzenler de planlanır.",
       },
       {
-        question: "Program tek grup olarak mı ilerliyor?",
+        question: "Kadir Gecesi için özel program var mı?",
         answer:
-          "Evet. Ana omurga tek gruptur, ancak günlük ritimlere göre alt grup yönlendirmesi yapılabilir.",
+          "Evet. Kadir Gecesi adayı gecelerde Harem'de özel ibadet programı, dua ve zikir halkaları düzenlenir.",
       },
     ],
-    gallery: ["/3.jpg", "/1.jpg", "/4.jpg"],
+    gallery: ["/kabbah3.jpg", "/kabbah1.jpg", "/kabbah2.jpg"],
     seo: {
       title: "Ramazan Umresi 20 Gün | Şükür Turizm",
-      description: "Ramazan ayı için uzun süreli organize umre planı.",
+      description: "Sahur-iftar dahil, Kadir Gecesi özel programlı 20 günlük Ramazan umre paketi.",
     },
   },
   {

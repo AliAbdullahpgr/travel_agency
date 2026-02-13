@@ -4,7 +4,7 @@ import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-mot
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type MouseEvent } from "react";
-import { FiArrowUpRight, FiClock } from "react-icons/fi";
+import { FiArrowRight, FiCalendar, FiMapPin } from "react-icons/fi";
 import { formatTourPrice, getCategoryLabel } from "~/content/helpers";
 import type { TourSummary } from "~/content/types";
 import { useMotionTier } from "~/lib/motion/use-motion-tier";
@@ -48,7 +48,7 @@ export function TourCard3D({ tour }: TourCard3DProps) {
   }, []);
 
   const tiltEnabled = hasFinePointer && motionTier === "cinematic";
-  const tiltAmount = motionTier === "cinematic" ? 10 : 5;
+  const tiltAmount = motionTier === "cinematic" ? 8 : 4;
 
   const handleMove = (event: MouseEvent<HTMLElement>) => {
     if (!tiltEnabled) {
@@ -72,51 +72,73 @@ export function TourCard3D({ tour }: TourCard3DProps) {
     <motion.article
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      className="tour-card-3d group rounded-[1.8rem] border border-gray-200 bg-white p-3 shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-(--gold)/40"
+      className="tour-card-3d group flex flex-col overflow-hidden rounded-2xl border border-(--border-light) bg-white shadow-[0_2px_20px_rgba(10,61,46,0.06)] transition-all duration-300 hover:border-(--border-hover) hover:shadow-[0_8px_40px_rgba(10,61,46,0.12)]"
       whileHover={
-        motionTier === "cinematic" ? { y: -7, scale: 1.012 } : { y: -3, scale: 1.006 }
+        motionTier === "cinematic" ? { y: -6, scale: 1.01 } : { y: -2, scale: 1.005 }
       }
       transition={{ duration: 0.25, ease: "easeOut" }}
       style={tiltEnabled ? { rotateX, rotateY, transformPerspective: 1100 } : undefined}
     >
-      <Link href={`/turlar/${tour.slug}`} className="block h-full">
-        <div className="relative h-60 overflow-hidden rounded-[1.35rem]">
-          <Image src={tour.heroImage} alt={tour.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_38%,rgba(1,8,7,0.84)_100%)]" />
-          <div className="absolute left-3 top-3 inline-flex items-center rounded-full border border-white/30 bg-black/35 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.15em] uppercase text-white">
+      <Link href={`/turlar/${tour.slug}`} className="flex h-full flex-col">
+        {/* ── Image ── */}
+        <div className="relative h-56 overflow-hidden">
+          <Image
+            src={tour.heroImage}
+            alt={tour.title}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+          />
+          {/* Soft bottom vignette so text below pops */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(0,0,0,0.35)_100%)]" />
+
+          {/* Category pill — top-left */}
+          <div className="absolute left-3.5 top-3.5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[0.65rem] font-bold tracking-[0.12em] uppercase text-(--emerald) shadow-sm backdrop-blur-sm">
+            <FiMapPin className="h-3 w-3" />
             {getCategoryLabel(tour.category)}
           </div>
-          <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-xs text-white/90">
-            <FiClock className="h-3.5 w-3.5" />
+
+          {/* Duration pill — bottom-left */}
+          <div className="absolute bottom-3 left-3.5 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[0.7rem] font-semibold text-(--text) shadow-sm backdrop-blur-sm">
+            <FiCalendar className="h-3 w-3 text-(--emerald)" />
             {tour.durationDays} Gün
+          </div>
+
+          {/* Price tag — bottom-right */}
+          <div className="absolute bottom-3 right-3.5 rounded-full bg-(--emerald) px-3.5 py-1.5 text-sm font-bold text-white shadow-md">
+            {formatTourPrice(tour.priceFrom, tour.currency)}
           </div>
         </div>
 
-        <div className="mt-4 space-y-3">
-          <h3 className="line-clamp-2 font-display text-2xl leading-tight text-gray-900">{tour.title}</h3>
-          <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">{tour.shortBlurb}</p>
+        {/* ── Content ── */}
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="line-clamp-2 font-display text-xl leading-snug text-(--text) md:text-[1.35rem]">
+            {tour.title}
+          </h3>
 
-          <div className="flex flex-wrap gap-2">
-            {tour.badges.slice(0, 2).map((badge) => (
+          <p className="mt-2 line-clamp-2 text-[0.82rem] leading-relaxed text-(--text-muted)">
+            {tour.shortBlurb}
+          </p>
+
+          {/* Badges */}
+          <div className="mt-3.5 flex flex-wrap gap-1.5">
+            {tour.badges.slice(0, 3).map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-[color:var(--emerald)]/15 bg-[color:var(--emerald)]/[0.05] px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-[color:var(--emerald)]"
+                className="rounded-md border border-(--gold)/20 bg-(--gold)/[0.07] px-2 py-0.5 text-[0.6rem] font-semibold tracking-[0.08em] uppercase text-(--gold-dark)"
               >
                 {badge}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-gray-100 pt-3">
-            <div>
-              <p className="text-[0.65rem] tracking-[0.15em] uppercase text-gray-400">Başlangıç</p>
-              <p className="text-lg font-semibold text-[color:var(--gold)]">
-                {formatTourPrice(tour.priceFrom, tour.currency)}
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--emerald)]">
-              Detay
-              <FiArrowUpRight className="h-4 w-4" />
+          {/* Spacer + CTA row pinned to bottom */}
+          <div className="flex items-center justify-between border-t border-(--border-light) pt-4 mt-auto">
+            <span className="text-[0.7rem] font-medium tracking-wide uppercase text-(--text-faint)">
+              Başlangıç fiyatı
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-(--emerald) px-4 py-1.5 text-xs font-semibold text-white transition-colors group-hover:bg-(--emerald-light)">
+              Detayları Gör
+              <FiArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
             </span>
           </div>
         </div>
