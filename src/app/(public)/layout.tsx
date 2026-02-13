@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Şükür Turizm",
     description:
       "Umre, hac ve kültür turlarında güçlü operasyon, estetik deneyim ve güvenli planlama.",
-    images: ["/hero_image.jpg"],
+    images: ["/1.jpg"],
     locale: "tr_TR",
     type: "website",
   },

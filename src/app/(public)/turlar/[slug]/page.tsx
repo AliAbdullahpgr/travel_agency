@@ -6,7 +6,8 @@ import { FiArrowLeft, FiCheckCircle, FiMinusCircle } from "react-icons/fi";
 import { InquiryPanel } from "~/components/public/InquiryPanel";
 import { TourGrid } from "~/components/public/TourGrid";
 import { formatTourPrice } from "~/content/helpers";
-import { getRelatedTours, getTourBySlug, tourDetails } from "~/content/tours";
+import { getInquiryPanelContent } from "~/server/cms/sections";
+import { getPublishedTourBySlug, listRelatedPublishedTours } from "~/server/cms/tours";
 
 type TourPageParams = {
   slug: string;
@@ -16,13 +17,11 @@ type TourPageProps = {
   params: Promise<TourPageParams>;
 };
 
-export async function generateStaticParams(): Promise<TourPageParams[]> {
-  return tourDetails.map((tour) => ({ slug: tour.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const tour = getTourBySlug(slug);
+  const tour = await getPublishedTourBySlug(slug);
 
   if (!tour) {
     return {
@@ -44,13 +43,15 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 
 export default async function TourDetailPage({ params }: TourPageProps) {
   const { slug } = await params;
-  const tour = getTourBySlug(slug);
+  const [tour, relatedTours, inquiryPanel] = await Promise.all([
+    getPublishedTourBySlug(slug),
+    listRelatedPublishedTours(slug),
+    getInquiryPanelContent(),
+  ]);
 
   if (!tour) {
     notFound();
   }
-
-  const relatedTours = getRelatedTours(slug);
 
   return (
     <>
@@ -156,6 +157,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
       <InquiryPanel
         compact
+        content={inquiryPanel}
         title="Bu Program İçin Hızlı Bilgi Alın"
         subtitle="Aynı gün geri dönüş ile uygun tarih ve kontenjan durumunu netleştirelim."
       />

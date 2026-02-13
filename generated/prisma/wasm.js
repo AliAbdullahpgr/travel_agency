@@ -128,6 +128,12 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  username: 'username',
+  passwordHash: 'passwordHash',
+  role: 'role',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   emailVerified: 'emailVerified',
   image: 'image'
 };
@@ -138,9 +144,94 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
+exports.Prisma.InquiryScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  phone: 'phone',
+  plannedMonth: 'plannedMonth',
+  consentAccepted: 'consentAccepted',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CmsSectionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  data: 'data',
+  updatedAt: 'updatedAt',
+  updatedById: 'updatedById'
+};
+
+exports.Prisma.TourScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  category: 'category',
+  durationDays: 'durationDays',
+  priceFrom: 'priceFrom',
+  currency: 'currency',
+  heroImage: 'heroImage',
+  shortBlurb: 'shortBlurb',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  isPublished: 'isPublished',
+  isLandingFeatured: 'isLandingFeatured',
+  landingFeaturedOrder: 'landingFeaturedOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TourBadgeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  label: 'label',
+  order: 'order'
+};
+
+exports.Prisma.TourItineraryStepScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  day: 'day',
+  title: 'title',
+  description: 'description',
+  order: 'order'
+};
+
+exports.Prisma.TourIncludeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  item: 'item',
+  order: 'order'
+};
+
+exports.Prisma.TourExcludeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  item: 'item',
+  order: 'order'
+};
+
+exports.Prisma.TourFaqScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  question: 'question',
+  answer: 'answer',
+  order: 'order'
+};
+
+exports.Prisma.TourGalleryImageScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  imageUrl: 'imageUrl',
+  order: 'order'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -153,13 +244,43 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.AdminRole = exports.$Enums.AdminRole = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  EDITOR: 'EDITOR'
+};
+
+exports.TourCategory = exports.$Enums.TourCategory = {
+  umre: 'umre',
+  hac: 'hac',
+  kultur: 'kultur'
+};
+
+exports.TourCurrency = exports.$Enums.TourCurrency = {
+  TRY: 'TRY',
+  USD: 'USD',
+  EUR: 'EUR'
+};
 
 exports.Prisma.ModelName = {
   Post: 'Post',
   Account: 'Account',
   Session: 'Session',
   User: 'User',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Inquiry: 'Inquiry',
+  CmsSection: 'CmsSection',
+  Tour: 'Tour',
+  TourBadge: 'TourBadge',
+  TourItineraryStep: 'TourItineraryStep',
+  TourInclude: 'TourInclude',
+  TourExclude: 'TourExclude',
+  TourFaq: 'TourFaq',
+  TourGalleryImage: 'TourGalleryImage'
 };
 /**
  * Create the Client
@@ -200,7 +321,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -209,13 +329,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Post {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  createdBy   User   @relation(fields: [createdById], references: [id])\n  createdById String\n\n  @@index([name])\n}\n\n// Necessary for Next auth\nmodel Account {\n  id                       String  @id @default(cuid())\n  userId                   String\n  type                     String\n  provider                 String\n  providerAccountId        String\n  refresh_token            String? // @db.Text\n  access_token             String? // @db.Text\n  expires_at               Int?\n  token_type               String?\n  scope                    String?\n  id_token                 String? // @db.Text\n  session_state            String?\n  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refresh_token_expires_in Int?\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id            String    @id @default(cuid())\n  name          String?\n  email         String?   @unique\n  emailVerified DateTime?\n  image         String?\n  accounts      Account[]\n  sessions      Session[]\n  posts         Post[]\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n",
-  "inlineSchemaHash": "dd9a6edd7dcf3768e8fd246695361ce51823871115a517c30ff53e4d5bffa20b",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nenum AdminRole {\n  SUPER_ADMIN\n  EDITOR\n}\n\nenum TourCategory {\n  umre\n  hac\n  kultur\n}\n\nenum TourCurrency {\n  TRY\n  USD\n  EUR\n}\n\nmodel Post {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  createdBy   User   @relation(fields: [createdById], references: [id])\n  createdById String\n\n  @@index([name])\n}\n\n// Necessary for Next auth\nmodel Account {\n  id                       String  @id @default(cuid())\n  userId                   String\n  type                     String\n  provider                 String\n  providerAccountId        String\n  refresh_token            String? // @db.Text\n  access_token             String? // @db.Text\n  expires_at               Int?\n  token_type               String?\n  scope                    String?\n  id_token                 String? // @db.Text\n  session_state            String?\n  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refresh_token_expires_in Int?\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id            String       @id @default(cuid())\n  name          String?\n  email         String?      @unique\n  username      String?      @unique\n  passwordHash  String?\n  role          AdminRole    @default(EDITOR)\n  isActive      Boolean      @default(true)\n  createdAt     DateTime     @default(now())\n  updatedAt     DateTime     @updatedAt\n  emailVerified DateTime?\n  image         String?\n  accounts      Account[]\n  sessions      Session[]\n  posts         Post[]\n  cmsSections   CmsSection[] @relation(\"CmsSectionUpdatedBy\")\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n\nmodel Inquiry {\n  id              String   @id @default(cuid())\n  fullName        String\n  phone           String\n  plannedMonth    String\n  consentAccepted Boolean\n  createdAt       DateTime @default(now())\n\n  @@index([createdAt])\n}\n\nmodel CmsSection {\n  id          String   @id @default(cuid())\n  key         String   @unique\n  data        Json\n  updatedAt   DateTime @updatedAt\n  updatedById String?\n  updatedBy   User?    @relation(\"CmsSectionUpdatedBy\", fields: [updatedById], references: [id], onDelete: SetNull)\n\n  @@index([updatedAt])\n}\n\nmodel Tour {\n  id                   String              @id @default(cuid())\n  slug                 String              @unique\n  title                String\n  category             TourCategory\n  durationDays         Int\n  priceFrom            Int\n  currency             TourCurrency\n  heroImage            String\n  shortBlurb           String\n  seoTitle             String\n  seoDescription       String\n  isPublished          Boolean             @default(true)\n  isLandingFeatured    Boolean             @default(false)\n  landingFeaturedOrder Int?\n  createdAt            DateTime            @default(now())\n  updatedAt            DateTime            @updatedAt\n  badges               TourBadge[]\n  itinerarySteps       TourItineraryStep[]\n  includes             TourInclude[]\n  excludes             TourExclude[]\n  faqs                 TourFaq[]\n  galleryImages        TourGalleryImage[]\n\n  @@index([category, isPublished])\n  @@index([isLandingFeatured, landingFeaturedOrder])\n}\n\nmodel TourBadge {\n  id     String @id @default(cuid())\n  tourId String\n  label  String\n  order  Int\n  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n\nmodel TourItineraryStep {\n  id          String @id @default(cuid())\n  tourId      String\n  day         String\n  title       String\n  description String\n  order       Int\n  tour        Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n\nmodel TourInclude {\n  id     String @id @default(cuid())\n  tourId String\n  item   String\n  order  Int\n  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n\nmodel TourExclude {\n  id     String @id @default(cuid())\n  tourId String\n  item   String\n  order  Int\n  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n\nmodel TourFaq {\n  id       String @id @default(cuid())\n  tourId   String\n  question String\n  answer   String\n  order    Int\n  tour     Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n\nmodel TourGalleryImage {\n  id       String @id @default(cuid())\n  tourId   String\n  imageUrl String\n  order    Int\n  tour     Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)\n\n  @@index([tourId, order])\n}\n",
+  "inlineSchemaHash": "d87d3837149f9e3670194de41077949e2a7d5e8827c66a6206dd08c0d0c7514e",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"},{\"name\":\"createdById\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refresh_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"access_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires_at\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"token_type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"scope\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"id_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"session_state\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"refresh_token_expires_in\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emailVerified\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"}],\"dbName\":null},\"VerificationToken\":{\"fields\":[{\"name\":\"identifier\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"},{\"name\":\"createdById\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refresh_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"access_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires_at\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"token_type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"scope\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"id_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"session_state\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"refresh_token_expires_in\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"passwordHash\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"AdminRole\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"emailVerified\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"},{\"name\":\"cmsSections\",\"kind\":\"object\",\"type\":\"CmsSection\",\"relationName\":\"CmsSectionUpdatedBy\"}],\"dbName\":null},\"VerificationToken\":{\"fields\":[{\"name\":\"identifier\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Inquiry\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plannedMonth\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"consentAccepted\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"CmsSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"data\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedById\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"updatedBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CmsSectionUpdatedBy\"}],\"dbName\":null},\"Tour\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"enum\",\"type\":\"TourCategory\"},{\"name\":\"durationDays\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"priceFrom\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"currency\",\"kind\":\"enum\",\"type\":\"TourCurrency\"},{\"name\":\"heroImage\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"shortBlurb\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"seoTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"seoDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isPublished\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isLandingFeatured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"landingFeaturedOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"badges\",\"kind\":\"object\",\"type\":\"TourBadge\",\"relationName\":\"TourToTourBadge\"},{\"name\":\"itinerarySteps\",\"kind\":\"object\",\"type\":\"TourItineraryStep\",\"relationName\":\"TourToTourItineraryStep\"},{\"name\":\"includes\",\"kind\":\"object\",\"type\":\"TourInclude\",\"relationName\":\"TourToTourInclude\"},{\"name\":\"excludes\",\"kind\":\"object\",\"type\":\"TourExclude\",\"relationName\":\"TourToTourExclude\"},{\"name\":\"faqs\",\"kind\":\"object\",\"type\":\"TourFaq\",\"relationName\":\"TourToTourFaq\"},{\"name\":\"galleryImages\",\"kind\":\"object\",\"type\":\"TourGalleryImage\",\"relationName\":\"TourToTourGalleryImage\"}],\"dbName\":null},\"TourBadge\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"label\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourBadge\"}],\"dbName\":null},\"TourItineraryStep\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"day\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourItineraryStep\"}],\"dbName\":null},\"TourInclude\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"item\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourInclude\"}],\"dbName\":null},\"TourExclude\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"item\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourExclude\"}],\"dbName\":null},\"TourFaq\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"question\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"answer\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourFaq\"}],\"dbName\":null},\"TourGalleryImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tourId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tour\",\"kind\":\"object\",\"type\":\"Tour\",\"relationName\":\"TourToTourGalleryImage\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

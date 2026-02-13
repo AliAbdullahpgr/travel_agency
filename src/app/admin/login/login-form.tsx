@@ -37,15 +37,10 @@ export function AdminLoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-[30px] border bg-white p-7 shadow-xl md:p-8"
-      style={{ borderColor: "rgba(10, 61, 46, 0.1)" }}
+      className="admin-card admin-editor space-y-5 p-7 md:p-8"
     >
       <div className="space-y-2">
-        <label
-          htmlFor="admin-username"
-          className="text-sm font-semibold uppercase tracking-[0.13em]"
-          style={{ color: "var(--emerald)" }}
-        >
+        <label htmlFor="admin-username" className="admin-field-label">
           Kullanici Adi
         </label>
         <input
@@ -53,19 +48,14 @@ export function AdminLoginForm() {
           type="text"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
-          className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition focus:ring-2"
-          style={{ borderColor: "rgba(200, 168, 78, 0.35)" }}
+          className="admin-field"
           required
           autoComplete="username"
         />
       </div>
 
       <div className="space-y-2">
-        <label
-          htmlFor="admin-password"
-          className="text-sm font-semibold uppercase tracking-[0.13em]"
-          style={{ color: "var(--emerald)" }}
-        >
+        <label htmlFor="admin-password" className="admin-field-label">
           Sifre
         </label>
         <input
@@ -73,24 +63,20 @@ export function AdminLoginForm() {
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition focus:ring-2"
-          style={{ borderColor: "rgba(200, 168, 78, 0.35)" }}
+          className="admin-field"
           required
           autoComplete="current-password"
         />
       </div>
 
       {error && (
-        <p className="rounded-xl bg-red-50 px-3 py-2 text-sm font-medium text-red-700">
-          {error}
-        </p>
+        <p className="admin-message admin-message-error">{error}</p>
       )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-2xl px-5 py-3.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
-        style={{ backgroundColor: "var(--emerald)" }}
+        className="admin-btn admin-btn-primary w-full py-3.5 text-sm disabled:cursor-not-allowed"
       >
         {isSubmitting ? "Giris yapiliyor..." : "Admin Girisi"}
       </button>

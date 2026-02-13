@@ -19,7 +19,7 @@ export const heroContent = {
   title: "Kutsal Topraklara\nGönül Rahatlığıyla",
   subtitle:
     "Şükür Turizm, umre ve hac yolculuğunuzu estetik, disiplin ve 30 yıllık saha tecrübesiyle tasarlar. Her adımda plan net, ekip hazır, iletişim açık kalır.",
-  image: "/2.png",
+  image: "/1.jpg",
   primaryCta: { href: "/iletisim", label: "Programımı Oluştur" },
   secondaryCta: { href: "/umre-turlari", label: "Turları İncele" },
 } as const;
@@ -36,24 +36,21 @@ export const featuredTours: FeaturedTour[] = [
     title: "Umre Turları",
     subtitle: "Ekonomiden VIP'e, ritmi güçlü umre programları",
     category: "umre",
-    image:
-      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
+    image: "/1.jpg",
     href: "/umre-turlari",
   },
   {
     title: "Hac Organizasyonu",
     subtitle: "Disiplinli saha koordinasyonu ile kapsamlı hac planları",
     category: "hac",
-    image:
-      "https://images.unsplash.com/photo-1542652735-bff0b49e498e?q=80&w=1600&auto=format&fit=crop",
+    image: "/2.jpg",
     href: "/hac-turlari",
   },
   {
     title: "Kültür Turları",
     subtitle: "Kudüs, Balkanlar ve Anadolu'da inanç-kültür rotaları",
     category: "kultur",
-    image:
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1600&auto=format&fit=crop",
+    image: "/8.jpg",
     href: "/kultur-turlari",
   },
 ];

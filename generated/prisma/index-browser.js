@@ -156,6 +156,12 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  username: 'username',
+  passwordHash: 'passwordHash',
+  role: 'role',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   emailVerified: 'emailVerified',
   image: 'image'
 };
@@ -166,9 +172,94 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
+exports.Prisma.InquiryScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  phone: 'phone',
+  plannedMonth: 'plannedMonth',
+  consentAccepted: 'consentAccepted',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CmsSectionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  data: 'data',
+  updatedAt: 'updatedAt',
+  updatedById: 'updatedById'
+};
+
+exports.Prisma.TourScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  category: 'category',
+  durationDays: 'durationDays',
+  priceFrom: 'priceFrom',
+  currency: 'currency',
+  heroImage: 'heroImage',
+  shortBlurb: 'shortBlurb',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  isPublished: 'isPublished',
+  isLandingFeatured: 'isLandingFeatured',
+  landingFeaturedOrder: 'landingFeaturedOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TourBadgeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  label: 'label',
+  order: 'order'
+};
+
+exports.Prisma.TourItineraryStepScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  day: 'day',
+  title: 'title',
+  description: 'description',
+  order: 'order'
+};
+
+exports.Prisma.TourIncludeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  item: 'item',
+  order: 'order'
+};
+
+exports.Prisma.TourExcludeScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  item: 'item',
+  order: 'order'
+};
+
+exports.Prisma.TourFaqScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  question: 'question',
+  answer: 'answer',
+  order: 'order'
+};
+
+exports.Prisma.TourGalleryImageScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  imageUrl: 'imageUrl',
+  order: 'order'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -181,13 +272,43 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.AdminRole = exports.$Enums.AdminRole = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  EDITOR: 'EDITOR'
+};
+
+exports.TourCategory = exports.$Enums.TourCategory = {
+  umre: 'umre',
+  hac: 'hac',
+  kultur: 'kultur'
+};
+
+exports.TourCurrency = exports.$Enums.TourCurrency = {
+  TRY: 'TRY',
+  USD: 'USD',
+  EUR: 'EUR'
+};
 
 exports.Prisma.ModelName = {
   Post: 'Post',
   Account: 'Account',
   Session: 'Session',
   User: 'User',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Inquiry: 'Inquiry',
+  CmsSection: 'CmsSection',
+  Tour: 'Tour',
+  TourBadge: 'TourBadge',
+  TourItineraryStep: 'TourItineraryStep',
+  TourInclude: 'TourInclude',
+  TourExclude: 'TourExclude',
+  TourFaq: 'TourFaq',
+  TourGalleryImage: 'TourGalleryImage'
 };
 
 /**

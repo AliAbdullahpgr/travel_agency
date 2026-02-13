@@ -8,8 +8,7 @@ const tours: TourDetail[] = [
     durationDays: 15,
     priceFrom: 2450,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/4.jpg",
     badges: ["5 Yıldız Otel", "VIP Transfer", "Sınırlı Kontenjan"],
     shortBlurb:
       "Mekke ve Medine'de premium konaklama, yakın mesafe transferleri ve yüksek rehber desteği.",
@@ -64,11 +63,7 @@ const tours: TourDetail[] = [
           "Evet. Evrak kontrolü, başvuru ve takip süreçleri ekip tarafından yönetilir.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1513072064285-240f87fa81e8?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/4.jpg", "/1.jpg", "/3.jpg"],
     seo: {
       title: "VIP Altın Umre 15 Gün | Şükür Turizm",
       description:
@@ -82,8 +77,7 @@ const tours: TourDetail[] = [
     durationDays: 10,
     priceFrom: 1290,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/1.jpg",
     badges: ["Aile Dostu", "Ekonomik", "Kısa Program"],
     shortBlurb:
       "Çocuklu ailelere uygun ritimde, kısa süreli ama yoğun manevi program.",
@@ -132,11 +126,7 @@ const tours: TourDetail[] = [
         answer: "Aile büyüklüğüne göre 2, 3 veya 4 kişilik seçenekler sunulur.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1597212618440-806a846b4bb5?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/1.jpg", "/3.jpg", "/4.jpg"],
     seo: {
       title: "Aile Umre Programı 10 Gün | Şükür Turizm",
       description: "Aileler için dengeli tempoda planlanan 10 günlük umre turu.",
@@ -149,8 +139,7 @@ const tours: TourDetail[] = [
     durationDays: 20,
     priceFrom: 1890,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1597212618440-806a846b4bb5?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/3.jpg",
     badges: ["Ramazan Özel", "İftar Programı", "Uzun Konaklama"],
     shortBlurb:
       "Ramazan ayını kutsal topraklarda geçirmek isteyenler için kapsamlı uzun dönem plan.",
@@ -195,11 +184,7 @@ const tours: TourDetail[] = [
           "Evet. Ana omurga tek gruptur, ancak günlük ritimlere göre alt grup yönlendirmesi yapılabilir.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1542816417-0983676bbda8?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542652735-bff0b49e498e?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/3.jpg", "/1.jpg", "/4.jpg"],
     seo: {
       title: "Ramazan Umresi 20 Gün | Şükür Turizm",
       description: "Ramazan ayı için uzun süreli organize umre planı.",
@@ -212,8 +197,7 @@ const tours: TourDetail[] = [
     durationDays: 32,
     priceFrom: 4950,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1542652735-bff0b49e498e?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/2.jpg",
     badges: ["Hac Özel", "Yakın Konaklama", "Saha Koordinasyonu"],
     shortBlurb:
       "Arafat-Mina-Müzdelife geçişlerinde saha takibi güçlü, otel odaklı kapsamlı hac paketi.",
@@ -258,11 +242,7 @@ const tours: TourDetail[] = [
         answer: "Evet, yürüyüş yoğunluğu ve transfer planı öncelikli destekle yürütülür.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1533106958142-8d14dbf8f0ea?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/2.jpg", "/5.jpg", "/3.jpg"],
     seo: {
       title: "Otel Tercihli Hac 2026 | Şükür Turizm",
       description: "Kapsamlı saha koordinasyonuyla otel odaklı hac programı.",
@@ -275,8 +255,7 @@ const tours: TourDetail[] = [
     durationDays: 28,
     priceFrom: 3950,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1570203294379-b8f7660d99b4?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/5.jpg",
     badges: ["Bütçe Dostu", "Dengeli Program", "Kontrollü Grup"],
     shortBlurb:
       "Temel ihtiyaçlara odaklanan, maliyet/konfor dengesini koruyan hac organizasyonu.",
@@ -320,11 +299,7 @@ const tours: TourDetail[] = [
         answer: "Kademeli ödeme seçenekleri sunulur, detay satış ekibince paylaşılır.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/5.jpg", "/2.jpg", "/3.jpg"],
     seo: {
       title: "Ekonomik Hac Programı | Şükür Turizm",
       description: "Bütçe dostu ve dengeli hac paketi.",
@@ -337,8 +312,7 @@ const tours: TourDetail[] = [
     durationDays: 30,
     priceFrom: 4550,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1585036156171-384164a8c696?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/3.jpg",
     badges: ["Direkt Uçuş", "Plus Hizmet", "Öncelikli Transfer"],
     shortBlurb:
       "Ankara direkt uçuş avantajıyla operasyonel yorgunluğu azaltan plus hac paketi.",
@@ -383,11 +357,7 @@ const tours: TourDetail[] = [
         answer: "Transfer ve saha koordinasyonunda daha sıkı destek paketleri sunulur.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1542728928-1413d1894ed1?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1552573849-45a89ea9f0ad?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509644851169-2acc08aa25b2?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/3.jpg", "/5.jpg", "/2.jpg"],
     seo: {
       title: "Ankara Direkt Hac Plus | Şükür Turizm",
       description: "Direkt uçuş avantajıyla planlanan hac plus paketi.",
@@ -400,8 +370,7 @@ const tours: TourDetail[] = [
     durationDays: 6,
     priceFrom: 1790,
     currency: "USD",
-    heroImage:
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/8.jpg",
     badges: ["Manevi Rota", "Yoğun Program", "Sınırlı Grup"],
     shortBlurb:
       "Kudüs merkezli manevi ve tarihsel duraklarla kısa süreli yoğun kültür turu.",
@@ -444,11 +413,7 @@ const tours: TourDetail[] = [
         answer: "Evrak ve süreç danışmanlığı verilir.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485811902-fa5bd19b1173?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/8.jpg", "/5.jpg", "/1.jpg"],
     seo: {
       title: "Kudüs ve Mescid-i Aksa 6 Gün | Şükür Turizm",
       description: "Kudüs merkezli manevi yoğunluklu kısa kültür turu.",
@@ -461,8 +426,7 @@ const tours: TourDetail[] = [
     durationDays: 7,
     priceFrom: 990,
     currency: "EUR",
-    heroImage:
-      "https://images.unsplash.com/photo-1585036156171-384164a8c696?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/cultural/2025-Site-visit-images-18.jpg",
     badges: ["Balkan Rotası", "Tarih + Doğa", "Rehberli"],
     shortBlurb:
       "Saraybosna, Mostar ve Travnik aksında tarih ve kültürü buluşturan rota.",
@@ -500,11 +464,7 @@ const tours: TourDetail[] = [
         answer: "Kahvaltı dahil, diğer öğünlerde serbest seçim modeli uygulanır.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1526481280695-3c4694ea7f2d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/5.jpg", "/8.jpg", "/3.jpg"],
     seo: {
       title: "Bosna Hersek Miras Turu 7 Gün | Şükür Turizm",
       description: "Balkanlar'da tarih, mimari ve kültür odaklı rota.",
@@ -517,8 +477,7 @@ const tours: TourDetail[] = [
     durationDays: 5,
     priceFrom: 22900,
     currency: "TRY",
-    heroImage:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/cultural/central-anatolia-region.jpg",
     badges: ["Yurt İçi", "Tarihsel Durak", "Konforlu Otobüs"],
     shortBlurb:
       "Kapadokya, Konya ve Sivas hattında inanç-kültür odaklı iç tur programı.",
@@ -561,11 +520,7 @@ const tours: TourDetail[] = [
         answer: "Evet, tek kişi katılım için oda paylaşım opsiyonları sunulur.",
       },
     ],
-    gallery: [
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop",
-    ],
+    gallery: ["/1.jpg", "/4.jpg", "/5.jpg"],
     seo: {
       title: "Anadolu Medeniyet Rotası 5 Gün | Şükür Turizm",
       description: "Anadolu'da tarih ve kültürü birleştiren beş günlük rota.",
