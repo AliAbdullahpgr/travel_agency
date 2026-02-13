@@ -32,6 +32,12 @@ enum TourCurrency {
   EUR
 }
 
+enum InquiryStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Post {
   id        Int      @id @default(autoincrement())
   name      String
@@ -99,13 +105,25 @@ model VerificationToken {
 }
 
 model Inquiry {
-  id              String   @id @default(cuid())
+  id              String        @id @default(cuid())
   fullName        String
   phone           String
+  email           String?
+  city            String?
+  country         String?
   plannedMonth    String
+  duration        String?
+  departureCity   String?
+  tourCategory    TourCategory?
+  adults          Int?
+  children        Int?
+  notes           String?
   consentAccepted Boolean
-  createdAt       DateTime @default(now())
+  status          InquiryStatus @default(PENDING)
+  reviewedAt      DateTime?
+  createdAt       DateTime      @default(now())
 
+  @@index([status, createdAt])
   @@index([createdAt])
 }
 

@@ -113,6 +113,15 @@ export const TourCurrency: {
 
 export type TourCurrency = (typeof TourCurrency)[keyof typeof TourCurrency]
 
+
+export const InquiryStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type InquiryStatus = (typeof InquiryStatus)[keyof typeof InquiryStatus]
+
 }
 
 export type AdminRole = $Enums.AdminRole
@@ -126,6 +135,10 @@ export const TourCategory: typeof $Enums.TourCategory
 export type TourCurrency = $Enums.TourCurrency
 
 export const TourCurrency: typeof $Enums.TourCurrency
+
+export type InquiryStatus = $Enums.InquiryStatus
+
+export const InquiryStatus: typeof $Enums.InquiryStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -7764,16 +7777,39 @@ export namespace Prisma {
 
   export type AggregateInquiry = {
     _count: InquiryCountAggregateOutputType | null
+    _avg: InquiryAvgAggregateOutputType | null
+    _sum: InquirySumAggregateOutputType | null
     _min: InquiryMinAggregateOutputType | null
     _max: InquiryMaxAggregateOutputType | null
+  }
+
+  export type InquiryAvgAggregateOutputType = {
+    adults: number | null
+    children: number | null
+  }
+
+  export type InquirySumAggregateOutputType = {
+    adults: number | null
+    children: number | null
   }
 
   export type InquiryMinAggregateOutputType = {
     id: string | null
     fullName: string | null
     phone: string | null
+    email: string | null
+    city: string | null
+    country: string | null
     plannedMonth: string | null
+    duration: string | null
+    departureCity: string | null
+    tourCategory: $Enums.TourCategory | null
+    adults: number | null
+    children: number | null
+    notes: string | null
     consentAccepted: boolean | null
+    status: $Enums.InquiryStatus | null
+    reviewedAt: Date | null
     createdAt: Date | null
   }
 
@@ -7781,8 +7817,19 @@ export namespace Prisma {
     id: string | null
     fullName: string | null
     phone: string | null
+    email: string | null
+    city: string | null
+    country: string | null
     plannedMonth: string | null
+    duration: string | null
+    departureCity: string | null
+    tourCategory: $Enums.TourCategory | null
+    adults: number | null
+    children: number | null
+    notes: string | null
     consentAccepted: boolean | null
+    status: $Enums.InquiryStatus | null
+    reviewedAt: Date | null
     createdAt: Date | null
   }
 
@@ -7790,19 +7837,51 @@ export namespace Prisma {
     id: number
     fullName: number
     phone: number
+    email: number
+    city: number
+    country: number
     plannedMonth: number
+    duration: number
+    departureCity: number
+    tourCategory: number
+    adults: number
+    children: number
+    notes: number
     consentAccepted: number
+    status: number
+    reviewedAt: number
     createdAt: number
     _all: number
   }
 
 
+  export type InquiryAvgAggregateInputType = {
+    adults?: true
+    children?: true
+  }
+
+  export type InquirySumAggregateInputType = {
+    adults?: true
+    children?: true
+  }
+
   export type InquiryMinAggregateInputType = {
     id?: true
     fullName?: true
     phone?: true
+    email?: true
+    city?: true
+    country?: true
     plannedMonth?: true
+    duration?: true
+    departureCity?: true
+    tourCategory?: true
+    adults?: true
+    children?: true
+    notes?: true
     consentAccepted?: true
+    status?: true
+    reviewedAt?: true
     createdAt?: true
   }
 
@@ -7810,8 +7889,19 @@ export namespace Prisma {
     id?: true
     fullName?: true
     phone?: true
+    email?: true
+    city?: true
+    country?: true
     plannedMonth?: true
+    duration?: true
+    departureCity?: true
+    tourCategory?: true
+    adults?: true
+    children?: true
+    notes?: true
     consentAccepted?: true
+    status?: true
+    reviewedAt?: true
     createdAt?: true
   }
 
@@ -7819,8 +7909,19 @@ export namespace Prisma {
     id?: true
     fullName?: true
     phone?: true
+    email?: true
+    city?: true
+    country?: true
     plannedMonth?: true
+    duration?: true
+    departureCity?: true
+    tourCategory?: true
+    adults?: true
+    children?: true
+    notes?: true
     consentAccepted?: true
+    status?: true
+    reviewedAt?: true
     createdAt?: true
     _all?: true
   }
@@ -7863,6 +7964,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: InquiryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InquirySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: InquiryMinAggregateInputType
@@ -7893,6 +8006,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: InquiryCountAggregateInputType | true
+    _avg?: InquiryAvgAggregateInputType
+    _sum?: InquirySumAggregateInputType
     _min?: InquiryMinAggregateInputType
     _max?: InquiryMaxAggregateInputType
   }
@@ -7901,10 +8016,23 @@ export namespace Prisma {
     id: string
     fullName: string
     phone: string
+    email: string | null
+    city: string | null
+    country: string | null
     plannedMonth: string
+    duration: string | null
+    departureCity: string | null
+    tourCategory: $Enums.TourCategory | null
+    adults: number | null
+    children: number | null
+    notes: string | null
     consentAccepted: boolean
+    status: $Enums.InquiryStatus
+    reviewedAt: Date | null
     createdAt: Date
     _count: InquiryCountAggregateOutputType | null
+    _avg: InquiryAvgAggregateOutputType | null
+    _sum: InquirySumAggregateOutputType | null
     _min: InquiryMinAggregateOutputType | null
     _max: InquiryMaxAggregateOutputType | null
   }
@@ -7927,8 +8055,19 @@ export namespace Prisma {
     id?: boolean
     fullName?: boolean
     phone?: boolean
+    email?: boolean
+    city?: boolean
+    country?: boolean
     plannedMonth?: boolean
+    duration?: boolean
+    departureCity?: boolean
+    tourCategory?: boolean
+    adults?: boolean
+    children?: boolean
+    notes?: boolean
     consentAccepted?: boolean
+    status?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["inquiry"]>
 
@@ -7936,8 +8075,19 @@ export namespace Prisma {
     id?: boolean
     fullName?: boolean
     phone?: boolean
+    email?: boolean
+    city?: boolean
+    country?: boolean
     plannedMonth?: boolean
+    duration?: boolean
+    departureCity?: boolean
+    tourCategory?: boolean
+    adults?: boolean
+    children?: boolean
+    notes?: boolean
     consentAccepted?: boolean
+    status?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["inquiry"]>
 
@@ -7945,8 +8095,19 @@ export namespace Prisma {
     id?: boolean
     fullName?: boolean
     phone?: boolean
+    email?: boolean
+    city?: boolean
+    country?: boolean
     plannedMonth?: boolean
+    duration?: boolean
+    departureCity?: boolean
+    tourCategory?: boolean
+    adults?: boolean
+    children?: boolean
+    notes?: boolean
     consentAccepted?: boolean
+    status?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["inquiry"]>
 
@@ -7954,12 +8115,23 @@ export namespace Prisma {
     id?: boolean
     fullName?: boolean
     phone?: boolean
+    email?: boolean
+    city?: boolean
+    country?: boolean
     plannedMonth?: boolean
+    duration?: boolean
+    departureCity?: boolean
+    tourCategory?: boolean
+    adults?: boolean
+    children?: boolean
+    notes?: boolean
     consentAccepted?: boolean
+    status?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
   }
 
-  export type InquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "phone" | "plannedMonth" | "consentAccepted" | "createdAt", ExtArgs["result"]["inquiry"]>
+  export type InquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "phone" | "email" | "city" | "country" | "plannedMonth" | "duration" | "departureCity" | "tourCategory" | "adults" | "children" | "notes" | "consentAccepted" | "status" | "reviewedAt" | "createdAt", ExtArgs["result"]["inquiry"]>
 
   export type $InquiryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Inquiry"
@@ -7968,8 +8140,19 @@ export namespace Prisma {
       id: string
       fullName: string
       phone: string
+      email: string | null
+      city: string | null
+      country: string | null
       plannedMonth: string
+      duration: string | null
+      departureCity: string | null
+      tourCategory: $Enums.TourCategory | null
+      adults: number | null
+      children: number | null
+      notes: string | null
       consentAccepted: boolean
+      status: $Enums.InquiryStatus
+      reviewedAt: Date | null
       createdAt: Date
     }, ExtArgs["result"]["inquiry"]>
     composites: {}
@@ -8397,8 +8580,19 @@ export namespace Prisma {
     readonly id: FieldRef<"Inquiry", 'String'>
     readonly fullName: FieldRef<"Inquiry", 'String'>
     readonly phone: FieldRef<"Inquiry", 'String'>
+    readonly email: FieldRef<"Inquiry", 'String'>
+    readonly city: FieldRef<"Inquiry", 'String'>
+    readonly country: FieldRef<"Inquiry", 'String'>
     readonly plannedMonth: FieldRef<"Inquiry", 'String'>
+    readonly duration: FieldRef<"Inquiry", 'String'>
+    readonly departureCity: FieldRef<"Inquiry", 'String'>
+    readonly tourCategory: FieldRef<"Inquiry", 'TourCategory'>
+    readonly adults: FieldRef<"Inquiry", 'Int'>
+    readonly children: FieldRef<"Inquiry", 'Int'>
+    readonly notes: FieldRef<"Inquiry", 'String'>
     readonly consentAccepted: FieldRef<"Inquiry", 'Boolean'>
+    readonly status: FieldRef<"Inquiry", 'InquiryStatus'>
+    readonly reviewedAt: FieldRef<"Inquiry", 'DateTime'>
     readonly createdAt: FieldRef<"Inquiry", 'DateTime'>
   }
     
@@ -17831,8 +18025,19 @@ export namespace Prisma {
     id: 'id',
     fullName: 'fullName',
     phone: 'phone',
+    email: 'email',
+    city: 'city',
+    country: 'country',
     plannedMonth: 'plannedMonth',
+    duration: 'duration',
+    departureCity: 'departureCity',
+    tourCategory: 'tourCategory',
+    adults: 'adults',
+    children: 'children',
+    notes: 'notes',
     consentAccepted: 'consentAccepted',
+    status: 'status',
+    reviewedAt: 'reviewedAt',
     createdAt: 'createdAt'
   };
 
@@ -18044,20 +18249,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
    * Reference to a field of type 'TourCategory'
    */
   export type EnumTourCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TourCategory'>
@@ -18068,6 +18259,34 @@ export namespace Prisma {
    * Reference to a field of type 'TourCategory[]'
    */
   export type ListEnumTourCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TourCategory[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'InquiryStatus'
+   */
+  export type EnumInquiryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InquiryStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'InquiryStatus[]'
+   */
+  export type ListEnumInquiryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InquiryStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -18451,8 +18670,19 @@ export namespace Prisma {
     id?: StringFilter<"Inquiry"> | string
     fullName?: StringFilter<"Inquiry"> | string
     phone?: StringFilter<"Inquiry"> | string
+    email?: StringNullableFilter<"Inquiry"> | string | null
+    city?: StringNullableFilter<"Inquiry"> | string | null
+    country?: StringNullableFilter<"Inquiry"> | string | null
     plannedMonth?: StringFilter<"Inquiry"> | string
+    duration?: StringNullableFilter<"Inquiry"> | string | null
+    departureCity?: StringNullableFilter<"Inquiry"> | string | null
+    tourCategory?: EnumTourCategoryNullableFilter<"Inquiry"> | $Enums.TourCategory | null
+    adults?: IntNullableFilter<"Inquiry"> | number | null
+    children?: IntNullableFilter<"Inquiry"> | number | null
+    notes?: StringNullableFilter<"Inquiry"> | string | null
     consentAccepted?: BoolFilter<"Inquiry"> | boolean
+    status?: EnumInquiryStatusFilter<"Inquiry"> | $Enums.InquiryStatus
+    reviewedAt?: DateTimeNullableFilter<"Inquiry"> | Date | string | null
     createdAt?: DateTimeFilter<"Inquiry"> | Date | string
   }
 
@@ -18460,8 +18690,19 @@ export namespace Prisma {
     id?: SortOrder
     fullName?: SortOrder
     phone?: SortOrder
+    email?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
     plannedMonth?: SortOrder
+    duration?: SortOrderInput | SortOrder
+    departureCity?: SortOrderInput | SortOrder
+    tourCategory?: SortOrderInput | SortOrder
+    adults?: SortOrderInput | SortOrder
+    children?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
     consentAccepted?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
   }
 
@@ -18472,8 +18713,19 @@ export namespace Prisma {
     NOT?: InquiryWhereInput | InquiryWhereInput[]
     fullName?: StringFilter<"Inquiry"> | string
     phone?: StringFilter<"Inquiry"> | string
+    email?: StringNullableFilter<"Inquiry"> | string | null
+    city?: StringNullableFilter<"Inquiry"> | string | null
+    country?: StringNullableFilter<"Inquiry"> | string | null
     plannedMonth?: StringFilter<"Inquiry"> | string
+    duration?: StringNullableFilter<"Inquiry"> | string | null
+    departureCity?: StringNullableFilter<"Inquiry"> | string | null
+    tourCategory?: EnumTourCategoryNullableFilter<"Inquiry"> | $Enums.TourCategory | null
+    adults?: IntNullableFilter<"Inquiry"> | number | null
+    children?: IntNullableFilter<"Inquiry"> | number | null
+    notes?: StringNullableFilter<"Inquiry"> | string | null
     consentAccepted?: BoolFilter<"Inquiry"> | boolean
+    status?: EnumInquiryStatusFilter<"Inquiry"> | $Enums.InquiryStatus
+    reviewedAt?: DateTimeNullableFilter<"Inquiry"> | Date | string | null
     createdAt?: DateTimeFilter<"Inquiry"> | Date | string
   }, "id">
 
@@ -18481,12 +18733,25 @@ export namespace Prisma {
     id?: SortOrder
     fullName?: SortOrder
     phone?: SortOrder
+    email?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
     plannedMonth?: SortOrder
+    duration?: SortOrderInput | SortOrder
+    departureCity?: SortOrderInput | SortOrder
+    tourCategory?: SortOrderInput | SortOrder
+    adults?: SortOrderInput | SortOrder
+    children?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
     consentAccepted?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: InquiryCountOrderByAggregateInput
+    _avg?: InquiryAvgOrderByAggregateInput
     _max?: InquiryMaxOrderByAggregateInput
     _min?: InquiryMinOrderByAggregateInput
+    _sum?: InquirySumOrderByAggregateInput
   }
 
   export type InquiryScalarWhereWithAggregatesInput = {
@@ -18496,8 +18761,19 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Inquiry"> | string
     fullName?: StringWithAggregatesFilter<"Inquiry"> | string
     phone?: StringWithAggregatesFilter<"Inquiry"> | string
+    email?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+    city?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+    country?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
     plannedMonth?: StringWithAggregatesFilter<"Inquiry"> | string
+    duration?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+    departureCity?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+    tourCategory?: EnumTourCategoryNullableWithAggregatesFilter<"Inquiry"> | $Enums.TourCategory | null
+    adults?: IntNullableWithAggregatesFilter<"Inquiry"> | number | null
+    children?: IntNullableWithAggregatesFilter<"Inquiry"> | number | null
+    notes?: StringNullableWithAggregatesFilter<"Inquiry"> | string | null
     consentAccepted?: BoolWithAggregatesFilter<"Inquiry"> | boolean
+    status?: EnumInquiryStatusWithAggregatesFilter<"Inquiry"> | $Enums.InquiryStatus
+    reviewedAt?: DateTimeNullableWithAggregatesFilter<"Inquiry"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Inquiry"> | Date | string
   }
 
@@ -19381,8 +19657,19 @@ export namespace Prisma {
     id?: string
     fullName: string
     phone: string
+    email?: string | null
+    city?: string | null
+    country?: string | null
     plannedMonth: string
+    duration?: string | null
+    departureCity?: string | null
+    tourCategory?: $Enums.TourCategory | null
+    adults?: number | null
+    children?: number | null
+    notes?: string | null
     consentAccepted: boolean
+    status?: $Enums.InquiryStatus
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -19390,8 +19677,19 @@ export namespace Prisma {
     id?: string
     fullName: string
     phone: string
+    email?: string | null
+    city?: string | null
+    country?: string | null
     plannedMonth: string
+    duration?: string | null
+    departureCity?: string | null
+    tourCategory?: $Enums.TourCategory | null
+    adults?: number | null
+    children?: number | null
+    notes?: string | null
     consentAccepted: boolean
+    status?: $Enums.InquiryStatus
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -19399,8 +19697,19 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
     plannedMonth?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    departureCity?: NullableStringFieldUpdateOperationsInput | string | null
+    tourCategory?: NullableEnumTourCategoryFieldUpdateOperationsInput | $Enums.TourCategory | null
+    adults?: NullableIntFieldUpdateOperationsInput | number | null
+    children?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     consentAccepted?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19408,8 +19717,19 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
     plannedMonth?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    departureCity?: NullableStringFieldUpdateOperationsInput | string | null
+    tourCategory?: NullableEnumTourCategoryFieldUpdateOperationsInput | $Enums.TourCategory | null
+    adults?: NullableIntFieldUpdateOperationsInput | number | null
+    children?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     consentAccepted?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19417,8 +19737,19 @@ export namespace Prisma {
     id?: string
     fullName: string
     phone: string
+    email?: string | null
+    city?: string | null
+    country?: string | null
     plannedMonth: string
+    duration?: string | null
+    departureCity?: string | null
+    tourCategory?: $Enums.TourCategory | null
+    adults?: number | null
+    children?: number | null
+    notes?: string | null
     consentAccepted: boolean
+    status?: $Enums.InquiryStatus
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -19426,8 +19757,19 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
     plannedMonth?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    departureCity?: NullableStringFieldUpdateOperationsInput | string | null
+    tourCategory?: NullableEnumTourCategoryFieldUpdateOperationsInput | $Enums.TourCategory | null
+    adults?: NullableIntFieldUpdateOperationsInput | number | null
+    children?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     consentAccepted?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19435,8 +19777,19 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
     plannedMonth?: StringFieldUpdateOperationsInput | string
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    departureCity?: NullableStringFieldUpdateOperationsInput | string | null
+    tourCategory?: NullableEnumTourCategoryFieldUpdateOperationsInput | $Enums.TourCategory | null
+    adults?: NullableIntFieldUpdateOperationsInput | number | null
+    children?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     consentAccepted?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -20392,21 +20745,62 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type EnumTourCategoryNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TourCategory | EnumTourCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTourCategoryNullableFilter<$PrismaModel> | $Enums.TourCategory | null
+  }
+
+  export type EnumInquiryStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InquiryStatus | EnumInquiryStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInquiryStatusFilter<$PrismaModel> | $Enums.InquiryStatus
+  }
+
   export type InquiryCountOrderByAggregateInput = {
     id?: SortOrder
     fullName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
     plannedMonth?: SortOrder
+    duration?: SortOrder
+    departureCity?: SortOrder
+    tourCategory?: SortOrder
+    adults?: SortOrder
+    children?: SortOrder
+    notes?: SortOrder
     consentAccepted?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type InquiryAvgOrderByAggregateInput = {
+    adults?: SortOrder
+    children?: SortOrder
   }
 
   export type InquiryMaxOrderByAggregateInput = {
     id?: SortOrder
     fullName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
     plannedMonth?: SortOrder
+    duration?: SortOrder
+    departureCity?: SortOrder
+    tourCategory?: SortOrder
+    adults?: SortOrder
+    children?: SortOrder
+    notes?: SortOrder
     consentAccepted?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -20414,9 +20808,45 @@ export namespace Prisma {
     id?: SortOrder
     fullName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
     plannedMonth?: SortOrder
+    duration?: SortOrder
+    departureCity?: SortOrder
+    tourCategory?: SortOrder
+    adults?: SortOrder
+    children?: SortOrder
+    notes?: SortOrder
     consentAccepted?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type InquirySumOrderByAggregateInput = {
+    adults?: SortOrder
+    children?: SortOrder
+  }
+
+  export type EnumTourCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TourCategory | EnumTourCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTourCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.TourCategory | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTourCategoryNullableFilter<$PrismaModel>
+    _max?: NestedEnumTourCategoryNullableFilter<$PrismaModel>
+  }
+
+  export type EnumInquiryStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InquiryStatus | EnumInquiryStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInquiryStatusWithAggregatesFilter<$PrismaModel> | $Enums.InquiryStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInquiryStatusFilter<$PrismaModel>
+    _max?: NestedEnumInquiryStatusFilter<$PrismaModel>
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -21096,6 +21526,14 @@ export namespace Prisma {
     deleteMany?: CmsSectionScalarWhereInput | CmsSectionScalarWhereInput[]
   }
 
+  export type NullableEnumTourCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.TourCategory | null
+  }
+
+  export type EnumInquiryStatusFieldUpdateOperationsInput = {
+    set?: $Enums.InquiryStatus
+  }
+
   export type UserCreateNestedOneWithoutCmsSectionsInput = {
     create?: XOR<UserCreateWithoutCmsSectionsInput, UserUncheckedCreateWithoutCmsSectionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutCmsSectionsInput
@@ -21672,6 +22110,40 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTourCategoryNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TourCategory | EnumTourCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTourCategoryNullableFilter<$PrismaModel> | $Enums.TourCategory | null
+  }
+
+  export type NestedEnumInquiryStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InquiryStatus | EnumInquiryStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInquiryStatusFilter<$PrismaModel> | $Enums.InquiryStatus
+  }
+
+  export type NestedEnumTourCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TourCategory | EnumTourCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TourCategory[] | ListEnumTourCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTourCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.TourCategory | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTourCategoryNullableFilter<$PrismaModel>
+    _max?: NestedEnumTourCategoryNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInquiryStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InquiryStatus | EnumInquiryStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InquiryStatus[] | ListEnumInquiryStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInquiryStatusWithAggregatesFilter<$PrismaModel> | $Enums.InquiryStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInquiryStatusFilter<$PrismaModel>
+    _max?: NestedEnumInquiryStatusFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<

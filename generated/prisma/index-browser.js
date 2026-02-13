@@ -176,8 +176,19 @@ exports.Prisma.InquiryScalarFieldEnum = {
   id: 'id',
   fullName: 'fullName',
   phone: 'phone',
+  email: 'email',
+  city: 'city',
+  country: 'country',
   plannedMonth: 'plannedMonth',
+  duration: 'duration',
+  departureCity: 'departureCity',
+  tourCategory: 'tourCategory',
+  adults: 'adults',
+  children: 'children',
+  notes: 'notes',
   consentAccepted: 'consentAccepted',
+  status: 'status',
+  reviewedAt: 'reviewedAt',
   createdAt: 'createdAt'
 };
 
@@ -286,6 +297,12 @@ exports.TourCategory = exports.$Enums.TourCategory = {
   umre: 'umre',
   hac: 'hac',
   kultur: 'kultur'
+};
+
+exports.InquiryStatus = exports.$Enums.InquiryStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
 };
 
 exports.TourCurrency = exports.$Enums.TourCurrency = {

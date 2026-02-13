@@ -157,9 +157,18 @@ export function InquiryPanel({ title, subtitle, compact = false, content }: Inqu
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: form.fullName,
-          phone: form.phone,
+          fullName: form.fullName.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim() || undefined,
+          city: form.city.trim() || undefined,
+          country: form.country.trim() || undefined,
           plannedMonth: form.plannedMonth,
+          duration: form.duration || undefined,
+          departureCity: form.departureCity.trim() || undefined,
+          tourCategory: form.tourCategory || undefined,
+          adults: Number(form.adults) || 0,
+          children: Number(form.children) || 0,
+          notes: form.notes.trim() || undefined,
           consentAccepted: form.consentAccepted,
         }),
       });
@@ -470,4 +479,3 @@ export function InquiryPanel({ title, subtitle, compact = false, content }: Inqu
     </section>
   );
 }
-
