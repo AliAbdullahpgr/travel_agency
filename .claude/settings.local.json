@@ -12,7 +12,8 @@
       "Bash(dir:*)",
       "Bash(ls -la \"d:\\\\Downloads\\\\travel_agency\\\\travel_agency\\\\public\"\" 2>&1 || echo \"Directory may not exist or path issue \")",
       "Bash(npx next dev:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(SKIP_ENV_VALIDATION=1 npx next build:*)"
     ]
   }
 }

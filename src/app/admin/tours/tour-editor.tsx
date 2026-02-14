@@ -237,28 +237,25 @@ export function TourEditor({ mode, tourId, initialData }: TourEditorProps) {
                                 <FiPlus /> Resim Ekle
                             </button>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-4">
                             {form.gallery.map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-2">
-                                    <div className="flex-1 bg-gray-50 rounded-lg p-2 border border-gray-200">
-                                         <input
-                                            className="w-full bg-transparent text-sm focus:outline-none"
-                                            value={item.imageUrl}
-                                            onChange={(e) => {
-                                                const next = [...form.gallery];
-                                                next[idx] = { ...next[idx]!, imageUrl: e.target.value };
-                                                setForm({ ...form, gallery: next });
-                                            }}
-                                            placeholder="https://..."
-                                        />
-                                    </div>
+                                <div key={idx} className="relative rounded-xl border border-gray-200 bg-gray-50 p-3">
                                     <button
                                         type="button"
                                         onClick={() => setForm(prev => ({ ...prev, gallery: prev.gallery.filter((_, i) => i !== idx) }))}
-                                        className="p-2 text-gray-400 hover:text-rose-600 transition-colors"
+                                        className="absolute top-2 right-2 p-1.5 text-gray-400 hover:text-rose-600 transition-colors z-10"
                                     >
-                                        <FiTrash2 />
+                                        <FiTrash2 size={14} />
                                     </button>
+                                    <ImageUploadField
+                                        label={`Galeri Resmi ${idx + 1}`}
+                                        value={item.imageUrl}
+                                        onChange={(value) => {
+                                            const next = [...form.gallery];
+                                            next[idx] = { ...next[idx]!, imageUrl: value };
+                                            setForm({ ...form, gallery: next });
+                                        }}
+                                    />
                                 </div>
                             ))}
                             {form.gallery.length === 0 && <p className="text-sm text-gray-400 italic">Henuz galeri resmi eklenmedi.</p>}
