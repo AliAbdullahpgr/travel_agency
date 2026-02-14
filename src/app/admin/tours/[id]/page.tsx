@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireContentAdminPage } from "~/server/auth/page-guards";
 import { getAdminTourById } from "~/server/cms/tours";
@@ -45,23 +44,14 @@ export default async function AdminEditTourPage({ params }: Params) {
   };
 
   return (
-    <main className="admin-root px-4 py-8 md:px-8">
-      <section className="admin-container max-w-6xl space-y-6">
-        <header className="admin-hero p-6">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="admin-eyebrow">Tur Yonetimi</p>
-              <h1 className="admin-title text-3xl">{tour.title}</h1>
-              <p className="admin-description">Tur icerigini, yayin durumunu ve landing ayarlarini duzenleyin.</p>
-            </div>
-            <Link href="/admin/tours" className="admin-btn admin-btn-ghost">
-              Tur Listesi
-            </Link>
-          </div>
-        </header>
+    <section className="admin-container max-w-6xl space-y-6">
+      <header className="admin-hero p-6">
+        <p className="admin-eyebrow">Tur Yonetimi</p>
+        <h1 className="admin-title text-2xl md:text-3xl">{tour.title}</h1>
+        <p className="admin-description">Tur icerigini, yayin durumunu ve landing ayarlarini duzenleyin.</p>
+      </header>
 
-        <TourEditor mode="edit" tourId={tour.id} initialData={initialData} />
-      </section>
-    </main>
+      <TourEditor mode="edit" tourId={tour.id} initialData={initialData} />
+    </section>
   );
 }
