@@ -1388,3 +1388,18 @@
     }
   }
 }
+
+
+/* Utility animations for Admin Panel */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.slide-in-from-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
