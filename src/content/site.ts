@@ -131,7 +131,7 @@ export const categoryHeroCopy: Record<
     title: "Katmanlı Umre Paketleri",
     subtitle:
       "Ekonomiden premiuma kadar farklı konaklama seçenekleriyle, ritmi güçlü ve net organize edilmiş umre programları.",
-    image: "/4.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiuzDMMw3GrJ6zYTHnXvCN7lcLZdKA3hVmb1UD",
     chips: ["10-20 Gün", "Medine + Mekke", "Ehil Rehber"],
   },
   hac: {
@@ -139,7 +139,7 @@ export const categoryHeroCopy: Record<
     title: "Disiplinli ve Konforlu Hac Planları",
     subtitle:
       "Farz, vacip ve sünnet adımlarını doğru ritimde ilerleten; ulaşım, konaklama ve saha operasyonunu tek merkezden yöneten kapsamlı hac kurgusu.",
-    image: "/2.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiZo4L6c9d6j3wV7dfPKqsHoXQYEumyNF5kTWD",
     chips: ["Arafat Planı", "Otel Tercihli", "Sağlık Destekli"],
   },
   kultur: {
@@ -147,7 +147,7 @@ export const categoryHeroCopy: Record<
     title: "Manevi Hafızası Güçlü Kültür Turları",
     subtitle:
       "Kudüs, Balkanlar ve Anadolu duraklarında tarih, mimari ve inanç mirasını birlikte okuyan tempolu kültür programları.",
-    image: "/8.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oivlAB2HVeYzNhQX9R8VFPsblZDaGuoJSr6gOA",
     chips: ["Kudüs", "Balkanlar", "Anadolu"],
   },
 };

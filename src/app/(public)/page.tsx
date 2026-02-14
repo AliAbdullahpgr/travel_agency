@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Şükür Turizm | Umre, Hac ve Kültür Turları",
     description: "Umre, hac ve kültür turlarında güçlü operasyon ve güvenli planlama.",
-    images: ["/1.jpg"],
+    images: ["https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oij1O9m8p7PW4LYegd0nuQV51COzZrEAwR3tam"],
     locale: "tr_TR",
     type: "website",
   },

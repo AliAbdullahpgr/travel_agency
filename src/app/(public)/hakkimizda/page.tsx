@@ -18,7 +18,7 @@ export default function AboutPage() {
         eyebrow="Şirket Hafızası"
         title="1996'dan Bu Yana Aynı Söz: Güvenli ve Nitelikli Yolculuk"
         subtitle="Şükür Turizm, umre ve hac organizasyonunu yalnızca bir hizmet değil, emanet bilinciyle yürütülen çok katmanlı bir operasyon olarak görür."
-        image="/5.jpg"
+        image="https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiZCnWTZd6j3wV7dfPKqsHoXQYEumyNF5kTWDi"
         chips={["1996 Kuruluş", "Ankara Merkez", "Saha Tecrübesi", "Kurumsal Operasyon"]}
         primaryCta={{ href: "/iletisim", label: "Ekibimizle Tanışın" }}
       />

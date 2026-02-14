@@ -13,7 +13,16 @@ const config = {
     ignoreBuildErrors: true,
   },
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "qd24qmfc7c.ufs.sh",
+      },
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+      },
+    ],
   },
 };
 

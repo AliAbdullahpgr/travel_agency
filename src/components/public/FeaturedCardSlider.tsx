@@ -32,7 +32,7 @@ const AUTOPLAY_MS = 5600;
 const SWIPE_THRESHOLD = 40;
 const WHEEL_THRESHOLD = 22;
 const WHEEL_COOLDOWN_MS = 420;
-const placeholderImages = ["/1.jpg", "/2.jpg", "/3.jpg"] as const;
+const placeholderImages = ["https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oij1O9m8p7PW4LYegd0nuQV51COzZrEAwR3tam", "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiZo4L6c9d6j3wV7dfPKqsHoXQYEumyNF5kTWD", "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oi05IALrmdgQc7h4zyrAEWmnftDZGCSjpuMae9"] as const;
 
 type FeaturedCardSliderLabels = {
   title: string;

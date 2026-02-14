@@ -13,7 +13,13 @@
       "Bash(ls -la \"d:\\\\Downloads\\\\travel_agency\\\\travel_agency\\\\public\"\" 2>&1 || echo \"Directory may not exist or path issue \")",
       "Bash(npx next dev:*)",
       "Bash(ls:*)",
-      "Bash(SKIP_ENV_VALIDATION=1 npx next build:*)"
+      "Bash(SKIP_ENV_VALIDATION=1 npx next build:*)",
+      "Bash(grep:*)",
+      "Bash(npm ls:*)",
+      "Bash(node scripts/upload-images.mjs:*)",
+      "Bash(node scripts/replace-image-paths.mjs:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

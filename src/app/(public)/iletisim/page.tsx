@@ -20,7 +20,7 @@ export default async function ContactPage() {
         eyebrow="İletişim Merkezi"
         title="15 Dakikada Program Çerçevenizi Netleştirelim"
         subtitle="Telefonla ya da form ile ulaşın; ekip aynı gün geri dönüş yaparak rota, süre ve bütçe dengenizi netleştirsin."
-        image="/3.jpg"
+        image="https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oi05IALrmdgQc7h4zyrAEWmnftDZGCSjpuMae9"
         chips={["Aynı Gün Dönüş", "Ankara Merkez Ofis", "WhatsApp Destek", "Ön Kayıt Hattı"]}
         primaryCta={{ href: "#hizli-basvuru", label: "Hızlı Form" }}
       />

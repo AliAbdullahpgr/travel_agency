@@ -75,17 +75,17 @@ type HeroCinematicProps = LandingHeroProps | PageHeroProps;
 
 const defaultSlides: HeroSlide[] = [
   {
-    image: "/kabbah1.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oij7JEw8p7PW4LYegd0nuQV51COzZrEAwR3tam",
     title: "2026 Ramazan\nProgramlarımız",
     subtitle: "Açıklanmıştır.",
   },
   {
-    image: "/kabbah2.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oioAOQKxGwAX3OoMuyN8agt4RYbl6mEpU5nxLv",
     title: "Kutsal Topraklara\nGüvenli Yolculuk",
     subtitle: "30 yıllık tecrübe ile.",
   },
   {
-    image: "/kabbah3.jpg",
+    image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiA1uB8Tl4HshINSvbncRkGL9V2U7XFw6dCPBo",
     title: "Hac ve Umre\nOrganizasyonu",
     subtitle: "Profesyonel rehberlik eşliğinde.",
   },
@@ -101,8 +101,8 @@ const defaultFeaturedCard: HeroFeaturedCard = {
   flightType: "Tarifeli Sefer",
   badges: ["Ramazan Umre Turları", "Lüks Umre Turları", "5 Yıldızlı Umre Turları"],
   hotels: [
-    { name: "ANWAR AL MÖVENPİCK", city: "MEDİNE", nights: 4, image: "/3.jpg" },
-    { name: "MAKKAH HOTEL", city: "MEKKE", nights: 4, image: "/4.jpg" },
+    { name: "ANWAR AL MÖVENPİCK", city: "MEDİNE", nights: 4, image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oi05IALrmdgQc7h4zyrAEWmnftDZGCSjpuMae9" },
+    { name: "MAKKAH HOTEL", city: "MEKKE", nights: 4, image: "https://qd24qmfc7c.ufs.sh/f/VJyxt3BRz7oiuzDMMw3GrJ6zYTHnXvCN7lcLZdKA3hVmb1UD" },
   ],
   dates: {
     departure: "15 Mart",
