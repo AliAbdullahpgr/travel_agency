@@ -192,10 +192,14 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
     [inquiries, selectedId]
   );
 
+  const toggleExpand = (id: string) => {
+    setSelectedId((prev) => (prev === id ? null : id));
+  };
+
   return (
     <div className="space-y-6">
       {/* ── Stats ── */}
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Toplam Basvuru" value={counts.all} color="blue" />
         <StatCard label="Bugun Gelen" value={counts.today} color="green" />
         <StatCard label="Bekleyen Onay" value={counts.pending} color="amber" />
@@ -203,56 +207,23 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
       </section>
 
       {/* ── Toolbar ── */}
-      <section className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center">
-          {/* Search */}
-          <div className="relative w-full max-w-xs">
-            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Isim, telefon ara..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-
-          {/* Filters */}
-          <div className="flex items-center gap-2">
-            <select
-              value={filterStatus}
-              onChange={(e) => {
-                setFilterStatus(e.target.value as FilterStatus);
-                setCurrentPage(1);
-              }}
-              className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-            >
-              <option value="ALL">Tum Durumlar</option>
-              <option value="PENDING">Bekleyenler</option>
-              <option value="APPROVED">Onaylananlar</option>
-              <option value="REJECTED">Reddedilenler</option>
-            </select>
-            <select
-              value={filterCategory}
-              onChange={(e) => {
-                setFilterCategory(e.target.value);
-                setCurrentPage(1);
-              }}
-              className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-            >
-              <option value="ALL">Tum Kategoriler</option>
-              <option value="umre">Umre</option>
-              <option value="hac">Hac</option>
-              <option value="kultur">Kultur</option>
-            </select>
-          </div>
+      <section className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-2">
+           <div className="relative">
+             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+             <input
+               type="text"
+               placeholder="Ara..."
+               value={search}
+               onChange={(e) => setSearch(e.target.value)}
+               className="w-40 rounded-lg border border-gray-200 py-1.5 pl-9 pr-3 text-sm transition-all focus:w-64 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+             />
+           </div>
         </div>
 
-        {/* Export / Actions (Placeholder) */}
-        <button className="hidden items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 sm:flex">
-          <FiDownload size={14} />
-          <span>Dışa Aktar</span>
-        </button>
+        <div className="flex items-center gap-2">
+            {/* Minimal Actions */}
+        </div>
       </section>
 
       {/* ── Data Table ── */}
@@ -276,7 +247,7 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
                   <div className="flex items-center gap-1">Tarih {sortField === "plannedMonth" && <SortIcon order={sortOrder} />}</div>
                 </th>
                 <th className="px-6 py-3">Durum</th>
-                <th className="px-6 py-3 text-right">Islem</th>
+                <th className="w-10 px-6 py-3 text-right"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
@@ -288,7 +259,12 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
                 </tr>
               ) : (
                 paginatedData.map((item) => (
-                  <tr key={item.id} className="group hover:bg-slate-50">
+                  <>
+                  <tr 
+                    key={item.id} 
+                    className={`cursor-pointer transition-colors hover:bg-slate-50 ${selectedId === item.id ? "bg-slate-50" : ""}`}
+                    onClick={() => toggleExpand(item.id)}
+                  >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700">
@@ -302,13 +278,13 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-col gap-1">
-                        <a href={`tel:${item.phone}`} className="flex items-center gap-1 hover:text-blue-600">
+                        <span className="flex items-center gap-1 text-gray-600">
                           <FiPhone size={12} /> {item.phone}
-                        </a>
+                        </span>
                         {item.email && (
-                          <a href={`mailto:${item.email}`} className="flex items-center gap-1 hover:text-blue-600">
+                          <span className="flex items-center gap-1 text-gray-500">
                             <FiMail size={12} /> {item.email}
-                          </a>
+                          </span>
                         )}
                       </div>
                     </td>
@@ -327,15 +303,129 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
                       <StatusBadge status={item.status} />
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button
-                        onClick={() => setSelectedId(item.id)}
-                        className="rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-blue-600"
-                        title="Detaylari Gor"
-                      >
-                        <FiEye size={18} />
-                      </button>
+                       <FiChevronDown 
+                         size={18} 
+                         className={`text-gray-400 transition-transform duration-200 ${selectedId === item.id ? "rotate-180" : ""}`}
+                       />
                     </td>
                   </tr>
+                  
+                  {/* Expanded Row Content */}
+                  {selectedId === item.id && (
+                    <tr className="bg-slate-50/50">
+                      <td colSpan={6} className="px-6 pb-6 pt-0">
+                        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm animate-in fade-in zoom-in-95 duration-200">
+                          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                            
+                            {/* Column 1: Applicant Info */}
+                            <div className="space-y-4">
+                              <h4 className="border-b border-gray-100 pb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                                Basvuru Detaylari
+                              </h4>
+                              <div className="space-y-3">
+                                <div className="grid grid-cols-2 gap-4">
+                                   <div>
+                                     <span className="block text-xs text-gray-500">Kalkis Sehri</span>
+                                     <span className="text-sm font-medium text-gray-900">{item.departureCity ?? "-"}</span>
+                                   </div>
+                                   <div>
+                                     <span className="block text-xs text-gray-500">Sure</span>
+                                     <span className="text-sm font-medium text-gray-900">{item.duration ?? "-"}</span>
+                                   </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                   <div>
+                                     <span className="block text-xs text-gray-500">Yetiskin</span>
+                                     <span className="text-sm font-medium text-gray-900">{item.adults ?? 0}</span>
+                                   </div>
+                                   <div>
+                                     <span className="block text-xs text-gray-500">Cocuk</span>
+                                     <span className="text-sm font-medium text-gray-900">{item.children ?? 0}</span>
+                                   </div>
+                                </div>
+                                <div>
+                                   <span className="block text-xs text-gray-500">KVKK Onayi</span>
+                                   <span className={`text-sm font-medium ${item.consentAccepted ? "text-emerald-600" : "text-rose-600"}`}>
+                                     {item.consentAccepted ? "Onaylandi" : "Onaylanmadi"}
+                                   </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Column 2: Notes */}
+                            <div className="space-y-4">
+                              <h4 className="border-b border-gray-100 pb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                                Musteri Notu
+                              </h4>
+                              {item.notes ? (
+                                <div className="rounded-lg bg-gray-50 p-4 text-sm italic text-gray-600 border border-gray-100">
+                                  "{item.notes}"
+                                </div>
+                              ) : (
+                                <p className="text-sm text-gray-400 italic">Musteri notu bulunmuyor.</p>
+                              )}
+                              
+                              <div className="mt-4 pt-4">
+                                <span className="block text-xs text-gray-500">Inceleme Durumu</span>
+                                {item.reviewedAt ? (
+                                  <span className="text-xs text-gray-400">
+                                    Son guncelleme: {formatDate(item.reviewedAt)}
+                                  </span>
+                                ) : (
+                                  <span className="text-xs text-amber-600">Henuz incelenmedi</span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Column 3: Actions */}
+                            <div className="flex flex-col justify-start rounded-lg bg-gray-50 border border-gray-100 p-4">
+                              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
+                                Hizli Islem
+                              </h4>
+                              
+                              <div className="flex items-center gap-2">
+                                {item.status !== "APPROVED" && (
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); handleStatusChange(item.id, "APPROVED"); }}
+                                    disabled={pendingIds.has(item.id)}
+                                    className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-emerald-600 py-2.5 text-sm font-semibold text-white transition-all hover:bg-emerald-700 disabled:opacity-50"
+                                    title="Onayla"
+                                  >
+                                    {pendingIds.has(item.id) ? <FiLoader className="animate-spin" /> : <FiCheck />}
+                                    Onayla
+                                  </button>
+                                )}
+                                
+                                {item.status !== "REJECTED" && (
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); handleStatusChange(item.id, "REJECTED"); }}
+                                    disabled={pendingIds.has(item.id)}
+                                    className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-2.5 text-sm font-semibold text-rose-600 transition-all hover:bg-rose-50 disabled:opacity-50"
+                                    title="Reddet"
+                                  >
+                                    {pendingIds.has(item.id) ? <FiLoader className="animate-spin" /> : <FiX />}
+                                    Reddet
+                                  </button>
+                                )}
+                              </div>
+
+                              {/* Only show Wait/Pending if it's not already pending, and as a secondary small link below */}
+                              {item.status !== "PENDING" && (
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); handleStatusChange(item.id, "PENDING"); }}
+                                  className="mt-3 text-xs font-medium text-gray-400 hover:text-gray-600 hover:underline mx-auto"
+                                >
+                                  Beklemeye Al
+                                </button>
+                              )}
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                  </>
                 ))
               )}
             </tbody>
@@ -365,16 +455,6 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
           </div>
         </div>
       </div>
-
-      {/* ── Slide-over Detail Panel ── */}
-      {selectedId && selectedInquiry && (
-        <DetailsPanel
-          inquiry={selectedInquiry}
-          onClose={() => setSelectedId(null)}
-          onStatusChange={handleStatusChange}
-          isLoading={pendingIds.has(selectedId)}
-        />
-      )}
     </div>
   );
 }
@@ -383,16 +463,38 @@ export function InquiryManager({ initialInquiries, updateStatusAction }: Props) 
 
 function StatCard({ label, value, color }: { label: string; value: number; color: "blue" | "green" | "amber" | "red" }) {
   const colorMap = {
-    blue: "bg-blue-50 text-blue-700 border-blue-100",
-    green: "bg-emerald-50 text-emerald-700 border-emerald-100",
-    amber: "bg-amber-50 text-amber-700 border-amber-100",
-    red: "bg-rose-50 text-rose-700 border-rose-100",
+    blue: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-100", iconBg: "bg-blue-100" },
+    green: { bg: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-100", iconBg: "bg-emerald-100" },
+    amber: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-100", iconBg: "bg-amber-100" },
+    red: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-100", iconBg: "bg-rose-100" },
   };
 
+  const current = colorMap[color];
+  
+  // Icon mapping based on color/context
+  const Icons = {
+    blue: FiFileText,   // Applications
+    green: FiCheck,     // Today/Success
+    amber: FiClock,     // Pending
+    red: FiX,           // Rejected
+  };
+  const Icon = Icons[color];
+
   return (
-    <div className={`rounded-xl border p-4 ${colorMap[color]}`}>
-      <p className="text-xs font-medium opacity-80">{label}</p>
-      <p className="mt-1 text-2xl font-bold">{value}</p>
+    <div className="group relative flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] transition-all hover:shadow-[0_8px_30px_-4px_rgba(6,81,237,0.12)]">
+      <div className="mb-4 flex items-start justify-between">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-full ${current.iconBg} ${current.text}`}>
+          <Icon size={24} />
+        </div>
+        <button className="text-gray-300 transition-colors hover:text-gray-500">
+          <FiMoreHorizontal size={20} />
+        </button>
+      </div>
+      
+      <div>
+        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">{label}</h3>
+        <p className="mt-1 text-2xl font-bold text-gray-900">{value}</p>
+      </div>
     </div>
   );
 }
@@ -415,153 +517,4 @@ function SortIcon({ order }: { order: "asc" | "desc" }) {
   return order === "asc" ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />;
 }
 
-function DetailsPanel({
-  inquiry,
-  onClose,
-  onStatusChange,
-  isLoading,
-}: {
-  inquiry: SerializedInquiry;
-  onClose: () => void;
-  onStatusChange: (id: string, s: string) => void;
-  isLoading: boolean;
-}) {
-  return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/20 backdrop-blur-sm" onClick={onClose}>
-      <div 
-        className="w-full max-w-md bg-white shadow-2xl animate-in slide-in-from-right duration-200"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex h-full flex-col">
-          {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
-            <h2 className="text-lg font-semibold text-gray-900">Basvuru Detayi</h2>
-            <button onClick={onClose} className="rounded-full p-2 hover:bg-gray-100">
-              <FiX size={20} />
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            <div className="mb-6 flex flex-col items-center gap-3">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-2xl font-bold text-blue-700">
-                {inquiry.fullName.charAt(0).toUpperCase()}
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900">{inquiry.fullName}</h3>
-                <p className="text-sm text-gray-500">Basvuru: {formatDate(inquiry.createdAt)}</p>
-              </div>
-              <StatusBadge status={inquiry.status} />
-            </div>
-
-            <div className="space-y-6">
-              <Section title="Iletisim">
-                <DetailRow icon={<FiPhone />} label="Telefon" value={inquiry.phone} />
-                <DetailRow icon={<FiMail />} label="E-posta" value={inquiry.email ?? "-"} />
-                <DetailRow icon={<FiMapPin />} label="Konum" value={`${inquiry.city ?? "-"} / ${inquiry.country ?? "-"}`} />
-              </Section>
-
-              <Section title="Tur Bilgileri">
-                <DetailRow icon={<FiMapPin />} label="Kategori" value={CATEGORY_LABELS[inquiry.tourCategory ?? ""] ?? "-"} />
-                <DetailRow icon={<FiCalendar />} label="Planlanan Ay" value={inquiry.plannedMonth} />
-                <DetailRow icon={<FiClock />} label="Sure" value={inquiry.duration ?? "-"} />
-                <DetailRow icon={<FiUsers />} label="Kisi Sayisi" value={`${inquiry.adults ?? 0} Yetiskin, ${inquiry.children ?? 0} Cocuk`} />
-              </Section>
-              
-              <Section title="Diger">
-                <DetailRow icon={<FiCheck />} label="KVKK" value={inquiry.consentAccepted ? "Onaylandi" : "Onaylanmadi"} />
-                {inquiry.notes && (
-                   <div className="rounded-lg bg-gray-50 p-3 text-sm text-gray-600 italic">
-                     "{inquiry.notes}"
-                   </div>
-                )}
-              </Section>
-            </div>
-          </div>
-
-          {/* Footer Actions */}
-          <div className="border-t border-gray-100 bg-gray-50 px-6 py-4">
-            <div className="grid grid-cols-2 gap-3">
-              {inquiry.status === "PENDING" && (
-                <>
-                  <ActionButton 
-                    intent="reject" 
-                    onClick={() => { onStatusChange(inquiry.id, "REJECTED"); onClose(); }} 
-                    disabled={isLoading}
-                  >
-                    Reddet
-                  </ActionButton>
-                  <ActionButton 
-                    intent="approve" 
-                    onClick={() => { onStatusChange(inquiry.id, "APPROVED"); onClose(); }} 
-                    disabled={isLoading}
-                  >
-                    Onayla
-                  </ActionButton>
-                </>
-              )}
-              {inquiry.status === "APPROVED" && (
-                 <ActionButton 
-                    intent="neutral" 
-                    onClick={() => { onStatusChange(inquiry.id, "PENDING"); onClose(); }} 
-                    disabled={isLoading}
-                  >
-                    Beklemeye Al
-                  </ActionButton>
-              )}
-              {inquiry.status === "REJECTED" && (
-                 <ActionButton 
-                    intent="neutral" 
-                    onClick={() => { onStatusChange(inquiry.id, "PENDING"); onClose(); }} 
-                    disabled={isLoading}
-                  >
-                    Tekrar Degerlendir
-                  </ActionButton>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h4 className="border-b border-gray-100 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500">{title}</h4>
-      <div className="space-y-3">{children}</div>
-    </div>
-  );
-}
-
-function DetailRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="text-gray-400">{icon}</div>
-      <div className="flex-1">
-        <div className="text-xs text-gray-400">{label}</div>
-        <div className="text-sm font-medium text-gray-900">{value}</div>
-      </div>
-    </div>
-  );
-}
-
-function ActionButton({ intent, children, onClick, disabled }: { intent: "approve" | "reject" | "neutral"; children: React.ReactNode; onClick: () => void; disabled?: boolean }) {
-  const styles = {
-    approve: "bg-emerald-600 text-white hover:bg-emerald-700",
-    reject: "bg-white text-rose-600 border border-rose-200 hover:bg-rose-50",
-    neutral: "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 w-full col-span-2",
-  };
-
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-50 ${styles[intent]}`}
-    >
-      {children}
-    </button>
-  );
-}
 
