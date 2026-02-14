@@ -460,7 +460,7 @@ export function LandingEditor({
                              <span className="text-[10px] text-gray-400">Format: soru|cevap</span>
                         </div>
                         <textarea
-                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-[120px] font-mono text-gray-600 bg-gray-50"
+                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-32 font-mono text-gray-600 bg-gray-50"
                             value={faq.faqs.map((item) => `${item.question}|${item.answer}`).join("\n")}
                             onChange={(event) =>
                             setFaq((prev) => ({
@@ -571,7 +571,7 @@ export function LandingEditor({
                              <span className="text-[10px] text-gray-400">Format: no|baslik</span>
                         </div>
                          <textarea
-                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-[80px] font-mono text-gray-600 bg-gray-50"
+                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-20 font-mono text-gray-600 bg-gray-50"
                             value={inquiryPanel.steps.map((step) => `${step.number}|${step.title}`).join("\n")}
                             onChange={(event) =>
                             setInquiryPanel((prev) => ({
@@ -640,7 +640,7 @@ export function LandingEditor({
                              </div>
                              <div className="space-y-1">
                                 <label className="text-[10px] font-semibold text-gray-400 uppercase">Alt Baslik</label>
-                                <textarea className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-[60px]" 
+                                <textarea className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none min-h-16" 
                                     value={categoryHeroes[key].subtitle} onChange={(e) => setCategoryHeroes(prev => ({ ...prev, [key]: { ...prev[key], subtitle: e.target.value } }))} />
                              </div>
                              <ImageUploadField
